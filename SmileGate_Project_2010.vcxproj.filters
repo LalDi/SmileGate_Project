@@ -1,90 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns:atg="http://atg.xbox.com" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<ItemGroup>
-<Filter Include="Resource Files">
-<UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
-<Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
-</Filter>
-<Filter Include="DXUT">
-<UniqueIdentifier>{a43c5c25-0e86-4a20-b64a-883785ff74fd}</UniqueIdentifier>
-</Filter>
-<Filter Include="Shaders">
-<UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
-<Extensions>fx;fxh;hlsl</Extensions>
-</Filter>
-</ItemGroup>
-<ItemGroup>
-<None Include="DXUT\Optional\directx.ico">
-<Filter>Resource Files</Filter>
-</None>
-<ClInclude Include="DXUT\Core\DXUT.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Core\DXUTenum.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Core\DXUTmisc.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClCompile Include="DXUT\Core\DXUT.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Core\DXUTenum.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Core\DXUTmisc.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClInclude Include="DXUT\Optional\DXUTcamera.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Optional\DXUTgui.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Optional\DXUTres.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Optional\DXUTsettingsdlg.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Optional\SDKmesh.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClInclude Include="DXUT\Optional\SDKmisc.h">
-<Filter>DXUT</Filter>
-</ClInclude>
-<ClCompile Include="DXUT\Optional\DXUTcamera.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Optional\DXUTgui.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Optional\DXUTres.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Optional\DXUTsettingsdlg.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Optional\SDKmesh.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-<ClCompile Include="DXUT\Optional\SDKmisc.cpp">
-<Filter>DXUT</Filter>
-</ClCompile>
-</ItemGroup>
-<ItemGroup>
-      <ClCompile Include="SmileGate_Project.cpp" />
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="DXUT">
+      <UniqueIdentifier>{a43c5c25-0e86-4a20-b64a-883785ff74fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
+      <Extensions>fx;fxh;hlsl</Extensions>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{94649866-6faf-4189-9f5e-78645188ae2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame">
+      <UniqueIdentifier>{f09d75a9-6223-46fb-9040-a111cf7544d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{ff51e61b-07ec-4583-bfc7-cb70e95c4428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{61e3d6a1-5899-4585-bc11-52edca334888}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{997d8eff-6fe0-432a-b233-8b6547600b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Title">
+      <UniqueIdentifier>{5189a7cb-b320-41a7-9f1f-11d4eb904497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Ingame">
+      <UniqueIdentifier>{5ac34b16-c9c1-4102-bbc4-d9397e230fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Image">
+      <UniqueIdentifier>{0121abe0-bbfa-4bd4-8e2b-d21606bd20fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Input">
+      <UniqueIdentifier>{5b3c8640-3502-4c1e-8153-9018c2936b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Scene">
+      <UniqueIdentifier>{dd4aab9c-fca8-44bf-8f46-cf07b5cff1ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title">
+      <UniqueIdentifier>{0c4fd2a7-a2fa-4184-866f-e7b16c6122b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame">
+      <UniqueIdentifier>{74ce5bd9-60b7-4617-9e52-503eee6f6b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title\Background">
+      <UniqueIdentifier>{c31cf935-ac84-4973-82c2-df87c37f9742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title\UI">
+      <UniqueIdentifier>{c38bdcd8-541e-4b40-af6a-5913b11e2247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI">
+      <UniqueIdentifier>{ad1bccc8-c155-46f3-bf2c-c9ae4b29e112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title\UI\Button">
+      <UniqueIdentifier>{42e708b1-13cd-45ed-8033-35743eef485d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Background">
+      <UniqueIdentifier>{1aaf854a-be6d-4a0f-b3bb-62f2d1e63415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Player">
+      <UniqueIdentifier>{02608335-3965-4478-be94-064b372a1f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Bullet">
+      <UniqueIdentifier>{c2e537c2-3b2c-4d31-8771-37a93c84f7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Enemy">
+      <UniqueIdentifier>{9bde5ee7-373e-4b18-874d-b345b9801efe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Enemy\cEnemy1">
+      <UniqueIdentifier>{accb801b-8540-45a5-99e3-3c9b2c444c47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI">
+      <UniqueIdentifier>{63c63ba7-09b3-4842-a567-79f3c156e499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Image">
+      <UniqueIdentifier>{e48a0495-8f82-48c5-93e9-9cbe86ab309b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
-<ItemGroup>
+  <ItemGroup>
+    <None Include="DXUT\Optional\directx.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <ClInclude Include="DXUT\Core\DXUT.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTenum.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTmisc.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClCompile Include="DXUT\Core\DXUT.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTenum.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTmisc.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClInclude Include="DXUT\Optional\DXUTcamera.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTgui.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTres.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTsettingsdlg.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKmesh.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKmisc.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClCompile Include="DXUT\Optional\DXUTcamera.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTgui.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTres.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTsettingsdlg.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKmesh.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKmisc.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
   </ItemGroup>
-<ItemGroup>
-      <CLInclude Include="resource.h">
-<Filter>Resource Files</Filter>
-</CLInclude>
-      <ResourceCompile Include="SmileGate_Project.rc">
-<Filter>Resource Files</Filter>
-</ResourceCompile>
+  <ItemGroup>
+    <ClCompile Include="SmileGate_Project.cpp" />
+    <ClCompile Include="cMainGame.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cImageManager.cpp">
+      <Filter>Manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cInputManager.cpp">
+      <Filter>Manager\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="cSceneManager.cpp">
+      <Filter>Manager\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cTexture.cpp">
+      <Filter>Manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cTitleScene.cpp">
+      <Filter>Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="cIngameScene.cpp">
+      <Filter>Scene\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="cTitleBackground.cpp">
+      <Filter>Object\Title\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUtility.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Gamestart.cpp">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Logo.cpp">
+      <Filter>Object\Title\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Option.cpp">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Quit.cpp">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cIngameBackground.cpp">
+      <Filter>Object\Ingame\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayer.cpp">
+      <Filter>Object\Ingame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemy.cpp">
+      <Filter>Object\Ingame\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="cBullet.cpp">
+      <Filter>Object\Ingame\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemy1.cpp">
+      <Filter>Object\Ingame\Enemy\cEnemy1</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Credit.cpp">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_HowToPlay.cpp">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_PlayerHp.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Background.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
   </ItemGroup>
-<ItemGroup>
-</ItemGroup>
+  <ItemGroup>
+    <CLInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </CLInclude>
+    <ResourceCompile Include="SmileGate_Project.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ClInclude Include="Framework.h" />
+    <ClInclude Include="cMainGame.h">
+      <Filter>MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="cScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cImageManager.h">
+      <Filter>Manager\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cInputManager.h">
+      <Filter>Manager\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="cSceneManager.h">
+      <Filter>Manager\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="cTexture.h">
+      <Filter>Manager\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cTitleScene.h">
+      <Filter>Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="cIngameScene.h">
+      <Filter>Scene\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="cTitleBackground.h">
+      <Filter>Object\Title\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUtility.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Gamestart.h">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Logo.h">
+      <Filter>Object\Title\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Option.h">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Quit.h">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cIngameBackground.h">
+      <Filter>Object\Ingame\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayer.h">
+      <Filter>Object\Ingame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemy.h">
+      <Filter>Object\Ingame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="cBullet.h">
+      <Filter>Object\Ingame\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemy1.h">
+      <Filter>Object\Ingame\Enemy\cEnemy1</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Credit.h">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_HowToPlay.h">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_PlayerHp.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Background.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
 </Project>
