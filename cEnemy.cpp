@@ -11,26 +11,6 @@ cEnemy::~cEnemy()
 
 void cEnemy::Update()
 {
-	if (m_Hp <= 0)
-	{
-		int item;
-		item = rand() % 2;
-		if (item == 0)
-		{
-			item = rand() % 3;
-			switch (item)
-			{
-			case 0:
-				break;
-			case 1:
-				break;
-			case 2:
-				break;
-			}
-		}
-		b_IsLive = false;
-	}
-	
 	SetRect();
 
 	if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)

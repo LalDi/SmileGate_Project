@@ -5,13 +5,17 @@ private:
 	int m_MaxHp;
 	int m_Hp;
 	int m_Damage;
+
 	int m_Bomb;
+	int m_MaxBomb;
 	int m_BombDamage;
+
+	int m_Power;
+	int m_MaxPower;
 
 	float m_Speed;
 	float m_AttackSpeed;
-	int m_Power;
-	int m_MaxPower;
+
 	bool b_GracePeriod;
 
 	bool b_Fire = false;
@@ -24,6 +28,7 @@ private:
 		Judgement,			// 방어형
 		The_Sun				// 공격형
 	};
+
 	PlayerState m_PlayerState;
 
 public:
@@ -37,15 +42,21 @@ public:
 
 	void SetPlayerState();
 
-	int GetMaxHp() { return m_MaxHp; }
-	void SetMaxHp(int value) { m_MaxHp = value; }
+	int GetDamage() { return m_Damage; }
 
-	int GetHp() { return m_Hp; }
-	void SetHp(int value) { m_Hp = value; }
+	int GetMaxHp() { return m_MaxHp; }
+
+	int GetHp()	{ return m_Hp; }
+	void SetHp(int value) { m_Hp = value <= m_MaxHp ? value : m_MaxHp; }
 	void MinusHp(int value) { m_Hp -= value; }
 
-	int GetDamage() { return m_Damage; }
-	void SetDamage(int value) { m_Damage = value; }
+	int GetBomb() { return m_Bomb; }
+	int GetMaxBomb() { return m_MaxBomb; }
+	void SetBomb(int value) { m_Bomb = value <= m_MaxBomb ? value : m_MaxBomb; }
+
+	int GetPower() { return m_Power; }
+	int GetMaxPower() { return m_MaxPower; }
+	void SetPower(int value) { m_Power = value <= m_Power ? value : m_Power; }
 
 	bool GetGracePeriod() { return b_GracePeriod; }
 	void SetGracePeriod(bool value) { b_GracePeriod = value; }

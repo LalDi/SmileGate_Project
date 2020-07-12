@@ -3,6 +3,7 @@ class cScene abstract
 {
 protected:
 	std::list<cGameObject*> m_Objects;
+	bool b_Time;
 
 public:
 	cScene();

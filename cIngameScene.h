@@ -4,6 +4,9 @@ class cIngameScene : public cScene
 private:
 	cPlayer* m_Player;
 	time_t m_GPTime; //GP = Grace Period
+
+	int m_Score;
+
 	bool DEBUGMODE = false;
 
 public:

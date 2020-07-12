@@ -3,7 +3,7 @@
 cUI_Background::cUI_Background(POINT Pos, int tag)
 	:cGameObject(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Ingame_UI_Background", "./Images/Ingame/Ingame_Status_Background.png");
+	m_Sprite = IMAGEMANAGER->AddImage("Ingame_UI_Background", "./Images/Ingame/UI/Ingame_Status_Background.png");
 }
 
 cUI_Background::~cUI_Background()

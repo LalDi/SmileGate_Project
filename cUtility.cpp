@@ -1,6 +1,6 @@
 #include "Framework.h"
 
-BOOL IsPointInRect(const RECT rt, const POINT pt)
+BOOL Math::IsPointInRect(const RECT rt, const POINT pt)
 {
 	if ((rt.left <= pt.x && rt.right >= pt.x) &&
 		(rt.top <= pt.y && rt.bottom >= pt.y))
@@ -11,7 +11,7 @@ BOOL IsPointInRect(const RECT rt, const POINT pt)
 	return FALSE;
 }
 
-BOOL IsPointInCircle(const POINT ptCircle, const int cr, const POINT pt)
+BOOL Math::IsPointInCircle(const POINT ptCircle, const int cr, const POINT pt)
 {
 	float dx = ptCircle.x - pt.x;
 	float dy = ptCircle.y - pt.y;
@@ -22,7 +22,7 @@ BOOL IsPointInCircle(const POINT ptCircle, const int cr, const POINT pt)
 	return FALSE;
 }
 
-RECT* rtIntersectRect(const RECT rt1, const RECT rt2)
+RECT* Math::rtIntersectRect(const RECT rt1, const RECT rt2)
 {
 	RECT* pIntersect = new RECT();
 	*pIntersect = RECT{ 0,0,0,0 };
@@ -41,7 +41,7 @@ RECT* rtIntersectRect(const RECT rt1, const RECT rt2)
 	return pIntersect;
 }
 
-BOOL RectCrashCheck(const RECT rt1, const RECT rt2)
+BOOL Math::RectCrashCheck(const RECT rt1, const RECT rt2)
 {
 	if (rt1.left < rt2.right &&
 		rt1.top < rt2.bottom &&
@@ -51,7 +51,7 @@ BOOL RectCrashCheck(const RECT rt1, const RECT rt2)
 	return FALSE;
 }
 
-BOOL CircleCrashCheck(POINT ptCircle1, int r1, POINT ptCircle2, int r2)
+BOOL Math::CircleCrashCheck(POINT ptCircle1, int r1, POINT ptCircle2, int r2)
 {
 	float dx = ptCircle1.x - ptCircle2.x;
 	float dy = ptCircle1.y - ptCircle2.y;
@@ -62,7 +62,7 @@ BOOL CircleCrashCheck(POINT ptCircle1, int r1, POINT ptCircle2, int r2)
 	return FALSE;
 }
 
-BOOL RectCircleCrashCheck(POINT ptCircle, int r, const RECT Rect)
+BOOL Math::RectCircleCrashCheck(POINT ptCircle, int r, const RECT Rect)
 {
 	if (IsPointInRect(Rect, ptCircle))
 	{
@@ -83,4 +83,19 @@ BOOL RectCircleCrashCheck(POINT ptCircle, int r, const RECT Rect)
 		if (IsPointInCircle(ptCircle, r, POINT{ Rect.right, Rect.bottom })) return TRUE;
 	}
 	return FALSE;
+}
+
+int Math::Random(int _Min, int _Max)
+{
+	return _Min + rand() % (_Max - _Min + 1);
+}
+
+float Math::Random(float _Min, float _Max)
+{
+	return _Min + (rand() | (rand() << 16)) % (int)(_Max * 10000 - _Min * 10000 + 1) * 0.0001;
+}
+
+float Math::Clamp(float _Val, float _Min, float _Max)
+{
+	return min(_Max, max(_Val, _Min));
 }

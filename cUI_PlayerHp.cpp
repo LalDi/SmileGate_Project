@@ -3,12 +3,13 @@
 cUI_PlayerHp::cUI_PlayerHp(POINT Pos, int tag, cPlayer* Player)
 	:cGameObject(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Ingame_UI_Hp", "./Images/Ingame/Icon_Hp.png");
+	m_Sprite = IMAGEMANAGER->AddImage("Ingame_UI_Hp", "./Images/Ingame/UI/Icon_Hp.png");
 	m_Player = Player;
 }
 
 cUI_PlayerHp::~cUI_PlayerHp()
 {
+	
 }
 
 void cUI_PlayerHp::Update()
@@ -22,7 +23,7 @@ void cUI_PlayerHp::Render()
 	POINT Pos = m_Pos;
 	for (int i = 0; i < m_Hp; i++)
 	{
-		m_Sprite->Render(Pos);
-		Pos.x += 55;
+		Pos.x = m_Pos.x + 55 * i;
+		m_Sprite->CenterRender(Pos);
 	}
 }

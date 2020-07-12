@@ -81,6 +81,12 @@
     <Filter Include="Object\Ingame\UI\Image">
       <UniqueIdentifier>{e48a0495-8f82-48c5-93e9-9cbe86ab309b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Ingame\Item">
+      <UniqueIdentifier>{b26aadce-cf93-4106-96b4-438c6cc3922d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Enemy\Boss">
+      <UniqueIdentifier>{43ba380e-39fb-43e9-8644-cd2f31208f3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -221,6 +227,30 @@
     <ClCompile Include="cUI_Background.cpp">
       <Filter>Object\Ingame\UI\Image</Filter>
     </ClCompile>
+    <ClCompile Include="cUI_Taro.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cItem.cpp">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cItem_Hp.cpp">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cItem_Power.cpp">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cItem_Bomb.cpp">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Bomb.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Character.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Gauge.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -307,6 +337,30 @@
     </ClInclude>
     <ClInclude Include="cUI_Background.h">
       <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Taro.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cItem.h">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="cItem_Hp.h">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="cItem_Power.h">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="cItem_Bomb.h">
+      <Filter>Object\Ingame\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Bomb.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Character.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Gauge.h">
+      <Filter>Object\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

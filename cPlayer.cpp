@@ -6,9 +6,16 @@ cPlayer::cPlayer(POINT Pos, int tag)
 	m_Sprite = IMAGEMANAGER->AddImage("Player", "./Images/Ingame/Ingame_Character_Player.png");
 
 	m_PlayerState = PlayerState::Wheel_of_Fortune;
+
 	SetPlayerState();
 	m_Hp = m_MaxHp;
-	m_Bomb = 0;
+
+	m_MaxBomb = 5;
+	m_Bomb = 3;
+
+	m_MaxPower = 5;
+	m_Power = 0;
+
 	m_Speed = 450;
 	m_AttackSpeed = 10;
 
@@ -61,23 +68,25 @@ cGameObject* cPlayer::Fire()
 
 void cPlayer::SetPlayerState()
 {
-	if (m_PlayerState == PlayerState::Wheel_of_Fortune)
+	switch (m_PlayerState)
 	{
+	case Wheel_of_Fortune:
 		m_MaxHp = 5;
 		m_Damage = 2;
 		m_BombDamage = 10;
-	}
-	else if (m_PlayerState == PlayerState::Judgement)
-	{
+		break;
+	case Judgement:
 		m_MaxHp = 7;
 		m_Damage = 1;
 		m_BombDamage = 8;
-	}
-	else if (m_PlayerState == PlayerState::The_Sun)
-	{
+		break;
+	case The_Sun:
 		m_MaxHp = 3;
 		m_Damage = 4;
 		m_BombDamage = 15;
+		break;
+	default:
+		break;
 	}
 	if (m_Hp > m_MaxHp)
 		m_Hp = m_MaxHp;

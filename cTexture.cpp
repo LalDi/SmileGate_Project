@@ -34,12 +34,22 @@ void cTexture::Render(POINT pos, float size, float rot, D3DCOLOR color)
 	IMAGEMANAGER->Render(this, pos.x, pos.y, size, rot, color);
 }
 
+void cTexture::Render(POINT pos, POINT size, float rot, D3DCOLOR color)
+{
+	IMAGEMANAGER->Render(this, pos.x, pos.y, size, rot, color);
+}
+
 void cTexture::Render(POINT pos, float rot)
 {
 	IMAGEMANAGER->Render(this, pos.x, pos.y, rot);
 }
 
 void cTexture::CenterRender(POINT pos, float size, float rot, D3DCOLOR color)
+{
+	IMAGEMANAGER->CenterRender(this, pos.x, pos.y, size, rot, color);
+}
+
+void cTexture::CenterRender(POINT pos, POINT size, float rot, D3DCOLOR color)
 {
 	IMAGEMANAGER->CenterRender(this, pos.x, pos.y, size, rot, color);
 }

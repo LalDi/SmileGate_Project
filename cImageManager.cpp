@@ -83,6 +83,21 @@ void cImageManager::Render(cTexture* texturePtr, float x, float y, float size, f
 	}
 }
 
+void cImageManager::Render(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color)
+{
+	if (texturePtr)
+	{
+		D3DXMATRIX mat, matS, matR, matT;
+		D3DXMatrixScaling(&matS, size.x, size.y, 1);
+		D3DXMatrixRotationZ(&matR, D3DXToRadian(rot));
+		D3DXMatrixTranslation(&matT, x, y, 0);
+		mat = matS * matR * matT;
+
+		m_sprite->SetTransform(&mat);
+		m_sprite->Draw(texturePtr->texturePtr, nullptr, nullptr, nullptr, color);
+	}
+}
+
 void cImageManager::Render(cTexture* texturePtr, float x, float y, float rot)
 {
 	if (texturePtr)
@@ -101,6 +116,11 @@ void cImageManager::Render(cTexture* texturePtr, float x, float y, float rot)
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, float size, float rot, D3DCOLOR color)
 {
 	Render(texturePtr, x - texturePtr->info.Width * size / 2, y - texturePtr->info.Height * size / 2, size, rot, color);
+}
+
+void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color)
+{
+	Render(texturePtr, x - texturePtr->info.Width * size.x / 2, y - texturePtr->info.Height * size.y / 2, size, rot, color);
 }
 
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, float rot)

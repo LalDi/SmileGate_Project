@@ -22,6 +22,7 @@
 // 게임 오브젝트
 #include "cGameObject.h"
 #include "cUI_Button.h"
+#include "cUI_Gauge.h"
 
 // 타이틀신 오브젝트
 #include "cTitleBackground.h"
@@ -40,8 +41,16 @@
 #include "cEnemy1.h"
 #include "cBullet.h"
 
+#include "cItem.h"
+#include "cItem_Hp.h"
+#include "cItem_Power.h"
+#include "cItem_Bomb.h"
+
 #include "cUI_Background.h"
+#include "cUI_Character.h"
 #include "cUI_PlayerHp.h"
+#include "cUI_Bomb.h"
+#include "cUI_Taro.h"
 
 // 게임 씬
 #include "cScene.h"
@@ -60,6 +69,7 @@
 
 // 매크로 생성
 using namespace std;
+using namespace Math;
 
 #define g_device DXUTGetD3D9Device()
 
@@ -75,12 +85,14 @@ using namespace std;
 #define SCENEMANAGER cGameManager::GetSceneManager()
 #define INPUTMANAGER cGameManager::GetInputManager()
 
-enum TAGS {
+enum TAGS 
+{
 	TEXTURE,
 	PLAYER,
 	ENEMY,
 	BULLETP,
 	BULLETE,
+	ITEM,
 	UI
 };
 

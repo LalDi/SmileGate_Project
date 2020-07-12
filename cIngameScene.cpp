@@ -21,16 +21,20 @@ void cIngameScene::Init()
 	m_Player = new cPlayer(POINT{ 300, WinSizeY / 2 }, PLAYER);
 	AddObject(m_Player);
 
-	UI_Temp = new cUI_Background(POINT{ 20, 20 }, TEXTURE);
+	UI_Temp = new cUI_Background(POINT{ 20, 10 }, UI);
 	AddObject(UI_Temp);
-	UI_Temp = new cUI_PlayerHp(POINT{ 30, 30 }, TEXTURE, m_Player);
+	UI_Temp = new cUI_Character(POINT{ 50, 40 }, UI);
+	AddObject(UI_Temp); 
+	UI_Temp = new cUI_PlayerHp(POINT{ 105, 40 }, UI, m_Player);
+	AddObject(UI_Temp); 
+	UI_Temp = new cUI_Bomb(POINT{ 180, 775 }, UI, m_Player);
+	AddObject(UI_Temp); 
+	UI_Temp = new cUI_Taro(POINT{ 20, 720 }, UI, m_Player);
 	AddObject(UI_Temp);
 }
 
 void cIngameScene::Update()
 {
-	UpdateAllObject();
-
 	if (m_Player->GetIsFire())
 		AddObject(m_Player->Fire());
 
@@ -42,17 +46,6 @@ void cIngameScene::Update()
 
 	for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
 	{
-		if ((*iter)->m_Tag == ENEMY)
-		{
-			if (RectCrashCheck(m_Player->GetRect(), (*iter)->GetRect()))
-			{
-				m_Player->MinusHp(1);
-				(*iter)->b_IsLive = false;
-			}
-
-			if (((cEnemy*)(*iter))->GetIsFire())
-				AddObject(((cEnemy*)(*iter))->Fire());
-		}
 		if ((*iter)->m_Tag == BULLETP)
 		{
 			for (auto iter2 = m_Objects.begin(); iter2 != m_Objects.end(); iter2++)
@@ -67,6 +60,7 @@ void cIngameScene::Update()
 				}
 			}
 		}
+
 		if ((*iter)->m_Tag == BULLETE)
 		{
 			if (RectCrashCheck(m_Player->GetRect(), (*iter)->GetRect()))
@@ -80,7 +74,36 @@ void cIngameScene::Update()
 				(*iter)->b_IsLive = false;
 			}
 		}
+
+		if ((*iter)->m_Tag == ENEMY)
+		{
+			if (RectCrashCheck(m_Player->GetRect(), (*iter)->GetRect()))
+			{
+				m_Player->MinusHp(1);
+				(*iter)->b_IsLive = false;
+			}
+			if (((cEnemy*)(*iter))->GetHp() <= 0)
+			{
+				if (Random(0, 99) < 50)
+				{
+					switch (Random(0, 2))
+					{
+					case 0:	AddObject(new cItem_Hp((*iter)->GetPos(), ITEM, m_Player, &m_Score));		break;
+					case 1:	AddObject(new cItem_Bomb((*iter)->GetPos(), ITEM, m_Player, &m_Score));		break;
+					case 2:	AddObject(new cItem_Power((*iter)->GetPos(), ITEM, m_Player, &m_Score));	break;
+					default:																			break;
+					}
+				}
+
+					(*iter)->b_IsLive = false;
+			}
+
+			if (((cEnemy*)(*iter))->GetIsFire())
+				AddObject(((cEnemy*)(*iter))->Fire());
+		}
 	}
+
+	UpdateAllObject();
 
 	// DEBUG Mode
 	if (INPUTMANAGER->KeyDown(VK_F11))
@@ -92,6 +115,10 @@ void cIngameScene::Update()
 		{
 			Temp = new cEnemy1(POINT{ 1600, rand() % WinSizeY }, ENEMY);
 			AddObject(Temp);
+		}
+		if (INPUTMANAGER->KeyDown(VK_F2))
+		{
+			m_Player->SetHp(m_Player->GetMaxHp());
 		}
 		if (INPUTMANAGER->KeyDown(VK_F10))
 		{

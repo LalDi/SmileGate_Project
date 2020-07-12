@@ -28,8 +28,14 @@ void cScene::RemoveObject(cGameObject* p_pObject)
 
 void cScene::UpdateAllObject()
 {
+	if (b_Time)
+		for (auto iter : m_Objects)
+			if (iter->m_Tag != UI)
+				iter->Update();
+
 	for (auto iter : m_Objects)
-		iter->Update();
+		if (iter->m_Tag == UI)
+			iter->Update();
 
 	for (auto iter = m_Objects.begin(); iter != m_Objects.end();)
 	{
@@ -50,7 +56,10 @@ void cScene::UpdateAllObject()
 void cScene::RenderAllObject()
 {
 	for (auto iter : m_Objects)
-		if (iter->m_Tag != UI)
+		if (iter->m_Tag != UI && iter->m_Tag != ITEM)
+			iter->Render();
+	for (auto iter : m_Objects)
+		if (iter->m_Tag == ITEM)
 			iter->Render();
 	for (auto iter : m_Objects)
 		if (iter->m_Tag == UI)
