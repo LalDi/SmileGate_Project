@@ -42,23 +42,11 @@
     <Filter Include="Manager\Scene">
       <UniqueIdentifier>{dd4aab9c-fca8-44bf-8f46-cf07b5cff1ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Title">
-      <UniqueIdentifier>{0c4fd2a7-a2fa-4184-866f-e7b16c6122b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Ingame">
       <UniqueIdentifier>{74ce5bd9-60b7-4617-9e52-503eee6f6b88}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Title\Background">
-      <UniqueIdentifier>{c31cf935-ac84-4973-82c2-df87c37f9742}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Title\UI">
-      <UniqueIdentifier>{c38bdcd8-541e-4b40-af6a-5913b11e2247}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{ad1bccc8-c155-46f3-bf2c-c9ae4b29e112}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Title\UI\Button">
-      <UniqueIdentifier>{42e708b1-13cd-45ed-8033-35743eef485d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\Ingame\Background">
       <UniqueIdentifier>{1aaf854a-be6d-4a0f-b3bb-62f2d1e63415}</UniqueIdentifier>
@@ -98,6 +86,18 @@
     </Filter>
     <Filter Include="Object\Credit\UI">
       <UniqueIdentifier>{eb1be6da-753b-4843-8fa1-ab49052b2194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title">
+      <UniqueIdentifier>{0c4fd2a7-a2fa-4184-866f-e7b16c6122b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title\Background">
+      <UniqueIdentifier>{c31cf935-ac84-4973-82c2-df87c37f9742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title\UI">
+      <UniqueIdentifier>{c38bdcd8-541e-4b40-af6a-5913b11e2247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title\UI\Button">
+      <UniqueIdentifier>{42e708b1-13cd-45ed-8033-35743eef485d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +272,9 @@
     <ClCompile Include="cUI_Button_Back.cpp">
       <Filter>Object\Credit\UI</Filter>
     </ClCompile>
+    <ClCompile Include="cUI_Score.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -391,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="cUI_Button_Back.h">
       <Filter>Object\Credit\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Score.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -421,6 +421,7 @@
     <ClInclude Include="cUI_Gauge.h" />
     <ClInclude Include="cUI_Logo.h" />
     <ClInclude Include="cUI_PlayerHp.h" />
+    <ClInclude Include="cUI_Score.h" />
     <ClInclude Include="cUI_Taro.h" />
     <ClInclude Include="cUtility.h" />
     <ClInclude Include="DXUT\Core\DXUT.h" />
@@ -461,6 +462,7 @@
     <ClCompile Include="cUI_Gauge.cpp" />
     <ClCompile Include="cUI_Logo.cpp" />
     <ClCompile Include="cUI_PlayerHp.cpp" />
+    <ClCompile Include="cUI_Score.cpp" />
     <ClCompile Include="cUI_Taro.cpp" />
     <ClCompile Include="cUtility.cpp" />
     <ClCompile Include="DXUT\Core\DXUT.cpp">

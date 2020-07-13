@@ -8,7 +8,7 @@ cEnemy1::cEnemy1(POINT Pos, int tag)
 	m_MaxHp = 5;
 	m_Hp = m_MaxHp;
 	m_Speed = 200;
-	m_AttackSpeed = 10;
+	m_AttackSpeed = 1.5f;
 }
 
 cEnemy1::~cEnemy1()

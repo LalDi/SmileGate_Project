@@ -1,4 +1,11 @@
 #pragma once
+enum class PlayerState
+{
+	Wheel_of_Fortune,	// 기본형
+	Judgement,			// 방어형
+	The_Sun				// 공격형
+};
+
 class cPlayer : public cGameObject
 {
 private:
@@ -22,12 +29,6 @@ private:
 
 	time_t m_FireTime;
 
-	enum PlayerState
-	{
-		Wheel_of_Fortune,	// 기본형
-		Judgement,			// 방어형
-		The_Sun				// 공격형
-	};
 
 	PlayerState m_PlayerState;
 

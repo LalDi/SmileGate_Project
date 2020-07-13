@@ -4,6 +4,7 @@ cIngameScene::cIngameScene()
 {
 	m_Player = nullptr;
 	m_GPTime = 0;
+	m_Score = 0;
 }
 
 cIngameScene::~cIngameScene()
@@ -31,10 +32,14 @@ void cIngameScene::Init()
 	AddObject(UI_Temp); 
 	UI_Temp = new cUI_Taro(POINT{ 20, 720 }, UI, m_Player);
 	AddObject(UI_Temp);
+	UI_Temp = new cUI_Score(POINT{ 1400, 30 }, UI, &m_Score);
+	AddObject(UI_Temp);
 }
 
 void cIngameScene::Update()
 {
+	m_Score++;
+
 	if (m_Player->GetIsFire())
 		AddObject(m_Player->Fire());
 
@@ -113,7 +118,7 @@ void cIngameScene::Update()
 		cGameObject* Temp;
 		if (INPUTMANAGER->KeyDown(VK_F1))
 		{
-			Temp = new cEnemy1(POINT{ 1600, rand() % WinSizeY }, ENEMY);
+			Temp = new cEnemy1(POINT{ 1000, rand() % WinSizeY }, ENEMY);
 			AddObject(Temp);
 		}
 		if (INPUTMANAGER->KeyDown(VK_F2))

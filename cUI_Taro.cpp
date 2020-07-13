@@ -18,7 +18,16 @@ cUI_Taro::~cUI_Taro()
 void cUI_Taro::Update()
 {
 	if (m_Player)
-		m_Sprite = m_TaroCard[m_Player->GetPlayerState()];
+	{
+		m_PlayerState = m_Player->GetPlayerState();
+		switch (m_PlayerState)
+		{
+		case PlayerState::Wheel_of_Fortune:	m_Sprite = m_TaroCard[0];	break;
+		case PlayerState::Judgement:		m_Sprite = m_TaroCard[1];	break;
+		case PlayerState::The_Sun:			m_Sprite = m_TaroCard[2];	break;
+		default:														break;
+		}
+	}
 }
 
 void cUI_Taro::Render()

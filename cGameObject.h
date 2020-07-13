@@ -10,7 +10,6 @@ protected:
 public:
 	FLOAT			m_Scale;
 	INT				m_Tag;
-	std::string		m_Name;
 	BOOL			b_IsLive;
 
 	cGameObject(POINT Pos, int tag = 0);

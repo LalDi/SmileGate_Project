@@ -11,20 +11,26 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <wchar.h>
 
 // 라이브러리 파일
 #pragma comment (lib, "legacy_stdio_definitions.lib")
 
+#include "cUtility.h"
+
+// 네임스페이스 생략
+using namespace std;
+using namespace Math;
+
 // 추가 파일
 #include "cTexture.h"
-#include "cUtility.h"
 
 // 게임 오브젝트
 #include "cGameObject.h"
 #include "cUI_Button.h"
 #include "cUI_Gauge.h"
 
-// 타이틀신 오브젝트
+// 타이틀씬 오브젝트
 #include "cTitleBackground.h"
 #include "cUI_Logo.h"
 #include "cUI_Button_Gamestart.h"
@@ -33,11 +39,11 @@
 #include "cUI_Button_Credit.h"
 #include "cUI_Button_Quit.h"
 
-// 크레딧신 오브젝트
+// 크레딧씬 오브젝트
 #include "cCreditBackground.h"
 #include "cUI_Button_Back.h"
 
-// 인게임신 오브젝트
+// 인게임씬 오브젝트
 #include "cIngameBackground.h"
 
 #include "cPlayer.h"
@@ -55,6 +61,7 @@
 #include "cUI_PlayerHp.h"
 #include "cUI_Bomb.h"
 #include "cUI_Taro.h"
+#include "cUI_Score.h"
 
 // 게임 씬
 #include "cScene.h"
@@ -73,9 +80,6 @@
 
 
 // 매크로 생성
-using namespace std;
-using namespace Math;
-
 #define g_device DXUTGetD3D9Device()
 
 #define VK_W 0x57

@@ -20,6 +20,8 @@ cPlayer::cPlayer(POINT Pos, int tag)
 	m_AttackSpeed = 10;
 
 	m_FireTime = timeGetTime();
+
+	m_Scale = 0.5f;
 }
 
 cPlayer::~cPlayer()
@@ -54,7 +56,7 @@ void cPlayer::Render()
 	if (b_GracePeriod)
 		m_Sprite->CenterRender(m_Pos, m_Scale, 0, D3DCOLOR_XRGB(255, 100, 100));
 	else
-		m_Sprite->CenterRender(m_Pos);
+		m_Sprite->CenterRender(m_Pos, m_Scale, 0);
 }
 
 cGameObject* cPlayer::Fire()
@@ -70,17 +72,17 @@ void cPlayer::SetPlayerState()
 {
 	switch (m_PlayerState)
 	{
-	case Wheel_of_Fortune:
+	case PlayerState::Wheel_of_Fortune:
 		m_MaxHp = 5;
 		m_Damage = 2;
 		m_BombDamage = 10;
 		break;
-	case Judgement:
+	case PlayerState::Judgement:
 		m_MaxHp = 7;
 		m_Damage = 1;
 		m_BombDamage = 8;
 		break;
-	case The_Sun:
+	case PlayerState::The_Sun:
 		m_MaxHp = 3;
 		m_Damage = 4;
 		m_BombDamage = 15;
