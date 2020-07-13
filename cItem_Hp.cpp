@@ -14,6 +14,6 @@ cItem_Hp::~cItem_Hp()
 void cItem_Hp::GetItem()
 {
 	if (m_Player->GetHp() == m_Player->GetMaxHp())
-		m_Score += m_PlusScore;
+		*m_Score += m_PlusScore;
 	m_Player->SetHp(m_Player->GetHp() + 1);
 }

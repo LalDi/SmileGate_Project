@@ -2,6 +2,8 @@
 
 // DXUT 파일
 #include "DXUT.h"
+#include "SDKsound.h"
+#include "SDKwavefile.h"
 
 // C 런타임 헤더 파일
 #include <iostream>
@@ -15,6 +17,7 @@
 
 // 라이브러리 파일
 #pragma comment (lib, "legacy_stdio_definitions.lib")
+#pragma comment(lib, "dsound.lib")
 
 #include "cUtility.h"
 
@@ -63,6 +66,12 @@ using namespace Math;
 #include "cUI_Taro.h"
 #include "cUI_Score.h"
 
+#include "cUI_Pause_Background.h"
+#include "cUI_Button_Pause_Resume.h"
+#include "cUI_Button_Pause_Reset.h"
+#include "cUI_Button_Pause_Title.h"
+
+
 // 게임 씬
 #include "cScene.h"
 #include "cTitleScene.h"
@@ -73,6 +82,7 @@ using namespace Math;
 #include "cImageManager.h"
 #include "cSceneManager.h"
 #include "cInputManager.h"
+#include "cSoundManager.h"
 #include "cGameManager.h"
 
 // 게임 메인
@@ -93,6 +103,7 @@ using namespace Math;
 #define IMAGEMANAGER cGameManager::GetImageManager()
 #define SCENEMANAGER cGameManager::GetSceneManager()
 #define INPUTMANAGER cGameManager::GetInputManager()
+#define SOUNDMANAGER cGameManager::GetSoundManager()
 
 enum TAGS 
 {

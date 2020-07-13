@@ -7,6 +7,7 @@ private:
 
 	int m_Score;
 
+	bool b_Pause = false;
 	bool DEBUGMODE = false;
 
 public:
@@ -18,5 +19,6 @@ public:
 	virtual void Render() override;
 	virtual void Release() override;
 
+	void OnPause();
 };
 

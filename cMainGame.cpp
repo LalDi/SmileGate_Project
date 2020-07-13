@@ -5,6 +5,7 @@ cMainGame::cMainGame()
 	ImageManager = nullptr;
 	SceneManager = nullptr;
 	InputManager = nullptr;
+	SoundManager = nullptr;
 }
 
 cMainGame::~cMainGame()
@@ -19,10 +20,11 @@ void cMainGame::Init()
 	ImageManager = new cImageManager();
 	SceneManager = new cSceneManager();
 	InputManager = new cInputManager();
+	SoundManager = new cSoundManager();
 
 	InputManager->Create(DXUTGetHWND());
 
-	cGameManager::Init(ImageManager, SceneManager, InputManager);
+	cGameManager::Init(ImageManager, SceneManager, InputManager, SoundManager);
 
 	SCENEMANAGER->AddScene("Title", new cTitleScene());
 	SCENEMANAGER->AddScene("Ingame", new cIngameScene());
@@ -34,10 +36,6 @@ void cMainGame::Update()
 {
 	INPUTMANAGER->Update();
 	SCENEMANAGER->Update();
-	if (INPUTMANAGER->KeyDown(VK_F12))
-	{
-		DXUTToggleFullScreen();
-	}
 }
 
 void cMainGame::Render()
@@ -63,6 +61,11 @@ void cMainGame::Release()
 	{
 		delete InputManager;
 		InputManager = nullptr;
+	}
+	if (SoundManager)
+	{
+		delete SoundManager;
+		SoundManager = nullptr;
 	}
 }
 

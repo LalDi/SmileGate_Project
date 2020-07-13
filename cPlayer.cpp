@@ -16,12 +16,12 @@ cPlayer::cPlayer(POINT Pos, int tag)
 	m_MaxPower = 5;
 	m_Power = 0;
 
-	m_Speed = 450;
+	m_Speed = 400;
 	m_AttackSpeed = 10;
 
 	m_FireTime = timeGetTime();
 
-	m_Scale = 0.5f;
+	//m_Scale = 0.7f;
 }
 
 cPlayer::~cPlayer()
@@ -49,6 +49,11 @@ void cPlayer::Update()
 		b_Fire = true;
 		m_FireTime = timeGetTime();
 	}
+
+	if (INPUTMANAGER->KeyPress(VK_SHIFT))
+		m_Speed = 200;
+	if (INPUTMANAGER->KeyUp(VK_SHIFT))
+		m_Speed = 400;
 }
 
 void cPlayer::Render()

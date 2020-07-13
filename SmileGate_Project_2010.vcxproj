@@ -405,6 +405,7 @@
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cScene.h" />
     <ClInclude Include="cSceneManager.h" />
+    <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cTexture.h" />
     <ClInclude Include="cTitleBackground.h" />
     <ClInclude Include="cTitleScene.h" />
@@ -416,10 +417,14 @@
     <ClInclude Include="cUI_Button_Gamestart.h" />
     <ClInclude Include="cUI_Button_HowToPlay.h" />
     <ClInclude Include="cUI_Button_Option.h" />
+    <ClInclude Include="cUI_Button_Pause_Reset.h" />
+    <ClInclude Include="cUI_Button_Pause_Resume.h" />
+    <ClInclude Include="cUI_Button_Pause_Title.h" />
     <ClInclude Include="cUI_Button_Quit.h" />
     <ClInclude Include="cUI_Character.h" />
     <ClInclude Include="cUI_Gauge.h" />
     <ClInclude Include="cUI_Logo.h" />
+    <ClInclude Include="cUI_Pause_Background.h" />
     <ClInclude Include="cUI_PlayerHp.h" />
     <ClInclude Include="cUI_Score.h" />
     <ClInclude Include="cUI_Taro.h" />
@@ -446,6 +451,7 @@
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cScene.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
+    <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cTexture.cpp" />
     <ClCompile Include="cTitleBackground.cpp" />
     <ClCompile Include="cTitleScene.cpp" />
@@ -457,10 +463,14 @@
     <ClCompile Include="cUI_Button_Gamestart.cpp" />
     <ClCompile Include="cUI_Button_HowToPlay.cpp" />
     <ClCompile Include="cUI_Button_Option.cpp" />
+    <ClCompile Include="cUI_Button_Pause_Reset.cpp" />
+    <ClCompile Include="cUI_Button_Pause_Resume.cpp" />
+    <ClCompile Include="cUI_Button_Pause_Title.cpp" />
     <ClCompile Include="cUI_Button_Quit.cpp" />
     <ClCompile Include="cUI_Character.cpp" />
     <ClCompile Include="cUI_Gauge.cpp" />
     <ClCompile Include="cUI_Logo.cpp" />
+    <ClCompile Include="cUI_Pause_Background.cpp" />
     <ClCompile Include="cUI_PlayerHp.cpp" />
     <ClCompile Include="cUI_Score.cpp" />
     <ClCompile Include="cUI_Taro.cpp" />
@@ -484,11 +494,15 @@
     <ClCompile Include="DXUT\Optional\SDKmisc.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DXUT\Optional\SDKsound.cpp" />
+    <ClCompile Include="DXUT\Optional\SDKwavefile.cpp" />
     <ClCompile Include="SmileGate_Project.cpp" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DXUT\Optional\SDKsound.h" />
+    <ClInclude Include="DXUT\Optional\SDKwavefile.h" />
     <ClInclude Include="Framework.h" />
     <CLInclude Include="resource.h" />
     <ResourceCompile Include="SmileGate_Project.rc" />

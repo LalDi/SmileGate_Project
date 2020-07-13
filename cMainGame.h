@@ -5,6 +5,7 @@ private:
 	cImageManager* ImageManager;
 	cSceneManager* SceneManager;
 	cInputManager* InputManager;
+	cSoundManager* SoundManager;
 
 public:
 	cMainGame();

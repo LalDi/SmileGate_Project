@@ -3,6 +3,7 @@ class cUI_PlayerHp : public cGameObject
 {
 private:
 	cPlayer* m_Player;
+	cTexture* m_EmptySprite;
 
 	int m_MaxHp;
 	int m_Hp;

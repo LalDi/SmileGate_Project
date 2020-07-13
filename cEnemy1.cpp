@@ -24,3 +24,8 @@ void cEnemy1::Render()
 {
 	cEnemy::Render();
 }
+
+void cEnemy1::Attack(list<cGameObject*> *Objects)
+{
+	(*Objects).push_back(Fire());
+}

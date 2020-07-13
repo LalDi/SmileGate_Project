@@ -38,8 +38,6 @@ void cIngameScene::Init()
 
 void cIngameScene::Update()
 {
-	m_Score++;
-
 	if (m_Player->GetIsFire())
 		AddObject(m_Player->Fire());
 
@@ -99,16 +97,23 @@ void cIngameScene::Update()
 					default:																			break;
 					}
 				}
-
-					(*iter)->b_IsLive = false;
+				(*iter)->b_IsLive = false;
 			}
 
 			if (((cEnemy*)(*iter))->GetIsFire())
-				AddObject(((cEnemy*)(*iter))->Fire());
+				((cEnemy*)(*iter))->Attack(&m_Objects);
 		}
 	}
 
 	UpdateAllObject();
+
+	if (INPUTMANAGER->KeyDown(VK_ESCAPE) && !b_Pause)
+	{
+		b_Pause = true;
+		OnPause();
+	}
+
+	b_Time = !b_Pause;
 
 	// DEBUG Mode
 	if (INPUTMANAGER->KeyDown(VK_F11))
@@ -140,4 +145,21 @@ void cIngameScene::Render()
 void cIngameScene::Release()
 {
 	RemoveAllObject();
+	m_Player = nullptr;
+	m_GPTime = 0;
+	m_Score = 0;
+}
+
+void cIngameScene::OnPause()
+{
+	cGameObject* Temp;
+
+	Temp = new cUI_Pause_Background(POINT{ 0, 0 }, UI, &b_Pause);
+	AddObject(Temp);
+	Temp = new cUI_Button_Pause_Resume(POINT{ WinSizeX / 2, 350 }, UI, &b_Pause);
+	AddObject(Temp);
+	Temp = new cUI_Button_Pause_Reset(POINT{ WinSizeX / 2, 500 }, UI, &b_Pause);
+	AddObject(Temp);
+	Temp = new cUI_Button_Pause_Title(POINT{ WinSizeX / 2, 650 }, UI, &b_Pause);
+	AddObject(Temp);
 }

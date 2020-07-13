@@ -16,6 +16,6 @@ cItem_Power::~cItem_Power()
 void cItem_Power::GetItem()
 {
 	if (m_Player->GetPower() == m_Player->GetMaxPower())
-		m_Score += m_PlusScore;
+		*m_Score += m_PlusScore;
 	m_Player->SetPower(m_Player->GetPower() + m_PlusPower);
 }

@@ -15,6 +15,6 @@ cItem_Bomb::~cItem_Bomb()
 void cItem_Bomb::GetItem()
 {
 	if (m_Player->GetBomb() == m_Player->GetMaxBomb())
-		m_Score += m_PlusScore;
+		*m_Score += m_PlusScore;
 	m_Player->SetBomb(m_Player->GetBomb() + 1);
 }

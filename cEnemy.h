@@ -25,6 +25,8 @@ public:
 
 	cGameObject* Fire();
 
+	virtual void Attack(list<cGameObject*> *Objects) PURE;
+
 	int GetHp() { return m_Hp; }
 	void SetHp(int value) { m_Hp = value; }
 	void MinusHp(int value) { m_Hp -= value; }

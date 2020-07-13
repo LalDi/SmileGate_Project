@@ -99,6 +99,12 @@
     <Filter Include="Object\Title\UI\Button">
       <UniqueIdentifier>{42e708b1-13cd-45ed-8033-35743eef485d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager\Sound">
+      <UniqueIdentifier>{7ce79e21-6b01-453b-abc8-4e73a88e1f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Button">
+      <UniqueIdentifier>{908fe321-e777-481b-9e0c-4d8a28715f98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -275,6 +281,27 @@
     <ClCompile Include="cUI_Score.cpp">
       <Filter>Object\Ingame\UI\Image</Filter>
     </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKsound.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKwavefile.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="cSoundManager.cpp">
+      <Filter>Manager\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Pause_Background.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Pause_Resume.cpp">
+      <Filter>Object\Ingame\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Pause_Reset.cpp">
+      <Filter>Object\Ingame\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Pause_Title.cpp">
+      <Filter>Object\Ingame\UI\Button</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -397,6 +424,27 @@
     </ClInclude>
     <ClInclude Include="cUI_Score.h">
       <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKsound.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKwavefile.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="cSoundManager.h">
+      <Filter>Manager\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Pause_Background.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Pause_Resume.h">
+      <Filter>Object\Ingame\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Pause_Reset.h">
+      <Filter>Object\Ingame\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Pause_Title.h">
+      <Filter>Object\Ingame\UI\Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
