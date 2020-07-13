@@ -387,6 +387,8 @@
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="cBullet.h" />
+    <ClInclude Include="cCreditBackground.h" />
+    <ClInclude Include="cCreditScene.h" />
     <ClInclude Include="cEnemy.h" />
     <ClInclude Include="cEnemy1.h" />
     <ClInclude Include="cGameManager.h" />
@@ -409,6 +411,7 @@
     <ClInclude Include="cUI_Background.h" />
     <ClInclude Include="cUI_Bomb.h" />
     <ClInclude Include="cUI_Button.h" />
+    <ClInclude Include="cUI_Button_Back.h" />
     <ClInclude Include="cUI_Button_Credit.h" />
     <ClInclude Include="cUI_Button_Gamestart.h" />
     <ClInclude Include="cUI_Button_HowToPlay.h" />
@@ -424,6 +427,8 @@
     <ClInclude Include="DXUT\Core\DXUTenum.h" />
     <ClInclude Include="DXUT\Core\DXUTmisc.h" />
     <ClCompile Include="cBullet.cpp" />
+    <ClCompile Include="cCreditBackground.cpp" />
+    <ClCompile Include="cCreditScene.cpp" />
     <ClCompile Include="cEnemy.cpp" />
     <ClCompile Include="cEnemy1.cpp" />
     <ClCompile Include="cGameManager.cpp" />
@@ -446,6 +451,7 @@
     <ClCompile Include="cUI_Background.cpp" />
     <ClCompile Include="cUI_Bomb.cpp" />
     <ClCompile Include="cUI_Button.cpp" />
+    <ClCompile Include="cUI_Button_Back.cpp" />
     <ClCompile Include="cUI_Button_Credit.cpp" />
     <ClCompile Include="cUI_Button_Gamestart.cpp" />
     <ClCompile Include="cUI_Button_HowToPlay.cpp" />

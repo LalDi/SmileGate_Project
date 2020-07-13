@@ -28,6 +28,8 @@ void cTitleScene::Init()
 	AddObject(UI_Temp);
 	UI_Temp = new cUI_Button_Quit(POINT{ 1525 , 820 }, UI);
 	AddObject(UI_Temp);
+
+	SCENEMANAGER->AddScene("Credit", new cCreditScene());
 }
 
 void cTitleScene::Update()

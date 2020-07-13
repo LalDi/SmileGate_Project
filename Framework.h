@@ -33,6 +33,10 @@
 #include "cUI_Button_Credit.h"
 #include "cUI_Button_Quit.h"
 
+// 크레딧신 오브젝트
+#include "cCreditBackground.h"
+#include "cUI_Button_Back.h"
+
 // 인게임신 오브젝트
 #include "cIngameBackground.h"
 
@@ -55,6 +59,7 @@
 // 게임 씬
 #include "cScene.h"
 #include "cTitleScene.h"
+#include "cCreditScene.h"
 #include "cIngameScene.h"
 
 // 게임 매니저

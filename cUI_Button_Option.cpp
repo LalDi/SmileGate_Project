@@ -10,22 +10,14 @@ cUI_Button_Option::~cUI_Button_Option()
 {
 }
 
+void cUI_Button_Option::ClickButton()
+{
+	
+}
+
 void cUI_Button_Option::Update()
 {
-	SetRect();
-
-	if (CheckMouseOnButton())
-	{
-		m_Scale = 1.2f;
-		if (INPUTMANAGER->BtnUp(LEFTCLICK))
-		{
-			// 버튼 상호 작용
-		}
-	}
-	else
-	{
-		m_Scale = 1;
-	}
+	cUI_Button::Update();
 }
 
 void cUI_Button_Option::Render()

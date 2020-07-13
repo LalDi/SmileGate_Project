@@ -9,6 +9,26 @@ cUI_Button::~cUI_Button()
 {
 }
 
+void cUI_Button::Update()
+{
+	SetRect();
+
+	if (CheckMouseOnButton())
+	{
+		if (b_IsOnMouseUp)
+			m_Scale = 1.2f;
+		if (INPUTMANAGER->BtnUp(LEFTCLICK))
+		{
+			ClickButton();
+		}
+	}
+	else if (b_IsOnMouseUp)
+	{
+		m_Scale = 1;
+	}
+
+}
+
 void cUI_Button::Render()
 {
 	if (b_IsCenter)

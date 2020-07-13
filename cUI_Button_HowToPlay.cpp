@@ -10,22 +10,13 @@ cUI_Button_HowToPlay::~cUI_Button_HowToPlay()
 {
 }
 
+void cUI_Button_HowToPlay::ClickButton()
+{
+}
+
 void cUI_Button_HowToPlay::Update()
 {
-	SetRect();
-
-	if (CheckMouseOnButton())
-	{
-		m_Scale = 1.2f;
-		if (INPUTMANAGER->BtnUp(LEFTCLICK))
-		{
-			// 버튼 상호 작용
-		}
-	}
-	else
-	{
-		m_Scale = 1;
-	}
+	cUI_Button::Update();
 }
 
 void cUI_Button_HowToPlay::Render()

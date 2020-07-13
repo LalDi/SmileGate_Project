@@ -32,6 +32,6 @@
 *.app
 *.ipch
 
-#folder
+# folder
 .vs/
 Debug/

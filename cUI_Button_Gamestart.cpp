@@ -10,22 +10,14 @@ cUI_Button_Gamestart::~cUI_Button_Gamestart()
 {
 }
 
+void cUI_Button_Gamestart::ClickButton()
+{
+	SCENEMANAGER->ChangeScene("Ingame");
+}
+
 void cUI_Button_Gamestart::Update()
 {
-	SetRect();
-
-	if (CheckMouseOnButton())
-	{
-		m_Scale = 1.2f;
-		if (INPUTMANAGER->BtnUp(LEFTCLICK))
-		{
-			SCENEMANAGER->ChangeScene("Ingame");
-		}
-	}
-	else
-	{
-		m_Scale = 1;
-	}
+	cUI_Button::Update();
 }
 
 void cUI_Button_Gamestart::Render()

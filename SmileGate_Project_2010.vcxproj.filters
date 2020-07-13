@@ -87,6 +87,18 @@
     <Filter Include="Object\Ingame\Enemy\Boss">
       <UniqueIdentifier>{43ba380e-39fb-43e9-8644-cd2f31208f3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Title\Credit">
+      <UniqueIdentifier>{d10b0cf0-1b7d-45cd-b623-12f96faa1f53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Credit">
+      <UniqueIdentifier>{64b02c17-df53-4a0d-b83d-a3029d5d2a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Credit\Background">
+      <UniqueIdentifier>{6c94dc74-095b-4b04-bc17-49d220f76ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Credit\UI">
+      <UniqueIdentifier>{eb1be6da-753b-4843-8fa1-ab49052b2194}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -251,6 +263,15 @@
     <ClCompile Include="cUI_Gauge.cpp">
       <Filter>Object\UI</Filter>
     </ClCompile>
+    <ClCompile Include="cCreditScene.cpp">
+      <Filter>Scene\Title\Credit</Filter>
+    </ClCompile>
+    <ClCompile Include="cCreditBackground.cpp">
+      <Filter>Object\Credit\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Back.cpp">
+      <Filter>Object\Credit\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -361,6 +382,15 @@
     </ClInclude>
     <ClInclude Include="cUI_Gauge.h">
       <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cCreditScene.h">
+      <Filter>Scene\Title\Credit</Filter>
+    </ClInclude>
+    <ClInclude Include="cCreditBackground.h">
+      <Filter>Object\Credit\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Back.h">
+      <Filter>Object\Credit\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
