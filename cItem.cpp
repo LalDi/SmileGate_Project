@@ -1,5 +1,15 @@
 #include "Framework.h"
 
+/**
+	@fn		cItem(POINT, int, cPlayer*, int*)
+
+	@brief	게임 중 드랍되는 아이템의 기본 기능을 담은 클래스
+
+	@param	Pos		- 오브젝트가 생성되는 위치
+	@param	tag		- 오브젝트의 기능을 구분하는 태그.
+	@param	Player	- 아이템의 효과를 적용시킬 플레이어의 포인터(주소값)
+	@param	Score	- 아이템의 효과를 적용시킬 점수값의 포인터(주소값)
+*/
 cItem::cItem(POINT Pos, int tag, cPlayer* Player, int* Score)
 	:cGameObject(Pos, tag)
 {

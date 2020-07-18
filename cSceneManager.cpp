@@ -10,6 +10,16 @@ cSceneManager::~cSceneManager()
 	Release();
 }
 
+/**
+	@fn		AddScene(string&, cScene*)
+	
+	@brief	저장된 변수에 새로운 씬을 이름으로 저장.
+
+	@remark	변수에 새로운 씬을 저장하는 역할. 다만, 저장의 역할만을 맡기 때문에 씬의 변환은 이루어지지 않는다.
+
+	@param	key			- 씬을 저장할 이름.
+	@param	scenePtr	- 저장할 씬의 클래스
+*/
 cScene* cSceneManager::AddScene(const std::string& key, cScene* scenePtr)
 {
 	if (!scenePtr)//어떤 이유로 없는 씬을 넣었을땐 추가하지 않는다
@@ -22,6 +32,15 @@ cScene* cSceneManager::AddScene(const std::string& key, cScene* scenePtr)
 	return scenePtr;
 }
 
+/**
+	@fn		ChangeScene(string&)
+
+	@brief	현재 씬을 다른 씬으로 전환
+
+	@remark	저장된 변수에서 이름을 찾아 그 씬으로 씬을 전환. 없는 씬으로는 전환되지 않는다.
+
+	@param	key			- 씬을 찾을 이름.
+*/
 cScene* cSceneManager::ChangeScene(const std::string& key)
 {
 	auto find = m_scenes.find(key);

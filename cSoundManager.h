@@ -1,4 +1,8 @@
 #pragma once
+/**
+	@brief	프로그램의 사운드를 관리하는 매니저
+	@brief	사운드의 재생과 중지 등의 기능을 한다.
+*/
 class cSoundManager
 {
 private:

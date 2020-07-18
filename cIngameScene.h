@@ -2,12 +2,12 @@
 class cIngameScene : public cScene
 {
 private:
-	cPlayer* m_Player;
-	time_t m_GPTime; //GP = Grace Period
+	cPlayer* m_Player;		//	게임의 플레이어는 게임 내에 여러 방면으로 간섭하므로 변수화하여 저장한다.
+	time_t m_GPTime;		//	GP = Grace Period 무적 시간
 
-	int m_Score;
+	int m_Score;			// 점수
+	bool b_Pause = false;	// 게임이 일시정지 상태인지 확인
 
-	bool b_Pause = false;
 	bool DEBUGMODE = false;
 
 public:

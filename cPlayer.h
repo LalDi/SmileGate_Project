@@ -1,36 +1,43 @@
 #pragma once
+/**
+	@brief	플레이어의 속성을 지정하는 열거값
+	
+	@param	Wheel_of_Fortune	- 기본형 / 공격력 2, 체력 5, 폭탄 공격력 10
+	@param	Judgment			- 방어형 / 공격력 1, 체력 7, 폭탄 공격력 8
+	@param	The_Sun				- 공격형 / 공격력 4, 체력 3, 폭탄 공격력 15
+*/
 enum class PlayerState
 {
-	Wheel_of_Fortune,	// 기본형
-	Judgement,			// 방어형
-	The_Sun				// 공격형
+	Wheel_of_Fortune,
+	Judgement,		
+	The_Sun			
 };
 
 class cPlayer : public cGameObject
 {
 private:
-	int m_MaxHp;
-	int m_Hp;
-	int m_Damage;
+	PlayerState m_PlayerState;	// 플레이어 속성값
 
-	int m_Bomb;
-	int m_MaxBomb;
-	int m_BombDamage;
+	int m_MaxHp;		// 최대 체력
+	int m_Hp;			// 현재 체력
 
-	int m_Power;
-	int m_MaxPower;
+	int m_Damage;		// 플레이어 공격력
 
-	float m_Speed;
-	float m_AttackSpeed;
+	int m_Bomb;			// 폭탄 개수
+	int m_MaxBomb;		// 폭탄 최대 개수
+	int m_BombDamage;	// 폭탄 공격력
 
-	bool b_GracePeriod;
+	int m_Power;		// 파워 게이지
+	int m_MaxPower;		// 파워 최대치
 
-	bool b_Fire = false;
+	float m_Speed;		// 플레이어 이동속도
+	float m_AttackSpeed;// 플레이어 공격속도 (총알 초당 발사 개수)
+
+	bool b_GracePeriod;	// 플레이어 무적
+
+	bool b_Fire = false;// 플레이어 공격
 
 	time_t m_FireTime;
-
-
-	PlayerState m_PlayerState;
 
 public:
 	cPlayer(POINT Pos, int tag);

@@ -22,10 +22,13 @@ void cMainGame::Init()
 	InputManager = new cInputManager();
 	SoundManager = new cSoundManager();
 
-	InputManager->Create(DXUTGetHWND());
+	// 선언한 매니저를 cGameManager에 전달
+	cGameManager::Init(ImageManager, SceneManager, InputManager, SoundManager);	
 
-	cGameManager::Init(ImageManager, SceneManager, InputManager, SoundManager);
+	// INPUTMANAGER 생성
+	INPUTMANAGER->Create(DXUTGetHWND());
 
+	// 게임 내에 사용될 씬을 미리 추가
 	SCENEMANAGER->AddScene("Title", new cTitleScene());
 	SCENEMANAGER->AddScene("Ingame", new cIngameScene());
 

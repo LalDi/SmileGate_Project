@@ -34,11 +34,13 @@ void cTitleScene::Init()
 
 void cTitleScene::Update()
 {
+	// 모든 오브젝트의 Update()를 실행시킨다.
 	UpdateAllObject();
 }
 
 void cTitleScene::Render()
 {
+	// 모든 오브젝트의 Render()를 실행시킨다.
 	RenderAllObject();
 }
 

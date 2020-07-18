@@ -15,7 +15,7 @@ cInputManager::cInputManager(void)
 	memset(m_BtnOld, 0, sizeof(m_BtnOld));
 	memset(m_BtnMap, 0, sizeof(m_BtnMap));
 
-	m_vcCur = { 0, 0 }; // D3DXVECTOR3(0, 0, 0);
+	m_vcCur = { 0, 0 }; // D3DXVECTOR3( 0, 0, 0);
 	m_vcOld = { 0, 0 }; // D3DXVECTOR3( 0, 0, 0);
 	m_vcEps = { 0, 0 }; // D3DXVECTOR3( 0, 0, 0);
 
@@ -44,7 +44,7 @@ INT	cInputManager::Create(HWND hWnd)
 	memset(m_BtnOld, 0, sizeof(m_BtnOld));
 	memset(m_BtnMap, 0, sizeof(m_BtnMap));
 
-	m_vcCur = { 0, 0 }; // D3DXVECTOR3(0, 0, 0);
+	m_vcCur = { 0, 0 }; // D3DXVECTOR3( 0, 0, 0);
 	m_vcOld = { 0, 0 }; // D3DXVECTOR3( 0, 0, 0);
 	m_vcEps = { 0, 0 }; // D3DXVECTOR3( 0, 0, 0);
 
@@ -95,15 +95,15 @@ INT cInputManager::Update()	// Mouse
 	for (i = 0; i < MAX_INPUT_KEY; ++i)
 	{
 		BYTE	vKey = m_KeyCur[i] & 0x80;		// 현재의 키보드 상태를 읽어온다.
-		m_KeyCur[i] = (vKey) ? 1 : 0;				// 키보드 상태를 0과 1로 정한다.
+		m_KeyCur[i] = (vKey) ? 1 : 0;			// 키보드 상태를 0과 1로 정한다.
 
 		INT nOld = m_KeyOld[i];
 		INT nCur = m_KeyCur[i];
 
-		if (0 == nOld && 1 == nCur) m_KeyMap[i] = EINPUT_DOWN;	// Down
-		else if (1 == nOld && 0 == nCur) m_KeyMap[i] = EINPUT_UP;	// UP
+		if		(0 == nOld && 1 == nCur) m_KeyMap[i] = EINPUT_DOWN;		// Down
+		else if (1 == nOld && 0 == nCur) m_KeyMap[i] = EINPUT_UP;		// UP
 		else if (1 == nOld && 1 == nCur) m_KeyMap[i] = EINPUT_PRESS;	// PRESS
-		else							m_KeyMap[i] = EINPUT_NONE;	// NONE
+		else							 m_KeyMap[i] = EINPUT_NONE;		// NONE
 	}
 
 
@@ -118,10 +118,10 @@ INT cInputManager::Update()	// Mouse
 		INT nOld = m_BtnOld[i];
 		INT nCur = m_BtnCur[i];
 
-		if (0 == nOld && 1 == nCur) m_BtnMap[i] = EINPUT_DOWN;	// Down
-		else if (1 == nOld && 0 == nCur) m_BtnMap[i] = EINPUT_UP;	// UP
+		if		(0 == nOld && 1 == nCur) m_BtnMap[i] = EINPUT_DOWN;		// Down
+		else if (1 == nOld && 0 == nCur) m_BtnMap[i] = EINPUT_UP;		// UP
 		else if (1 == nOld && 1 == nCur) m_BtnMap[i] = EINPUT_PRESS;	// PRESS
-		else							m_BtnMap[i] = EINPUT_NONE;	// NONE
+		else							 m_BtnMap[i] = EINPUT_NONE;		// NONE
 	}
 
 

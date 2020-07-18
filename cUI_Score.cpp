@@ -23,7 +23,7 @@ void cUI_Score::Render()
 	m_Sprite->CenterRender(m_Pos);
 	POINT Temp = m_Pos;
 	Temp.x -= 100;
-	IMAGEMANAGER->CenterRenderText(L"Score : ", 32, Temp, 1, false);
+	IMAGEMANAGER->CenterRenderText(L"Score : ", 32, Temp);
 	Temp.x += 150;
-	IMAGEMANAGER->CenterRenderText(m_Text, 32, Temp, 1, false);
+	IMAGEMANAGER->CenterRenderText(m_Text, 32, Temp);
 }

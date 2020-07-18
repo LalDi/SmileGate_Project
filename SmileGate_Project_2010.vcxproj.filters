@@ -105,6 +105,21 @@
     <Filter Include="Object\Ingame\UI\Button">
       <UniqueIdentifier>{908fe321-e777-481b-9e0c-4d8a28715f98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Ingame\UI\Image\Bomb">
+      <UniqueIdentifier>{5d642f3f-8ec2-46d8-a98d-c9eaf37690e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Image\Pause">
+      <UniqueIdentifier>{d6a1aa5f-43ca-4936-9943-25aac2661995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Image\Status">
+      <UniqueIdentifier>{6709feb0-f71b-437d-b140-5ec0ec9d8815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Image\Score">
+      <UniqueIdentifier>{bbe948b8-2b08-4b23-aa9e-5eccfee474bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Image\TaroCard">
+      <UniqueIdentifier>{f81a15de-29bc-40a4-b39b-6062d381746c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -239,15 +254,6 @@
     <ClCompile Include="cUI_Button_HowToPlay.cpp">
       <Filter>Object\Title\UI\Button</Filter>
     </ClCompile>
-    <ClCompile Include="cUI_PlayerHp.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Background.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Taro.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClCompile>
     <ClCompile Include="cItem.cpp">
       <Filter>Object\Ingame\Item</Filter>
     </ClCompile>
@@ -259,12 +265,6 @@
     </ClCompile>
     <ClCompile Include="cItem_Bomb.cpp">
       <Filter>Object\Ingame\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Bomb.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Character.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
     </ClCompile>
     <ClCompile Include="cUI_Gauge.cpp">
       <Filter>Object\UI</Filter>
@@ -278,9 +278,6 @@
     <ClCompile Include="cUI_Button_Back.cpp">
       <Filter>Object\Credit\UI</Filter>
     </ClCompile>
-    <ClCompile Include="cUI_Score.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClCompile>
     <ClCompile Include="DXUT\Optional\SDKsound.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -290,9 +287,6 @@
     <ClCompile Include="cSoundManager.cpp">
       <Filter>Manager\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="cUI_Pause_Background.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClCompile>
     <ClCompile Include="cUI_Button_Pause_Resume.cpp">
       <Filter>Object\Ingame\UI\Button</Filter>
     </ClCompile>
@@ -301,6 +295,27 @@
     </ClCompile>
     <ClCompile Include="cUI_Button_Pause_Title.cpp">
       <Filter>Object\Ingame\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Background.cpp">
+      <Filter>Object\Ingame\UI\Image\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_PlayerHp.cpp">
+      <Filter>Object\Ingame\UI\Image\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Pause_Background.cpp">
+      <Filter>Object\Ingame\UI\Image\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Bomb.cpp">
+      <Filter>Object\Ingame\UI\Image\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Character.cpp">
+      <Filter>Object\Ingame\UI\Image\Status</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Score.cpp">
+      <Filter>Object\Ingame\UI\Image\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Taro.cpp">
+      <Filter>Object\Ingame\UI\Image\TaroCard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -383,15 +398,6 @@
     <ClInclude Include="cUI_Button_HowToPlay.h">
       <Filter>Object\Title\UI\Button</Filter>
     </ClInclude>
-    <ClInclude Include="cUI_PlayerHp.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Background.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Taro.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClInclude>
     <ClInclude Include="cItem.h">
       <Filter>Object\Ingame\Item</Filter>
     </ClInclude>
@@ -403,12 +409,6 @@
     </ClInclude>
     <ClInclude Include="cItem_Bomb.h">
       <Filter>Object\Ingame\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Bomb.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Character.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
     </ClInclude>
     <ClInclude Include="cUI_Gauge.h">
       <Filter>Object\UI</Filter>
@@ -422,9 +422,6 @@
     <ClInclude Include="cUI_Button_Back.h">
       <Filter>Object\Credit\UI</Filter>
     </ClInclude>
-    <ClInclude Include="cUI_Score.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClInclude>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -434,9 +431,6 @@
     <ClInclude Include="cSoundManager.h">
       <Filter>Manager\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="cUI_Pause_Background.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
-    </ClInclude>
     <ClInclude Include="cUI_Button_Pause_Resume.h">
       <Filter>Object\Ingame\UI\Button</Filter>
     </ClInclude>
@@ -445,6 +439,27 @@
     </ClInclude>
     <ClInclude Include="cUI_Button_Pause_Title.h">
       <Filter>Object\Ingame\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Background.h">
+      <Filter>Object\Ingame\UI\Image\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_PlayerHp.h">
+      <Filter>Object\Ingame\UI\Image\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Bomb.h">
+      <Filter>Object\Ingame\UI\Image\Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Pause_Background.h">
+      <Filter>Object\Ingame\UI\Image\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Character.h">
+      <Filter>Object\Ingame\UI\Image\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Score.h">
+      <Filter>Object\Ingame\UI\Image\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Taro.h">
+      <Filter>Object\Ingame\UI\Image\TaroCard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

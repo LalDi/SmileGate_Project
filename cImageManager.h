@@ -1,13 +1,16 @@
 #pragma once
-
+/**
+	@brief 프로그램의 화면 출력 전반을 관리하는 매니저
+	@brief 이미지파일의 저장, 이미지 및 텍스트의 출력을 한다.
+*/
 class cImageManager
 {
 private:
 	LPD3DXSPRITE m_sprite;
-	map<std::string, cTexture*> m_images;
-	map<string, vector<cTexture*>*> m_Animations;
-	LPD3DXFONT m_Fonts[33];
-	LPD3DXFONT m_FontsKor[33];
+	map<std::string, cTexture*> m_images;			// 이미지 파일에 이름을 붙여 저장
+	map<string, vector<cTexture*>*> m_Animations;	// 애니메이션 파일에 이름을 붙여 저장
+	LPD3DXFONT m_Fonts[33];							// 영문 폰트
+	LPD3DXFONT m_FontsKor[33];						// 한글 폰트
 	D3DXMATRIX m_Mat;
 
 private:
@@ -37,12 +40,10 @@ public:
 	void CenterRender(cTexture* texturePtr, float x, float y, float rot = 0);
 	//가운데를 기준으로 이미지 랜더링
 
-	void RenderText(wstring Text, int Size, POINT Pos, float Scale, bool Kor, D3DCOLOR Color = D3DCOLOR_XRGB(255, 255, 255));
-	void CenterRenderText(wstring Text, int Size, POINT Pos, float Scale, bool Kor, D3DCOLOR Color = D3DCOLOR_XRGB(255, 255, 255));
+	void RenderText(wstring Text, int Size, POINT Pos, float Scale = 1, bool Kor = false, D3DCOLOR Color = D3DCOLOR_XRGB(255, 255, 255));
+	void CenterRenderText(wstring Text, int Size, POINT Pos, float Scale = 1, bool Kor = false, D3DCOLOR Color = D3DCOLOR_XRGB(255, 255, 255));
 	// 텍스트 렌더링
 
 	void LostDevice();
 	void ResetDevice();
-	//함수의 인자는 기본적으로 4개까지 사용하는것이 좋다.(4개를 넘어가면 급격히 느려진다)
-	//자세한 이유는 나중에 레지스터와 시스템 캐시를 공부할때 알아보면 좋음
 };

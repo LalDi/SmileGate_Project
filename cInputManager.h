@@ -3,6 +3,9 @@
 #define MAX_INPUT_KEY	256
 #define MAX_INPUT_BTN	8
 
+/**
+	@brief 프로그램 내부에서 키보드의 입력이나 마우스의 클릭, 위치 등을 관리하는 매니저
+*/
 class cInputManager
 {
 public:

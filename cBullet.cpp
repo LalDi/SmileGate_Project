@@ -1,5 +1,15 @@
 #include "Framework.h"
 
+/**
+	@fn		cBullet(POINT, int, int, int)
+
+	@brief	플레이어와 에너미가 발사하는 총알.
+
+	@param	Pos		- 오브젝트가 생성되는 위치
+	@param	tag		- 오브젝트의 기능을 구분하는 태그. 이 클래스에서는 BULLETP, BULLETE로 구분하여 사용한다. 
+	@param	Damage	- 총알이 갖는 데미지. 부딪힌 대상의 체력을 감소시키는 양
+	@param	Angle	- 총알이 나아가는 방향. 0일 경우, 오른쪽으로 나아감
+*/
 cBullet::cBullet(POINT Pos, int tag, int Damage, int Angle)
 	:cGameObject(Pos, tag)
 {

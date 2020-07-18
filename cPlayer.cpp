@@ -1,5 +1,13 @@
 #include "Framework.h"
 
+/**
+	@fn		cPlayer(POINT, int)
+
+	@brief	게임의 주인공
+
+	@param	Pos		- 오브젝트가 생성되는 위치
+	@param	tag		- 오브젝트의 기능을 구분하는 태그. 이 클래스에서는 BULLETP, BULLETE로 구분하여 사용한다.
+*/
 cPlayer::cPlayer(POINT Pos, int tag)
 	:cGameObject(Pos, tag)
 {
@@ -30,11 +38,12 @@ cPlayer::~cPlayer()
 
 void cPlayer::Update()
 {
-	if (m_Hp <= 0)
-		b_IsLive = false;
+	if (m_Hp <= 0)	// 현재 체력이 0 이하라면
+		b_IsLive = false;	// 플레이어 사망
 
-	SetRect();
+	SetRect();	// Rect값 설정
 
+	// 플레이어 이동
 	if (INPUTMANAGER->KeyPress(VK_W) && m_Pos.y >= 0)
 		m_Pos.y -= m_Speed * DXUTGetElapsedTime();
 	if (INPUTMANAGER->KeyPress(VK_A) && m_Pos.x >= 0)
@@ -44,10 +53,12 @@ void cPlayer::Update()
 	if (INPUTMANAGER->KeyPress(VK_D) && m_Pos.x <= WinSizeX)
 		m_Pos.x += m_Speed * DXUTGetElapsedTime();
 
+	// 플레이어 공격 설정
+	// (현재 시간) - (마지막 총알 발사 시간) > (딜레이(초 * 1000)) / 공격 속도
 	if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)
 	{
-		b_Fire = true;
-		m_FireTime = timeGetTime();
+		b_Fire = true;	// 총알을 발사하고
+		m_FireTime = timeGetTime();	// 마지막 총알 발사 시간에 현재 시간 대입
 	}
 
 	if (INPUTMANAGER->KeyPress(VK_SHIFT))
@@ -58,12 +69,18 @@ void cPlayer::Update()
 
 void cPlayer::Render()
 {
-	if (b_GracePeriod)
-		m_Sprite->CenterRender(m_Pos, m_Scale, 0, D3DCOLOR_XRGB(255, 100, 100));
+	if (b_GracePeriod) // 피격 당해 무적 대기 시간인 경우
+		m_Sprite->CenterRender(m_Pos, m_Scale, 0, D3DCOLOR_XRGB(255, 100, 100)); // 플레이어를 빨갛게 출력
 	else
 		m_Sprite->CenterRender(m_Pos, m_Scale, 0);
 }
 
+/**
+	@fn		Fire()
+
+	@brief	플레이어가 발사하는 총알의 데이터를 담은 함수
+	@remark	총알을 플레이어보다 살짝 앞에 생성하여 그 데이터를 반환하는 함수
+*/
 cGameObject* cPlayer::Fire()
 {
 	cGameObject* Temp;
@@ -73,6 +90,11 @@ cGameObject* cPlayer::Fire()
 	return Temp;
 }
 
+/**
+	@fn		SetPlayerState()
+
+	@brief	플레이어의 속성에 따라 스텟을 재설정하는 함수
+*/
 void cPlayer::SetPlayerState()
 {
 	switch (m_PlayerState)
