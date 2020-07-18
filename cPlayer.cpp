@@ -38,9 +38,6 @@ cPlayer::~cPlayer()
 
 void cPlayer::Update()
 {
-	if (m_Hp <= 0)	// 현재 체력이 0 이하라면
-		b_IsLive = false;	// 플레이어 사망
-
 	SetRect();	// Rect값 설정
 
 	// 플레이어 이동
@@ -48,7 +45,7 @@ void cPlayer::Update()
 		m_Pos.y -= m_Speed * DXUTGetElapsedTime();
 	if (INPUTMANAGER->KeyPress(VK_A) && m_Pos.x >= 0)
 		m_Pos.x -= m_Speed * DXUTGetElapsedTime();
-	if (INPUTMANAGER->KeyPress(VK_S) && m_Pos.y <= WinSizeY)
+	if (INPUTMANAGER->KeyPress(VK_S) && m_Pos.y <= WinSizeY - 67)
 		m_Pos.y += m_Speed * DXUTGetElapsedTime();
 	if (INPUTMANAGER->KeyPress(VK_D) && m_Pos.x <= WinSizeX)
 		m_Pos.x += m_Speed * DXUTGetElapsedTime();

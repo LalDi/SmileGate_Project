@@ -30,7 +30,7 @@ void cEnemy::Update()
 
 void cEnemy::Render()
 {
-	m_Sprite->CenterRender(m_Pos);
+	m_Sprite->CenterRender(m_Pos, m_Scale, 0);
 }
 
 /**
@@ -39,11 +39,11 @@ void cEnemy::Render()
 	@brief	에너미가 발사하는 총알의 데이터를 담은 함수
 	@remark	총알을 에너미보다 살짝 앞에 생성하여 그 데이터를 반환하는 함수
 */
-cGameObject* cEnemy::Fire()
+cGameObject* cEnemy::Fire(int Angle)
 {
 	cGameObject* Temp;
 	POINT Pos = { m_Pos.x - 50, m_Pos.y };
-	Temp = new cBullet(Pos, BULLETE, 1, 180);
+	Temp = new cBullet(Pos, BULLETE, 1, 180 + Angle);
 	b_Fire = false;
 	return Temp;
 }

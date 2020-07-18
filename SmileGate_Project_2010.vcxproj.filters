@@ -120,6 +120,15 @@
     <Filter Include="Object\Ingame\UI\Image\TaroCard">
       <UniqueIdentifier>{f81a15de-29bc-40a4-b39b-6062d381746c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Ingame\UI\Image\Gameover">
+      <UniqueIdentifier>{31c4e363-b458-4978-ae2a-5dabb859a9bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Button\Pause">
+      <UniqueIdentifier>{5e835ad8-c1d6-4f89-a459-39affb8f2ed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\UI\Button\Gameover">
+      <UniqueIdentifier>{98bd45fe-7627-4cc1-9069-c244b24ed187}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -287,15 +296,6 @@
     <ClCompile Include="cSoundManager.cpp">
       <Filter>Manager\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="cUI_Button_Pause_Resume.cpp">
-      <Filter>Object\Ingame\UI\Button</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Button_Pause_Reset.cpp">
-      <Filter>Object\Ingame\UI\Button</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Button_Pause_Title.cpp">
-      <Filter>Object\Ingame\UI\Button</Filter>
-    </ClCompile>
     <ClCompile Include="cUI_Background.cpp">
       <Filter>Object\Ingame\UI\Image\Status</Filter>
     </ClCompile>
@@ -316,6 +316,27 @@
     </ClCompile>
     <ClCompile Include="cUI_Taro.cpp">
       <Filter>Object\Ingame\UI\Image\TaroCard</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Pause_Reset.cpp">
+      <Filter>Object\Ingame\UI\Button\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Pause_Resume.cpp">
+      <Filter>Object\Ingame\UI\Button\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Pause_Title.cpp">
+      <Filter>Object\Ingame\UI\Button\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Gameover_Background.cpp">
+      <Filter>Object\Ingame\UI\Image\Gameover</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Gameover_Restart.cpp">
+      <Filter>Object\Ingame\UI\Button\Gameover</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Gameover_Title.cpp">
+      <Filter>Object\Ingame\UI\Button\Gameover</Filter>
+    </ClCompile>
+    <ClCompile Include="cBoss.cpp">
+      <Filter>Object\Ingame\Enemy\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -431,15 +452,6 @@
     <ClInclude Include="cSoundManager.h">
       <Filter>Manager\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="cUI_Button_Pause_Resume.h">
-      <Filter>Object\Ingame\UI\Button</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Button_Pause_Reset.h">
-      <Filter>Object\Ingame\UI\Button</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Button_Pause_Title.h">
-      <Filter>Object\Ingame\UI\Button</Filter>
-    </ClInclude>
     <ClInclude Include="cUI_Background.h">
       <Filter>Object\Ingame\UI\Image\Status</Filter>
     </ClInclude>
@@ -460,6 +472,27 @@
     </ClInclude>
     <ClInclude Include="cUI_Taro.h">
       <Filter>Object\Ingame\UI\Image\TaroCard</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Pause_Reset.h">
+      <Filter>Object\Ingame\UI\Button\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Pause_Resume.h">
+      <Filter>Object\Ingame\UI\Button\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Pause_Title.h">
+      <Filter>Object\Ingame\UI\Button\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Gameover_Background.h">
+      <Filter>Object\Ingame\UI\Image\Gameover</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Gameover_Restart.h">
+      <Filter>Object\Ingame\UI\Button\Gameover</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Gameover_Title.h">
+      <Filter>Object\Ingame\UI\Button\Gameover</Filter>
+    </ClInclude>
+    <ClInclude Include="cBoss.h">
+      <Filter>Object\Ingame\Enemy\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

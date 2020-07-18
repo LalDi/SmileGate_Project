@@ -52,6 +52,7 @@ using namespace Math;
 #include "cPlayer.h"
 #include "cEnemy.h"
 #include "cEnemy1.h"
+#include "cBoss.h"
 #include "cBullet.h"
 
 #include "cItem.h"
@@ -70,6 +71,10 @@ using namespace Math;
 #include "cUI_Button_Pause_Resume.h"
 #include "cUI_Button_Pause_Reset.h"
 #include "cUI_Button_Pause_Title.h"
+
+#include "cUI_Gameover_Background.h"
+#include "cUI_Button_Gameover_Restart.h"
+#include "cUI_Button_Gameover_Title.h"
 
 
 // ∞‘¿” æ¿

@@ -386,6 +386,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico" />
+    <ClInclude Include="cBoss.h" />
     <ClInclude Include="cBullet.h" />
     <ClInclude Include="cCreditBackground.h" />
     <ClInclude Include="cCreditScene.h" />
@@ -414,6 +415,8 @@
     <ClInclude Include="cUI_Button.h" />
     <ClInclude Include="cUI_Button_Back.h" />
     <ClInclude Include="cUI_Button_Credit.h" />
+    <ClInclude Include="cUI_Button_Gameover_Restart.h" />
+    <ClInclude Include="cUI_Button_Gameover_Title.h" />
     <ClInclude Include="cUI_Button_Gamestart.h" />
     <ClInclude Include="cUI_Button_HowToPlay.h" />
     <ClInclude Include="cUI_Button_Option.h" />
@@ -422,6 +425,7 @@
     <ClInclude Include="cUI_Button_Pause_Title.h" />
     <ClInclude Include="cUI_Button_Quit.h" />
     <ClInclude Include="cUI_Character.h" />
+    <ClInclude Include="cUI_Gameover_Background.h" />
     <ClInclude Include="cUI_Gauge.h" />
     <ClInclude Include="cUI_Logo.h" />
     <ClInclude Include="cUI_Pause_Background.h" />
@@ -432,6 +436,7 @@
     <ClInclude Include="DXUT\Core\DXUT.h" />
     <ClInclude Include="DXUT\Core\DXUTenum.h" />
     <ClInclude Include="DXUT\Core\DXUTmisc.h" />
+    <ClCompile Include="cBoss.cpp" />
     <ClCompile Include="cBullet.cpp" />
     <ClCompile Include="cCreditBackground.cpp" />
     <ClCompile Include="cCreditScene.cpp" />
@@ -460,6 +465,8 @@
     <ClCompile Include="cUI_Button.cpp" />
     <ClCompile Include="cUI_Button_Back.cpp" />
     <ClCompile Include="cUI_Button_Credit.cpp" />
+    <ClCompile Include="cUI_Button_Gameover_Restart.cpp" />
+    <ClCompile Include="cUI_Button_Gameover_Title.cpp" />
     <ClCompile Include="cUI_Button_Gamestart.cpp" />
     <ClCompile Include="cUI_Button_HowToPlay.cpp" />
     <ClCompile Include="cUI_Button_Option.cpp" />
@@ -468,6 +475,7 @@
     <ClCompile Include="cUI_Button_Pause_Title.cpp" />
     <ClCompile Include="cUI_Button_Quit.cpp" />
     <ClCompile Include="cUI_Character.cpp" />
+    <ClCompile Include="cUI_Gameover_Background.cpp" />
     <ClCompile Include="cUI_Gauge.cpp" />
     <ClCompile Include="cUI_Logo.cpp" />
     <ClCompile Include="cUI_Pause_Background.cpp" />
