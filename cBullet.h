@@ -7,7 +7,7 @@ private:
 	int m_Angle;
 
 public:
-	cBullet(POINT Pos, int tag, int Damage, int Angle = 0);
+	cBullet(POINT Pos, int tag, int Damage, int Angle = 0, float Speed = 1500);
 	~cBullet();
 
 	virtual void Update() override;

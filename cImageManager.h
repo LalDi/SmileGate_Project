@@ -30,18 +30,18 @@ public:
 	void Begin();
 	void End();
 
-	void Render(cTexture* texturePtr, float x, float y, float size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
-	void Render(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
+	void Render(cTexture* texturePtr, float x, float y, float size, float rot, D3DCOLOR color = D3DCOLOR_RGBA(255, 255, 255, 255));
+	void Render(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color = D3DCOLOR_RGBA(255, 255, 255, 255));
 	void Render(cTexture* texturePtr, float x, float y, float rot = 0);
 	//좌상단을 기준으로 이미지 랜더링
 
-	void CenterRender(cTexture* texturePtr, float x, float y, float size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
-	void CenterRender(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
+	void CenterRender(cTexture* texturePtr, float x, float y, float size, float rot, D3DCOLOR color = D3DCOLOR_RGBA(255, 255, 255, 255));
+	void CenterRender(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color = D3DCOLOR_RGBA(255, 255, 255, 255));
 	void CenterRender(cTexture* texturePtr, float x, float y, float rot = 0);
 	//가운데를 기준으로 이미지 랜더링
 
-	void RenderText(wstring Text, int Size, POINT Pos, float Scale = 1, bool Kor = false, D3DCOLOR Color = D3DCOLOR_XRGB(255, 255, 255));
-	void CenterRenderText(wstring Text, int Size, POINT Pos, float Scale = 1, bool Kor = false, D3DCOLOR Color = D3DCOLOR_XRGB(255, 255, 255));
+	void RenderText(wstring Text, int Size, POINT Pos, float Scale = 1, bool Kor = false, D3DCOLOR Color = D3DCOLOR_RGBA(255, 255, 255, 255));
+	void CenterRenderText(wstring Text, int Size, POINT Pos, float Scale = 1, bool Kor = false, D3DCOLOR Color = D3DCOLOR_RGBA(255, 255, 255, 255));
 	// 텍스트 렌더링
 
 	void LostDevice();

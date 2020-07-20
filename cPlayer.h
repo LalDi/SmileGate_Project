@@ -3,14 +3,14 @@
 	@brief	플레이어의 속성을 지정하는 열거값
 	
 	@param	Wheel_of_Fortune	- 기본형 / 공격력 2, 체력 5, 폭탄 공격력 10
-	@param	Judgment			- 방어형 / 공격력 1, 체력 7, 폭탄 공격력 8
+	@param	Judgement			- 방어형 / 공격력 1, 체력 7, 폭탄 공격력 8
 	@param	The_Sun				- 공격형 / 공격력 4, 체력 3, 폭탄 공격력 15
 */
 enum class PlayerState
 {
-	Wheel_of_Fortune,
-	Judgement,		
-	The_Sun			
+	Wheel_of_Fortune,	// 기본형
+	Judgement,			// 방어형
+	The_Sun				// 공격형
 };
 
 class cPlayer : public cGameObject

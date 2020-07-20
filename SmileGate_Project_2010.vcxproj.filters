@@ -72,20 +72,11 @@
     <Filter Include="Object\Ingame\Item">
       <UniqueIdentifier>{b26aadce-cf93-4106-96b4-438c6cc3922d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Ingame\Enemy\Boss">
-      <UniqueIdentifier>{43ba380e-39fb-43e9-8644-cd2f31208f3a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Title\Credit">
       <UniqueIdentifier>{d10b0cf0-1b7d-45cd-b623-12f96faa1f53}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\Credit">
       <UniqueIdentifier>{64b02c17-df53-4a0d-b83d-a3029d5d2a17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Credit\Background">
-      <UniqueIdentifier>{6c94dc74-095b-4b04-bc17-49d220f76ebd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Credit\UI">
-      <UniqueIdentifier>{eb1be6da-753b-4843-8fa1-ab49052b2194}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\Title">
       <UniqueIdentifier>{0c4fd2a7-a2fa-4184-866f-e7b16c6122b7}</UniqueIdentifier>
@@ -128,6 +119,18 @@
     </Filter>
     <Filter Include="Object\Ingame\UI\Button\Gameover">
       <UniqueIdentifier>{98bd45fe-7627-4cc1-9069-c244b24ed187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Boss">
+      <UniqueIdentifier>{43ba380e-39fb-43e9-8644-cd2f31208f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Boss\The Hierophant">
+      <UniqueIdentifier>{d6c41adb-66ba-477b-a3eb-db7d99101be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Boss\The Hermit">
+      <UniqueIdentifier>{51f92310-5309-4b52-ab45-a6c4306040cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ingame\Boss\The Magician">
+      <UniqueIdentifier>{f58b4f75-7109-4a7c-b2dd-204d31fd6a44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -281,12 +284,6 @@
     <ClCompile Include="cCreditScene.cpp">
       <Filter>Scene\Title\Credit</Filter>
     </ClCompile>
-    <ClCompile Include="cCreditBackground.cpp">
-      <Filter>Object\Credit\Background</Filter>
-    </ClCompile>
-    <ClCompile Include="cUI_Button_Back.cpp">
-      <Filter>Object\Credit\UI</Filter>
-    </ClCompile>
     <ClCompile Include="DXUT\Optional\SDKsound.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -336,7 +333,25 @@
       <Filter>Object\Ingame\UI\Button\Gameover</Filter>
     </ClCompile>
     <ClCompile Include="cBoss.cpp">
-      <Filter>Object\Ingame\Enemy\Boss</Filter>
+      <Filter>Object\Ingame\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_Back.cpp">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="cCreditBackground.cpp">
+      <Filter>Object\Credit</Filter>
+    </ClCompile>
+    <ClCompile Include="cBoss_TheHierophant.cpp">
+      <Filter>Object\Ingame\Boss\The Hierophant</Filter>
+    </ClCompile>
+    <ClCompile Include="cBoss_TheHermit.cpp">
+      <Filter>Object\Ingame\Boss\The Hermit</Filter>
+    </ClCompile>
+    <ClCompile Include="cBoss_TheMagician.cpp">
+      <Filter>Object\Ingame\Boss\The Magician</Filter>
+    </ClCompile>
+    <ClCompile Include="cIngameBlackScene.cpp">
+      <Filter>Object\Ingame\Background</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -437,12 +452,6 @@
     <ClInclude Include="cCreditScene.h">
       <Filter>Scene\Title\Credit</Filter>
     </ClInclude>
-    <ClInclude Include="cCreditBackground.h">
-      <Filter>Object\Credit\Background</Filter>
-    </ClInclude>
-    <ClInclude Include="cUI_Button_Back.h">
-      <Filter>Object\Credit\UI</Filter>
-    </ClInclude>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -492,7 +501,25 @@
       <Filter>Object\Ingame\UI\Button\Gameover</Filter>
     </ClInclude>
     <ClInclude Include="cBoss.h">
-      <Filter>Object\Ingame\Enemy\Boss</Filter>
+      <Filter>Object\Ingame\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_Back.h">
+      <Filter>Object\Title\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="cCreditBackground.h">
+      <Filter>Object\Credit</Filter>
+    </ClInclude>
+    <ClInclude Include="cBoss_TheHierophant.h">
+      <Filter>Object\Ingame\Boss\The Hierophant</Filter>
+    </ClInclude>
+    <ClInclude Include="cBoss_TheHermit.h">
+      <Filter>Object\Ingame\Boss\The Hermit</Filter>
+    </ClInclude>
+    <ClInclude Include="cBoss_TheMagician.h">
+      <Filter>Object\Ingame\Boss\The Magician</Filter>
+    </ClInclude>
+    <ClInclude Include="cIngameBlackScene.h">
+      <Filter>Object\Ingame\Background</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

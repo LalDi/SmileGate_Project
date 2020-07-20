@@ -48,11 +48,18 @@ using namespace Math;
 
 // 인게임씬 오브젝트
 #include "cIngameBackground.h"
+#include "cIngameBlackScene.h"
 
 #include "cPlayer.h"
+
 #include "cEnemy.h"
 #include "cEnemy1.h"
+
 #include "cBoss.h"
+#include "cBoss_TheHierophant.h"
+#include "cBoss_TheHermit.h"
+#include "cBoss_TheMagician.h"
+
 #include "cBullet.h"
 
 #include "cItem.h"
@@ -101,9 +108,20 @@ using namespace Math;
 #define VK_A 0x41
 #define VK_S 0x53
 #define VK_D 0x44
+#define VK_Z 0x5A
+#define VK_X 0x58
+#define VK_C 0x44
 
 #define LEFTCLICK 0
 #define RIGHTCLICK 1
+
+#define _Wheel_of_Fortune	PlayerState::Wheel_of_Fortune
+#define _Judgement			PlayerState::Judgement
+#define _The_Sun			PlayerState::The_Sun
+	
+#define _The_Hierophant		EnemyState::The_Hierophant
+#define _The_Hermit			EnemyState::The_Hermit
+#define _The_Magician		EnemyState::The_Magician
 
 #define IMAGEMANAGER cGameManager::GetImageManager()
 #define SCENEMANAGER cGameManager::GetSceneManager()
@@ -115,6 +133,7 @@ enum TAGS
 	TEXTURE,
 	PLAYER,
 	ENEMY,
+	BOSS,
 	BULLETP,
 	BULLETE,
 	ITEM,

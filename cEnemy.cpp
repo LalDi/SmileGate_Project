@@ -26,6 +26,10 @@ void cEnemy::Update()
 		b_Fire = true;
 		m_FireTime = timeGetTime();
 	}
+	if (CheckOutMap())
+	{
+		b_IsLive = false;
+	}
 }
 
 void cEnemy::Render()
@@ -39,11 +43,21 @@ void cEnemy::Render()
 	@brief	에너미가 발사하는 총알의 데이터를 담은 함수
 	@remark	총알을 에너미보다 살짝 앞에 생성하여 그 데이터를 반환하는 함수
 */
-cGameObject* cEnemy::Fire(int Angle)
+cGameObject* cEnemy::Fire(int Angle, float Speed)
 {
 	cGameObject* Temp;
 	POINT Pos = { m_Pos.x - 50, m_Pos.y };
-	Temp = new cBullet(Pos, BULLETE, 1, 180 + Angle);
+	Temp = new cBullet(Pos, BULLETE, 1, 180 + Angle, Speed);
 	b_Fire = false;
 	return Temp;
+}
+
+bool cEnemy::CheckOutMap()	
+{
+	bool temp;
+	int x, y;
+	x = m_Sprite->info.Width;
+	y = m_Sprite->info.Height;
+	temp = m_Pos.x < -x || m_Pos.x > WinSizeX + x || m_Pos.y < -y || m_Pos.y > WinSizeY + y;
+	return temp;
 }

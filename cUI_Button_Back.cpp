@@ -3,7 +3,7 @@
 cUI_Button_Back::cUI_Button_Back(POINT Pos, int tag)
 	:cUI_Button(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Credit_Button_Back", "./Images/Credit/Title_Credit_Back.png");
+	m_Sprite = IMAGEMANAGER->AddImage("Title_Button_Back", "./Images/Title/Title_Back.png");
 	b_IsCenter = true;
 }
 

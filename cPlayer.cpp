@@ -11,8 +11,6 @@
 cPlayer::cPlayer(POINT Pos, int tag)
 	:cGameObject(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Player", "./Images/Ingame/Ingame_Character_Player.png");
-
 	m_PlayerState = PlayerState::Wheel_of_Fortune;
 
 	SetPlayerState();
@@ -21,7 +19,7 @@ cPlayer::cPlayer(POINT Pos, int tag)
 	m_MaxBomb = 5;
 	m_Bomb = 3;
 
-	m_MaxPower = 5;
+	m_MaxPower = 500;
 	m_Power = 0;
 
 	m_Speed = 400;
@@ -45,19 +43,34 @@ void cPlayer::Update()
 		m_Pos.y -= m_Speed * DXUTGetElapsedTime();
 	if (INPUTMANAGER->KeyPress(VK_A) && m_Pos.x >= 0)
 		m_Pos.x -= m_Speed * DXUTGetElapsedTime();
-	if (INPUTMANAGER->KeyPress(VK_S) && m_Pos.y <= WinSizeY - 67)
+	if (INPUTMANAGER->KeyPress(VK_S) && m_Pos.y <= WinSizeY)
 		m_Pos.y += m_Speed * DXUTGetElapsedTime();
 	if (INPUTMANAGER->KeyPress(VK_D) && m_Pos.x <= WinSizeX)
 		m_Pos.x += m_Speed * DXUTGetElapsedTime();
 
-	// 플레이어 공격 설정
-	// (현재 시간) - (마지막 총알 발사 시간) > (딜레이(초 * 1000)) / 공격 속도
-	if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)
+	// 플레이어 조작
+	if (INPUTMANAGER->BtnPress(LEFTCLICK))
 	{
-		b_Fire = true;	// 총알을 발사하고
-		m_FireTime = timeGetTime();	// 마지막 총알 발사 시간에 현재 시간 대입
+		// 플레이어 공격 설정
+		// (현재 시간) - (마지막 총알 발사 시간) > (딜레이(초 * 1000)) / 공격 속도
+		if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)
+		{
+			b_Fire = true;	// 총알을 발사하고
+			m_FireTime = timeGetTime();	// 마지막 총알 발사 시간에 현재 시간 대입
+		}
 	}
+	if (INPUTMANAGER->BtnDown(RIGHTCLICK))
+	{
+		// 폭탄 발사
+	}
+	if (INPUTMANAGER->KeyDown(VK_TAB))
+	{
+		// 플레이어 속성 변경
+		if (m_Power == m_MaxPower)
+		{
 
+		}
+	}
 	if (INPUTMANAGER->KeyPress(VK_SHIFT))
 		m_Speed = 200;
 	if (INPUTMANAGER->KeyUp(VK_SHIFT))
@@ -97,16 +110,19 @@ void cPlayer::SetPlayerState()
 	switch (m_PlayerState)
 	{
 	case PlayerState::Wheel_of_Fortune:
+		m_Sprite = IMAGEMANAGER->AddImage("Player_1", "./Images/Ingame/Ingame_Character_Player-1.png");
 		m_MaxHp = 5;
 		m_Damage = 2;
 		m_BombDamage = 10;
 		break;
 	case PlayerState::Judgement:
+		m_Sprite = IMAGEMANAGER->AddImage("Player_2", "./Images/Ingame/Ingame_Character_Player-2.png");
 		m_MaxHp = 7;
 		m_Damage = 1;
 		m_BombDamage = 8;
 		break;
 	case PlayerState::The_Sun:
+		m_Sprite = IMAGEMANAGER->AddImage("Player_3", "./Images/Ingame/Ingame_Character_Player-3.png");
 		m_MaxHp = 3;
 		m_Damage = 4;
 		m_BombDamage = 15;
@@ -114,6 +130,5 @@ void cPlayer::SetPlayerState()
 	default:
 		break;
 	}
-	if (m_Hp > m_MaxHp)
-		m_Hp = m_MaxHp;
+	m_Hp = m_MaxHp;
 }

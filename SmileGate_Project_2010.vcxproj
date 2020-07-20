@@ -387,6 +387,9 @@
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="cBoss.h" />
+    <ClInclude Include="cBoss_TheHermit.h" />
+    <ClInclude Include="cBoss_TheHierophant.h" />
+    <ClInclude Include="cBoss_TheMagician.h" />
     <ClInclude Include="cBullet.h" />
     <ClInclude Include="cCreditBackground.h" />
     <ClInclude Include="cCreditScene.h" />
@@ -396,6 +399,7 @@
     <ClInclude Include="cGameObject.h" />
     <ClInclude Include="cImageManager.h" />
     <ClInclude Include="cIngameBackground.h" />
+    <ClInclude Include="cIngameBlackScene.h" />
     <ClInclude Include="cIngameScene.h" />
     <ClInclude Include="cInputManager.h" />
     <ClInclude Include="cItem.h" />
@@ -437,6 +441,9 @@
     <ClInclude Include="DXUT\Core\DXUTenum.h" />
     <ClInclude Include="DXUT\Core\DXUTmisc.h" />
     <ClCompile Include="cBoss.cpp" />
+    <ClCompile Include="cBoss_TheHermit.cpp" />
+    <ClCompile Include="cBoss_TheHierophant.cpp" />
+    <ClCompile Include="cBoss_TheMagician.cpp" />
     <ClCompile Include="cBullet.cpp" />
     <ClCompile Include="cCreditBackground.cpp" />
     <ClCompile Include="cCreditScene.cpp" />
@@ -446,6 +453,7 @@
     <ClCompile Include="cGameObject.cpp" />
     <ClCompile Include="cImageManager.cpp" />
     <ClCompile Include="cIngameBackground.cpp" />
+    <ClCompile Include="cIngameBlackScene.cpp" />
     <ClCompile Include="cIngameScene.cpp" />
     <ClCompile Include="cInputManager.cpp" />
     <ClCompile Include="cItem.cpp" />

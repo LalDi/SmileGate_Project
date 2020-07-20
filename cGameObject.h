@@ -23,6 +23,9 @@ public:
 
 	POINT GetPos() { return m_Pos; }
 	RECT GetRect() { return m_Rect; }
+	
+	FLOAT GetScale() { return m_Scale; }
+	void SetScale(FLOAT value) { m_Scale = value; }
 
 	void SetRect();
 };

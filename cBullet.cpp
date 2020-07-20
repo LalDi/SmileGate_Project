@@ -10,14 +10,14 @@
 	@param	Damage	- 총알이 갖는 데미지. 부딪힌 대상의 체력을 감소시키는 양
 	@param	Angle	- 총알이 나아가는 방향. 0일 경우, 오른쪽으로 나아감
 */
-cBullet::cBullet(POINT Pos, int tag, int Damage, int Angle)
+cBullet::cBullet(POINT Pos, int tag, int Damage, int Angle, float Speed)
 	:cGameObject(Pos, tag)
 {
 	m_Sprite = IMAGEMANAGER->AddImage("Bullet", "./Images/Ingame/Ingame_Bullet.png");
 
 	m_Damage = Damage;
 	m_Angle = Angle;
-	m_Speed = 1500;
+	m_Speed = Speed;
 }
 
 cBullet::~cBullet()
