@@ -2,7 +2,6 @@
 
 cSoundManager::cSoundManager()
 {
-	Init();
 }
 
 cSoundManager::~cSoundManager()

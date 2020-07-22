@@ -5,10 +5,9 @@
 class cUI_Gauge : public cGameObject
 {
 protected:
-	cTexture* m_Sprite_Background;	// 게이지의 배경 이미지
-
 	float m_Amount;					// 게이지가 채워진 정도 (0~1)
 	bool b_IsCenter = true;			// 이미지 출력을 중앙에 할 지 여부 확인
+	bool b_LeftToRight = true;
 
 public:
 	cUI_Gauge(POINT Pos, int tag);

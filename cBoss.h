@@ -9,9 +9,13 @@ protected:
 	
 	int m_Hp;
 	int m_MaxHp;
-	int m_Angle;
+	float m_Angle;
 	int m_GiveScore;
+	bool b_Attack;
+	bool b_Attacking;
 	EnemyState m_EnemyState;
+
+	bool b_Control = true;
 
 public:
 	cBoss(POINT Pos, int tag, cPlayer* Player);
@@ -22,6 +26,7 @@ public:
 
 	cGameObject* Fire(int x, int y, int Angle = 0, float Speed = 1500);	// 에너미가 발사하는 총알의 데이터를 반환하는 함수
 	bool Appear(POINT Pos);
+	bool DisAppear();
 
 	/**
 		@fn			Attack(list<cGameObject*>*)
@@ -34,6 +39,11 @@ public:
 	int GetHp() { return m_Hp; }
 	void SetHp(int value) { m_Hp = value; }
 	void MinusHp(int value) { m_Hp -= value; }
+	int GetMaxHp() { return m_MaxHp; }
 	int GetScore() { return m_GiveScore; }
+	bool GetAttack() { return b_Attack; }
+	void SetAttack(bool value) { b_Attack = value; }
 	EnemyState GetEnemyState() { return m_EnemyState; }
+
+	void SetControl(bool value) { b_Control = value; }
 };

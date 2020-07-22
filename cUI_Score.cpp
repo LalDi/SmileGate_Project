@@ -14,7 +14,8 @@ cUI_Score::~cUI_Score()
 
 void cUI_Score::Update()
 {
-	int temp = *m_Score;
+	int temp = 0;
+	temp = *m_Score;
 	swprintf(m_Text, L"%011d", temp);
 }
 

@@ -225,6 +225,36 @@ void cImageManager::Render(cTexture* texturePtr, float x, float y, POINT size, f
 }
 
 /**
+	@fn		cImageManager::Render(cTexture*, float, float, POINT, float, D3DCOLOR)
+
+	@brief	이미지 파일을 화면에 출력함.
+
+	@remark 인수 중 size값을 POINT로 받아서 가로와 세로의 배율을 따로 조정하도록 설정.
+
+	@param	texturePtr	- 출력할 이미지 파일
+	@param	x			- 화면상의 가로 위치
+	@param	y			- 화면상의 세로 위치
+	@param	rect		- 이미지를 출력할 범위
+	@param	size		- 출력할 이미지 파일의 크기 배율
+	@param	rot			- 출력할 이미지 파일의 각도 Degree값으로 입력.
+	@param	color		- 출력할 이미지 파일의 컬러값. 기본값은 (255, 255, 255)
+*/
+void cImageManager::Render(cTexture* texturePtr, float x, float y, RECT rect, POINT size, float rot, D3DCOLOR color)
+{
+	if (texturePtr)
+	{
+		D3DXMATRIX mat, matS, matR, matT;
+		D3DXMatrixScaling(&matS, size.x, size.y, 1);
+		D3DXMatrixRotationZ(&matR, D3DXToRadian(rot));
+		D3DXMatrixTranslation(&matT, x, y, 0);
+		mat = matS * matR * matT;
+
+		m_sprite->SetTransform(&mat);
+		m_sprite->Draw(texturePtr->texturePtr, &rect, nullptr, nullptr, color);
+	}
+}
+
+/**
 	@fn		cImageManager::Render(cTexture*, float, float, float)
 
 	@brief	이미지 파일을 화면에 출력함.
@@ -272,6 +302,11 @@ void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, float s
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color)
 {
 	Render(texturePtr, x - texturePtr->info.Width * size.x / 2, y - texturePtr->info.Height * size.y / 2, size, rot, color);
+}
+
+void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, RECT rect, POINT size, float rot, D3DCOLOR color)
+{
+	Render(texturePtr, x - texturePtr->info.Width * size.x / 2, y - texturePtr->info.Height * size.y / 2, rect, size, rot, color);
 }
 
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, float rot)

@@ -21,10 +21,12 @@ public:
 
 	void Render(POINT pos, float size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
 	void Render(POINT pos, POINT size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
+	void Render(POINT pos, RECT rect, POINT size, float rot = 0, D3DCOLOR color = D3DCOLOR_RGBA(255, 255, 255, 255));
 	void Render(POINT pos, float rot = 0);
 
 	void CenterRender(POINT pos, float size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
 	void CenterRender(POINT pos, POINT size, float rot, D3DCOLOR color = D3DCOLOR_XRGB(255, 255, 255));
+	void CenterRender(POINT pos, RECT rect, POINT size, float rot = 0, D3DCOLOR color = D3DCOLOR_RGBA(255, 255, 255, 255));
 	void CenterRender(POINT pos, float rot = 0);
 };
 

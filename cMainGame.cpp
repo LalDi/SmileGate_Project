@@ -28,9 +28,20 @@ void cMainGame::Init()
 	// INPUTMANAGER 생성
 	INPUTMANAGER->Create(DXUTGetHWND());
 
+	// SOUNDMANAGER 생성
+	SOUNDMANAGER->Init();
+
 	// 게임 내에 사용될 씬을 미리 추가
 	SCENEMANAGER->AddScene("Title", new cTitleScene());
 	SCENEMANAGER->AddScene("Ingame", new cIngameScene());
+
+	// 게임 내에 사용될 사운드를 미리 추가
+	SOUNDMANAGER->AddSound("Title", L"./Sounds/BGM/Title.wav");
+	SOUNDMANAGER->AddSound("Stage1", L"./Sounds/BGM/Stage1.wav");
+	SOUNDMANAGER->AddSound("Stage2", L"./Sounds/BGM/Stage2.wav");
+	SOUNDMANAGER->AddSound("Stage3", L"./Sounds/BGM/Stage3.wav");
+
+	SOUNDMANAGER->AddSound("Warning", L"./Sounds/SE/Warning.wav");
 
 	SCENEMANAGER->ChangeScene("Title");
 }
@@ -39,6 +50,7 @@ void cMainGame::Update()
 {
 	INPUTMANAGER->Update();
 	SCENEMANAGER->Update();
+	SOUNDMANAGER->Update();
 }
 
 void cMainGame::Render()

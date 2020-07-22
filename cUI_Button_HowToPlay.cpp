@@ -12,6 +12,7 @@ cUI_Button_HowToPlay::~cUI_Button_HowToPlay()
 
 void cUI_Button_HowToPlay::ClickButton()
 {
+	SCENEMANAGER->ChangeScene("HowToPlay");
 }
 
 void cUI_Button_HowToPlay::Update()

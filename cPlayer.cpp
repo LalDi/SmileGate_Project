@@ -20,9 +20,9 @@ cPlayer::cPlayer(POINT Pos, int tag)
 	m_Bomb = 3;
 
 	m_MaxPower = 500;
-	m_Power = 0;
+	m_Power = 100;
 
-	m_Speed = 400;
+	m_Speed = 500;
 	m_AttackSpeed = 10;
 
 	m_FireTime = timeGetTime();
@@ -38,43 +38,53 @@ void cPlayer::Update()
 {
 	SetRect();	// Rect값 설정
 
-	// 플레이어 이동
-	if (INPUTMANAGER->KeyPress(VK_W) && m_Pos.y >= 0)
-		m_Pos.y -= m_Speed * DXUTGetElapsedTime();
-	if (INPUTMANAGER->KeyPress(VK_A) && m_Pos.x >= 0)
-		m_Pos.x -= m_Speed * DXUTGetElapsedTime();
-	if (INPUTMANAGER->KeyPress(VK_S) && m_Pos.y <= WinSizeY)
-		m_Pos.y += m_Speed * DXUTGetElapsedTime();
-	if (INPUTMANAGER->KeyPress(VK_D) && m_Pos.x <= WinSizeX)
-		m_Pos.x += m_Speed * DXUTGetElapsedTime();
-
 	// 플레이어 조작
-	if (INPUTMANAGER->BtnPress(LEFTCLICK))
+	if (b_PlayerControl)
 	{
-		// 플레이어 공격 설정
-		// (현재 시간) - (마지막 총알 발사 시간) > (딜레이(초 * 1000)) / 공격 속도
-		if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)
-		{
-			b_Fire = true;	// 총알을 발사하고
-			m_FireTime = timeGetTime();	// 마지막 총알 발사 시간에 현재 시간 대입
-		}
-	}
-	if (INPUTMANAGER->BtnDown(RIGHTCLICK))
-	{
-		// 폭탄 발사
-	}
-	if (INPUTMANAGER->KeyDown(VK_TAB))
-	{
-		// 플레이어 속성 변경
-		if (m_Power == m_MaxPower)
-		{
+		// 플레이어 이동
+		if (INPUTMANAGER->KeyPress(VK_W) && m_Pos.y >= 0)
+			m_Pos.y -= m_Speed * DXUTGetElapsedTime();
+		if (INPUTMANAGER->KeyPress(VK_A) && m_Pos.x >= 0)
+			m_Pos.x -= m_Speed * DXUTGetElapsedTime();
+		if (INPUTMANAGER->KeyPress(VK_S) && m_Pos.y <= WinSizeY)
+			m_Pos.y += m_Speed * DXUTGetElapsedTime();
+		if (INPUTMANAGER->KeyPress(VK_D) && m_Pos.x <= WinSizeX)
+			m_Pos.x += m_Speed * DXUTGetElapsedTime();
 
+		// 플레이어 조작
+		if (INPUTMANAGER->BtnPress(LEFTCLICK))
+		{
+			// 플레이어 공격 설정
+			// (현재 시간) - (마지막 총알 발사 시간) > (딜레이(초 * 1000)) / 공격 속도
+			if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)
+			{
+				b_Fire = true;	// 총알을 발사하고
+				m_FireTime = timeGetTime();	// 마지막 총알 발사 시간에 현재 시간 대입
+			}
 		}
+		if (INPUTMANAGER->BtnDown(RIGHTCLICK))
+		{
+			// 폭탄 발사
+			if (m_Bomb > 0)
+			{
+				b_Bomb = true;
+				m_Bomb--;
+			}
+		}
+		if (INPUTMANAGER->KeyDown(VK_CONTROL))
+		{
+			// 플레이어 속성 변경
+			if (m_Power == m_MaxPower)
+			{
+				b_Change = true;
+				m_Power = 0;
+			}
+		}
+		if (INPUTMANAGER->KeyPress(VK_SHIFT))
+			m_Speed = 250;
+		if (INPUTMANAGER->KeyUp(VK_SHIFT))
+			m_Speed = 500;
 	}
-	if (INPUTMANAGER->KeyPress(VK_SHIFT))
-		m_Speed = 200;
-	if (INPUTMANAGER->KeyUp(VK_SHIFT))
-		m_Speed = 400;
 }
 
 void cPlayer::Render()
@@ -95,8 +105,16 @@ cGameObject* cPlayer::Fire()
 {
 	cGameObject* Temp;
 	POINT Pos = { m_Pos.x + 80, m_Pos.y };
-	Temp = new cBullet(Pos, BULLETP, m_Damage);
+	Temp = new cBullet(Pos, BULLETP, m_Damage + m_Power / 100);
 	b_Fire = false;
+	return Temp;
+}
+
+cGameObject* cPlayer::Bomb()
+{
+	cGameObject* Temp;
+	Temp = new cBomb(POINT{ 0,0 }, TEXTURE);
+	b_Bomb = false;
 	return Temp;
 }
 

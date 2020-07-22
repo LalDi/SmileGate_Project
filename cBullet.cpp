@@ -13,7 +13,10 @@
 cBullet::cBullet(POINT Pos, int tag, int Damage, int Angle, float Speed)
 	:cGameObject(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Bullet", "./Images/Ingame/Ingame_Bullet.png");
+	if (tag == BULLETP)
+		m_Sprite = IMAGEMANAGER->AddImage("BulletP", "./Images/Ingame/Ingame_Bullet_Player.png");
+	if (tag == BULLETE)
+		m_Sprite = IMAGEMANAGER->AddImage("BulletE", "./Images/Ingame/Ingame_Bullet_Enemy.png");
 
 	m_Damage = Damage;
 	m_Angle = Angle;
@@ -32,7 +35,7 @@ void cBullet::Update()
 		b_IsLive = false;
 
 	m_Pos.x += m_Speed * cos(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
-	m_Pos.y -= m_Speed * sin(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
+	m_Pos.y += m_Speed * sin(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
 }
 
 void cBullet::Render()

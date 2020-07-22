@@ -1,5 +1,4 @@
 #pragma once
-// PROTOTYPE
 class cEnemy1 : public cEnemy
 {
 private:
@@ -10,7 +9,6 @@ public:
 	~cEnemy1();
 
 	virtual void Update() override;
-	virtual void Render() override;
 
 	virtual void Attack(list<cGameObject*> *Objects) override;
 };

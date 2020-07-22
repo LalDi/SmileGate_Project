@@ -2,6 +2,7 @@
 class cTitleScene : public cScene
 {
 private:
+	static bool b_IsPlayBgm;
 
 public:
 	cTitleScene();
@@ -12,5 +13,6 @@ public:
 	virtual void Render() override;
 	virtual void Release() override;
 
+	void SetPlayBgm(bool value) { b_IsPlayBgm = value; }
 };
 

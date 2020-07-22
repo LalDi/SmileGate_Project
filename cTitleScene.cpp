@@ -1,5 +1,7 @@
 #include "Framework.h"
 
+bool cTitleScene::b_IsPlayBgm = false;
+
 cTitleScene::cTitleScene()
 {
 }
@@ -16,9 +18,9 @@ void cTitleScene::Init()
 	Background = new cTitleBackground(POINT{ 0, 0 }, TEXTURE);
 	AddObject(Background);
 
-	UI_Temp = new cUI_Logo(POINT{ 820, 210 }, UI);
-	AddObject(UI_Temp);
-	UI_Temp = new cUI_Button_Gamestart(POINT{ 545, 820 }, UI);
+	//UI_Temp = new cUI_Logo(POINT{ 820, 210 }, UI);
+	//AddObject(UI_Temp);
+	UI_Temp = new cUI_Button_Gamestart(POINT{ 545, 820 }, UI, &b_IsPlayBgm);
 	AddObject(UI_Temp);
 	UI_Temp = new cUI_Button_HowToPlay(POINT{ 865, 820 }, UI);
 	AddObject(UI_Temp);
@@ -29,7 +31,14 @@ void cTitleScene::Init()
 	UI_Temp = new cUI_Button_Quit(POINT{ 1525 , 820 }, UI);
 	AddObject(UI_Temp);
 
+	SCENEMANAGER->AddScene("HowToPlay", new cHowToPlayScene());
 	SCENEMANAGER->AddScene("Credit", new cCreditScene());
+
+	if (!b_IsPlayBgm)
+	{
+		SOUNDMANAGER->Play("Title", 1, true);
+		b_IsPlayBgm = true;
+	}
 }
 
 void cTitleScene::Update()

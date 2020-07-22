@@ -3,6 +3,7 @@
 cUI_Gauge::cUI_Gauge(POINT Pos, int tag)
 	:cGameObject(Pos, tag)
 {
+	m_Rect = { 0,0,0,0 };
 }
 
 cUI_Gauge::~cUI_Gauge()
@@ -11,22 +12,29 @@ cUI_Gauge::~cUI_Gauge()
 
 void cUI_Gauge::Update()
 {
+	m_Rect.bottom = m_Sprite->info.Height;
+	m_Rect.right = m_Sprite->info.Width;
+
 	m_Amount = Math::Clamp(m_Amount, 0, 1);
+	m_Rect.left = m_Sprite->info.Width - m_Sprite->info.Width * m_Amount;
 }
 
 void cUI_Gauge::Render()
 {
+	POINT Pos = m_Pos;
+	Pos.x += m_Rect.left;
 	if (b_IsCenter)
 	{
-		m_Sprite_Background->CenterRender(m_Pos);
-		m_Sprite->CenterRender(m_Pos, POINT{ (LONG)m_Amount, 1 }, 0);
+		if (b_LeftToRight)
+			m_Sprite->CenterRender(Pos, m_Rect, POINT{ (LONG)m_Scale, (LONG)m_Scale });
+		else
+			m_Sprite->CenterRender(m_Pos, m_Rect, POINT{ (LONG)m_Scale, (LONG)m_Scale });
 	}
 	else
 	{
-		POINT Temp;
-		m_Sprite_Background->Render(m_Pos);
-		Temp.x = m_Pos.x + (m_Sprite_Background->info.Width / 2) - (m_Sprite->info.Width);
-		Temp.y = m_Pos.y + (m_Sprite_Background->info.Height / 2) - (m_Sprite->info.Height);
-		m_Sprite->Render(Temp, POINT{ (LONG)m_Amount, 1 }, 0);
+		if (b_LeftToRight)
+			m_Sprite->Render(Pos, m_Rect, POINT{ (LONG)m_Scale, (LONG)m_Scale });
+		else
+			m_Sprite->Render(m_Pos, m_Rect, POINT{ (LONG)m_Scale, (LONG)m_Scale });
 	}
 }

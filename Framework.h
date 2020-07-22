@@ -42,6 +42,11 @@ using namespace Math;
 #include "cUI_Button_Credit.h"
 #include "cUI_Button_Quit.h"
 
+// 게임방법씬 오브젝트
+#include "cHTPBackground.h"
+#include "cUI_Button_HTP_Next.h"
+#include "cUI_Button_HTP_Prev.h"
+
 // 크레딧씬 오브젝트
 #include "cCreditBackground.h"
 #include "cUI_Button_Back.h"
@@ -54,6 +59,10 @@ using namespace Math;
 
 #include "cEnemy.h"
 #include "cEnemy1.h"
+#include "cEnemy2.h"
+#include "cEnemy3.h"
+#include "cEnemy4.h"
+#include "cEnemy5.h"
 
 #include "cBoss.h"
 #include "cBoss_TheHierophant.h"
@@ -61,6 +70,7 @@ using namespace Math;
 #include "cBoss_TheMagician.h"
 
 #include "cBullet.h"
+#include "cBomb.h"
 
 #include "cItem.h"
 #include "cItem_Hp.h"
@@ -72,7 +82,14 @@ using namespace Math;
 #include "cUI_PlayerHp.h"
 #include "cUI_Bomb.h"
 #include "cUI_Taro.h"
+#include "cUI_Gauge_Power.h"
 #include "cUI_Score.h"
+#include "cUI_Gauge_BossHp.h"
+#include "cUI_Warning.h"
+#include "cUI_ChangeCard.h"
+#include "cUI_Button_SeleteCard1.h"
+#include "cUI_Button_SeleteCard2.h"
+#include "cUI_Button_SeleteCard3.h"
 
 #include "cUI_Pause_Background.h"
 #include "cUI_Button_Pause_Resume.h"
@@ -80,15 +97,20 @@ using namespace Math;
 #include "cUI_Button_Pause_Title.h"
 
 #include "cUI_Gameover_Background.h"
-#include "cUI_Button_Gameover_Restart.h"
-#include "cUI_Button_Gameover_Title.h"
+#include "cUI_Button_Ingame_Restart.h"
+#include "cUI_Button_Ingame_Title.h"
+
+#include "cUI_Clear_Background.h"
+#include "cUI_Clear_Score.h"
 
 
 // 게임 씬
 #include "cScene.h"
 #include "cTitleScene.h"
+#include "cHowToPlayScene.h"
 #include "cCreditScene.h"
 #include "cIngameScene.h"
+
 
 // 게임 매니저
 #include "cImageManager.h"
@@ -122,6 +144,7 @@ using namespace Math;
 #define _The_Hierophant		EnemyState::The_Hierophant
 #define _The_Hermit			EnemyState::The_Hermit
 #define _The_Magician		EnemyState::The_Magician
+#define _The_Fool			EnemyState::The_Fool
 
 #define IMAGEMANAGER cGameManager::GetImageManager()
 #define SCENEMANAGER cGameManager::GetSceneManager()

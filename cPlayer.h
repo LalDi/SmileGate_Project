@@ -35,7 +35,11 @@ private:
 
 	bool b_GracePeriod;	// 플레이어 무적
 
-	bool b_Fire = false;// 플레이어 공격
+	bool b_Fire = false;	// 플레이어 공격
+	bool b_Bomb = false;	// 플레이어 폭탄
+	bool b_Change = false;	// 플레이어 카드 변경
+
+	bool b_PlayerControl = true;	//	플레이어 조작 권한
 
 	time_t m_FireTime;
 
@@ -47,10 +51,12 @@ public:
 	virtual void Render() override;
 
 	cGameObject* Fire();
+	cGameObject* Bomb();
 
 	void SetPlayerState();
 
 	int GetDamage() { return m_Damage; }
+	int GetBombDamage() { return m_BombDamage; }
 
 	int GetMaxHp() { return m_MaxHp; }
 
@@ -64,7 +70,7 @@ public:
 
 	int GetPower() { return m_Power; }
 	int GetMaxPower() { return m_MaxPower; }
-	void SetPower(int value) { m_Power = value <= m_Power ? value : m_Power; }
+	void SetPower(int value) { m_Power = value <= m_MaxPower ? value : m_MaxPower; }
 
 	bool GetGracePeriod() { return b_GracePeriod; }
 	void SetGracePeriod(bool value) { b_GracePeriod = value; }
@@ -73,4 +79,10 @@ public:
 	void SetPlayerState(PlayerState value) { m_PlayerState = value; SetPlayerState(); }
 
 	bool GetIsFire() { return b_Fire; }
+	bool GetIsBomb() { return b_Bomb; }
+	bool GetIsChange() { return b_Change; }
+	void SetIsChange(bool value) { b_Change = value; }
+
+	bool GetPlayerControl() { return b_PlayerControl; }
+	void SetPlayerControl(bool value) { b_PlayerControl = value; }
 };

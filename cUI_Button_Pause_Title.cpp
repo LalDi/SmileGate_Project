@@ -3,7 +3,7 @@
 cUI_Button_Pause_Title::cUI_Button_Pause_Title(POINT Pos, int tag, bool* Pause)
 	:cUI_Button(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Ingame_Pause_Title", "./Images/Ingame/UI/Button/Ingame_Button_Title.png");
+	m_Sprite = IMAGEMANAGER->AddImage("Ingame_Title", "./Images/Ingame/UI/Button/Ingame_Button_Title.png");
 	b_IsPause = Pause;
 	b_IsCenter = true;
 	b_IsOnMouseUp = true;

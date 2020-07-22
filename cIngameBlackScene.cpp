@@ -3,7 +3,7 @@
 cIngameBlackScene::cIngameBlackScene(POINT Pos, int tag)
 	:cGameObject(Pos, tag)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Ingame_BalckScene", "./Images/Ingame_BlackScene.png");
+	m_Sprite = IMAGEMANAGER->AddImage("Ingame_BlackScene", "./Images/Ingame_BlackScene.png");
 	b_GoLeft = Pos.x == WinSizeX ? true : false;
 }
 
@@ -24,7 +24,7 @@ void cIngameBlackScene::Update()
 			m_Pos.x += 5;
 		}
 	}
-	
+
 	if (b_Disappear)
 	{
 		if (b_GoLeft)

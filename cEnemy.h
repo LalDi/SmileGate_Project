@@ -2,15 +2,17 @@
 /**
 	@brief	에너미의 속성을 지정하는 열거값
 
-	@param	The_Hierophant		- 교황	/ Wheel_of_Fortune에 약함.	Judgment에 강함.
-	@param	The_Hermit			- 은둔자	/ The_Sun에 약함.			Wheel_of_Fortune에 강함.
-	@param	The_Magician		- 마법사	/ Judgment에 약함.			The_Sun에 강함.
+	@param	The_Hierophant	- 교황	/ Wheel_of_Fortune에 약함.	Judgment에 강함.
+	@param	The_Hermit		- 은둔자	/ The_Sun에 약함.			Wheel_of_Fortune에 강함.
+	@param	The_Magician	- 마법사	/ Judgment에 약함.			The_Sun에 강함.
+	@param	The_Fool		- 광대	/ 상성관계 없음.
 */
 enum class EnemyState
 {
 	The_Hierophant,	// - 교황 / Wheel_of_Fortune에 약함. Judgment에 강함.
 	The_Hermit,		// - 은둔자 / The_Sun에 약함. Wheel_of_Fortune에 강함.
-	The_Magician	// - 마법사 / Judgment에 약함. The_Sun에 강함.
+	The_Magician,	// - 마법사 / Judgment에 약함. The_Sun에 강함.
+	The_Fool		// - 광대 / 무상성 
 };
 
 /**

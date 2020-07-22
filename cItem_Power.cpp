@@ -6,7 +6,7 @@ cItem_Power::cItem_Power(POINT Pos, int tag, cPlayer* Player, int* Score)
 	m_Sprite = IMAGEMANAGER->AddImage("Item_Power", "./Images/Ingame/Item/Ingame_Power.png");
 
 	m_PlusScore = 500;
-	m_PlusPower = NULL;
+	m_PlusPower = 65;
 }
 
 cItem_Power::~cItem_Power()
