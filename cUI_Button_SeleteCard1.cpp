@@ -23,6 +23,6 @@ void cUI_Button_SeleteCard1::ClickButton()
 {
 	m_Player->SetPlayerState(PlayerState::Wheel_of_Fortune);
 	m_Player->SetIsChange(false);
-	*b_IsPause = true;
+	*b_IsPause = false;
 	b_IsLive = false;
 }

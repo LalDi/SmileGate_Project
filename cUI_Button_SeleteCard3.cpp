@@ -23,6 +23,6 @@ void cUI_Button_SeleteCard3::ClickButton()
 {
 	m_Player->SetPlayerState(PlayerState::The_Sun);
 	m_Player->SetIsChange(false);
-	*b_IsPause = true;
+	*b_IsPause = false;
 	b_IsLive = false;
 }

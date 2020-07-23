@@ -41,16 +41,22 @@ void cBoss_TheHierophant::Update()
 
 void cBoss_TheHierophant::Attack(list<cGameObject*> *Objects)
 {
-	static int Temp;
-	if (!b_Attacking)
-		Temp = Random(1, 3);
+	static int Temp;	// static으로 변수를 선언하여 함수가 종료되어도 메모리에 남게 한다.
+	if (!b_Attacking)	// 공격중이 이니라면,
+		Temp = Random(1, 7);	// static 변수에 랜덤한 값을 넣는다.
 		
 	switch (Temp)
 	{
 	case 1:	b_Attacking = true;	Attack1(Objects);	break;
 	case 2:	b_Attacking = true;	Attack2(Objects);	break;
 	case 3:	b_Attacking = true;	Attack3(Objects);	break;
+	case 4:	b_Attacking = true;	Attack4(Objects);	break;
+	case 5:	b_Attacking = true;	Attack5(Objects);	break;
+	case 6:	b_Attacking = true;	Attack6(Objects);	break;
+	case 7:	b_Attacking = true;	Attack7(Objects);	break;
 	}
+
+	//b_Attacking = true;	Attack7(Objects);
 }
 
 void cBoss_TheHierophant::Attack1(list<cGameObject*> *Objects)
@@ -79,7 +85,7 @@ void cBoss_TheHierophant::Attack1(list<cGameObject*> *Objects)
 	}
 	b_Attack = false;
 	b_Attacking = false;
-	m_AttackTime = timeGetTime();	// 마지막 공격 시간에 현재 시간 대입
+	m_AttackTime = timeGetTime();
 }
 
 void cBoss_TheHierophant::Attack2(list<cGameObject*> *Objects)
@@ -99,7 +105,7 @@ void cBoss_TheHierophant::Attack2(list<cGameObject*> *Objects)
 		AttackCount = 0;
 		b_Attack = false;
 		b_Attacking = false;
-		m_AttackTime = timeGetTime();	// 마지막 공격 시간에 현재 시간 대입
+		m_AttackTime = timeGetTime();
 	}
 }
 
@@ -127,6 +133,200 @@ void cBoss_TheHierophant::Attack3(list<cGameObject*> *Objects)
 		AttackCount = 0;
 		b_Attack = false;
 		b_Attacking = false;
-		m_AttackTime = timeGetTime();	// 마지막 공격 시간에 현재 시간 대입
+		m_AttackTime = timeGetTime();
+	}
+}
+
+void cBoss_TheHierophant::Attack4(list<cGameObject*>* Objects)
+{
+	int BulletNum = 20;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	POINT Vec = { m_Player->GetPos().x - m_Pos.x - 50, m_Player->GetPos().y - m_Pos.y - 120 };
+	int Angle = D3DXToDegree(atan2(Vec.y, Vec.x));
+
+	if (timeGetTime() - AttackTime >= 100)
+	{
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + 160, 1250));
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + 180, 1250));
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + 200, 1250));
+		AttackTime = timeGetTime();
+		AttackCount++;
+	}
+
+	if (AttackCount == BulletNum)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime = timeGetTime();
+	}
+}
+
+void cBoss_TheHierophant::Attack5(list<cGameObject*>* Objects)
+{
+	int BulletNum = 10;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	if (timeGetTime() - AttackTime >= 50)
+	{
+		for (int i = 0; i < BulletNum; i++)
+		{
+			(*Objects).push_back(Fire(m_Pos.x - 70, m_Pos.y - 130, AttackCount + (360 / BulletNum) * i, 750));
+		}
+		AttackCount += 8;
+		AttackTime = timeGetTime();
+	}
+
+	if (AttackCount > 180)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime = timeGetTime();
+	}
+}
+
+void cBoss_TheHierophant::Attack6(list<cGameObject*>* Objects)
+{
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	if (timeGetTime() - AttackTime >= 100)
+	{
+		switch (AttackCount)
+		{
+		case 0:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, 0, 800));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 1:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1000));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1000));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 2:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1300));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1300));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 3:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1600));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1600));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 4:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1900));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1900));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 5:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 2100));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 2100));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 6:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 2400));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 2400));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 7:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 2700));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 2700));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 8:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3000));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3000));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 9:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3300));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3300));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 10:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3600));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3600));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 11:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3900));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3900));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		case 12:
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 4200));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 4200));
+			AttackTime = timeGetTime();
+			AttackCount++;
+			break;
+		default:
+			AttackCount = 0;
+			b_Attack = false;
+			b_Attacking = false;
+			m_AttackTime = timeGetTime();
+			break;
+		}
+	}
+}
+
+void cBoss_TheHierophant::Attack7(list<cGameObject*>* Objects)
+{
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	if (timeGetTime() - AttackTime >= 1000)
+	{
+		for (int i = 0; i < 360; i++)
+		{
+			switch (AttackCount)
+			{
+			case 0:
+				if (!(i >= 10 && i < 30))
+					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
+				break;
+			case 1:
+				if (!(i >= 340 || i <= 5))
+					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
+				break;
+			case 2:
+				if (!(i >= 0 && i <= 30))
+					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
+				break;
+			case 3:
+				if (!(i >= 320 && i <= 350))
+					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
+				break;
+			case 4:
+				if (!(i >= 345 || i <= 15))
+					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
+				break;
+			}
+		}
+			AttackCount++;
+			AttackTime = timeGetTime();
+	}
+
+	if (AttackCount == 5)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime = timeGetTime();
 	}
 }

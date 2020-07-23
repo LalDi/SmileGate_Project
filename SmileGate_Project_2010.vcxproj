@@ -419,6 +419,7 @@
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cTexture.h" />
+    <ClInclude Include="cTimer.h" />
     <ClInclude Include="cTitleBackground.h" />
     <ClInclude Include="cTitleScene.h" />
     <ClInclude Include="cUI_Background.h" />
@@ -491,6 +492,7 @@
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cTexture.cpp" />
+    <ClCompile Include="cTimer.cpp" />
     <ClCompile Include="cTitleBackground.cpp" />
     <ClCompile Include="cTitleScene.cpp" />
     <ClCompile Include="cUI_Background.cpp" />

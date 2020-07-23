@@ -2,7 +2,6 @@
 
 cTimer::cTimer()
 {
-	Init();
 }
 
 cTimer::~cTimer()

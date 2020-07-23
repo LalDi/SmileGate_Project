@@ -446,6 +446,9 @@
     <ClCompile Include="cUI_Button_SeleteCard3.cpp">
       <Filter>Object\Ingame\UI\Button\ChangeCard</Filter>
     </ClCompile>
+    <ClCompile Include="cTimer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -667,6 +670,9 @@
     </ClInclude>
     <ClInclude Include="cUI_Button_SeleteCard2.h">
       <Filter>Object\Ingame\UI\Button\ChangeCard</Filter>
+    </ClInclude>
+    <ClInclude Include="cTimer.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

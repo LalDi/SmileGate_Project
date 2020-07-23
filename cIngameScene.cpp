@@ -20,24 +20,28 @@ void cIngameScene::Init()
 
 	b_Time = true;
 
+	// 변수 초기화
 	m_Player = nullptr;
 	m_Boss = nullptr;
 	m_NowStatus = Status::Playing;
 	m_NowStage = Stage::Stage1;
-	m_PlayTime = timeGetTime();
-	m_MobSpawn = timeGetTime();
-	m_MobDelay = 850;
+	m_PlayTime.Init();
+	m_GPTime.Init();
+	m_MobSpawn.Init();
+	m_MobDelay = 0.85f;
 	m_DelayBoss = 120;
-	m_GPTime = 0;
 	m_Score = 0;
 	b_OnBoss = false;
 
+	// 배경 오브젝트 생성
 	Background = new cIngameBackground(POINT{ 0, 0 }, TEXTURE);
 	AddObject(Background);
 
+	// 플레이어 생성
 	m_Player = new cPlayer(POINT{ 300, WinSizeY / 2 }, PLAYER);
 	AddObject(m_Player);
 
+	// 기본 UI 생성
 	UI_Temp = new cUI_Background(POINT{ 20, 10 }, UI);
 	AddObject(UI_Temp);
 	UI_Temp = new cUI_Character(POINT{ 50, 40 }, UI, m_Player);
@@ -53,11 +57,17 @@ void cIngameScene::Init()
 	UI_Temp = new cUI_Score(POINT{ 1400, 30 }, UI, &m_Score);
 	AddObject(UI_Temp);
 
+	// 배경음악 재생
 	SOUNDMANAGER->Play("Stage1", 1, true);
 }
 
 void cIngameScene::Update()
 {
+	// 타이머 갱신
+	m_PlayTime.Update();
+	m_MobSpawn.Update();
+	m_GPTime.Update();
+
 	// 보스 상호작용
 	if (b_OnBoss)
 	{
@@ -84,10 +94,10 @@ void cIngameScene::Update()
 	}
 
 	// 게임이 진행중일 때 프로세스
-	if (m_NowStatus == Status::Playing && b_Time == true)
+	if (m_NowStatus == Status::Playing && b_Time)
 	{
 		// 마지막으로 에너미가 스폰된 후, 정해진 주기가 지났고, 보스전이 아니라면
-		if (timeGetTime() - m_MobSpawn > m_MobDelay && !b_OnBoss)
+		if (m_MobSpawn.Time(m_MobDelay) && !b_OnBoss)
 		{
 			POINT Pos = { WinSizeX, Math::Random(0, WinSizeY) };
 			POINT Vec = { m_Player->GetPos().x - Pos.x, m_Player->GetPos().y - Pos.y };
@@ -129,21 +139,25 @@ void cIngameScene::Update()
 				break;
 			}
 
-			m_MobSpawn = timeGetTime();
+			// 몹 스폰 타이머 리셋
+			m_MobSpawn.Reset();
 		}
 
 		// 플레이타임이 일정시간 지나서 보스가 스폰된다
-		if (timeGetTime() - m_PlayTime >= (m_DelayBoss * 1000) && !b_OnBoss)
+		if (m_PlayTime.Time(m_DelayBoss) && !b_OnBoss)
 		{
-			b_OnBoss = true;
+			b_OnBoss = true;	// 보스전 활성화
+			
+			// 게임 내에 존재하는 모든 적과 총알 삭제
 			for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
 			{
 				if ((*iter)->m_Tag == BULLETE || (*iter)->m_Tag == ENEMY)
 					(*iter)->b_IsLive = false;
 			}
 
-			m_NowStatus = Status::Event;
+			m_NowStatus = Status::Event;	// 이벤트 활성화
 
+			// 보스 생성
 			m_Boss = new cBoss_TheHierophant(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
 			AddObject(m_Boss);
 			AddObject(new cUI_Gauge_BossHp(POINT{ WinSizeX / 2, 100 }, UI, m_Boss));
@@ -153,11 +167,11 @@ void cIngameScene::Update()
 		// 플레이어 상호작용
 		if (m_Player)
 		{
-			if (m_Player->GetIsFire())					// 플레이어가 총알을 발사하는 타이밍에
-				AddObject(m_Player->Fire());			// 플레이어의 총알을 오브젝트에 추가한다.
-			if (m_Player->GetIsBomb())					// 플레이어가 폭탄을 발사하는 타이밍에
+			if (m_Player->GetIsFire())						// 플레이어가 총알을 발사하는 타이밍에
+				AddObject(m_Player->Fire());				// 플레이어의 총알을 오브젝트에 추가한다.
+			if (m_Player->GetIsBomb())						// 플레이어가 폭탄을 발사하는 타이밍에
 			{
-				AddObject(m_Player->Bomb());			// 플레이어의 폭탄을 오브젝트에 추가하고
+				AddObject(m_Player->Bomb());				// 플레이어의 폭탄을 오브젝트에 추가하고
 
 				// 모든 적들에게 폭탄 데미지를 입힌다.
 				for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
@@ -166,24 +180,26 @@ void cIngameScene::Update()
 						((cEnemy*)(*iter))->MinusHp(m_Player->GetBombDamage());
 					if ((*iter)->m_Tag == BOSS)
 						((cBoss*)(*iter))->MinusHp(m_Player->GetBombDamage());
+					if ((*iter)->m_Tag == BULLETE)
+						(*iter)->b_IsLive = false;
 				}
 			}
-			if (m_Player->GetIsChange())				// 플레이어가 카드를 변경하는 타이밍에
+			if (m_Player->GetIsChange() && !b_ChangeCard)	// 플레이어가 카드를 변경하는 타이밍에
 			{
-				OnChangeCard();							// 카드 변경 UI를 생성
-				b_Time = false;							// 씬의 시간을 정지
+				OnChangeCard();								// 카드 변경 UI를 생성
+				b_ChangeCard = true;
 			}
 
-			if (m_Player->GetGracePeriod())				// 플레이어가 무적시간일 때
+			if (m_Player->GetGracePeriod())					// 플레이어가 무적시간일 때
 			{
-				if (timeGetTime() - m_GPTime >= 2000)	// 플레이어의 무적 시간이 끝난다면
-					m_Player->SetGracePeriod(false);	// 플레이어의 무적을 해제시킨다.
+				if (m_GPTime.Time(2))						// 플레이어의 무적 시간이 끝난다면
+					m_Player->SetGracePeriod(false);		// 플레이어의 무적을 해제시킨다.
 			}
 
-			if (m_Player->GetHp() <= 0)					// 플레이어의 체력이 0 이하일 때
+			if (m_Player->GetHp() <= 0)						// 플레이어의 체력이 0 이하일 때
 			{
-				OnGameover();							// Gameover 상태 활성화
-				m_Player->b_IsLive = false;				// 플레이어 오브젝트 제거
+				OnGameover();								// Gameover 상태 활성화
+				m_Player->b_IsLive = false;					// 플레이어 오브젝트 제거
 			}
 		}
 
@@ -192,7 +208,7 @@ void cIngameScene::Update()
 		{
 			// 보스의 공격 타이밍일 때
 			if (m_Boss->GetAttack())
-				m_Boss->Attack(&m_Objects);				// 보스의 공격 함수 실행
+				m_Boss->Attack(&m_Objects);					// 보스의 공격 함수 실행
 
 			// 보스가 플레이어랑 부딪힌 경우
 			if (RectCrashCheck(m_Player->GetRect(), m_Boss->GetRect()))
@@ -200,17 +216,17 @@ void cIngameScene::Update()
 				// 무적시간이 아니라면
 				if (!m_Player->GetGracePeriod())
 				{
-					m_Player->MinusHp(1);				// 체력 감소
-					m_Player->SetGracePeriod(true);		// 무적 활성화
-					m_GPTime = timeGetTime();
+					m_Player->MinusHp(1);					// 체력 감소
+					m_Player->SetGracePeriod(true);			// 무적 활성화
+					m_GPTime.Reset();						// 무적 타이머 초기화
 				}
 			}
 
-			if (m_Boss->GetHp() <= 0)					// 보스의 체력이 0 이하일 때
+			if (m_Boss->GetHp() <= 0)						// 보스의 체력이 0 이하일 때
 			{
 				m_NowStatus = Status::Event;
-				m_Score += m_Boss->GetScore();			// 점수 추가
-				m_Boss->SetControl(false);				// 보스의 행동 제한
+				m_Score += m_Boss->GetScore();				// 점수 추가
+				m_Boss->SetControl(false);					// 보스의 행동 제한
 
 				// 모든 적 총알과 적 에너미를 제거
 				for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
@@ -308,7 +324,7 @@ void cIngameScene::Update()
 					{
 						m_Player->MinusHp(1);			// 체력 감소
 						m_Player->SetGracePeriod(true);	// 무적 활성화
-						m_GPTime = timeGetTime();
+						m_GPTime.Reset();				// 무적 타이머 초기화
 					}
 					(*iter)->b_IsLive = false;	// 총알 삭제
 				}
@@ -325,7 +341,7 @@ void cIngameScene::Update()
 					{
 						m_Player->MinusHp(1);			// 체력 감소
 						m_Player->SetGracePeriod(true);	// 무적 활성화
-						m_GPTime = timeGetTime();
+						m_GPTime.Reset();				// 무적 타이머 초기화
 					}
 					(*iter)->b_IsLive = false;	// 에너미 삭제
 				}
@@ -359,7 +375,7 @@ void cIngameScene::Update()
 	UpdateAllObject();
 
 
-	// ESC를 누르고, Pause상태가 아닌 경우
+	// ESC를 누르고, Pause창을 띄울 수 있는 상태인 경우
 	if (INPUTMANAGER->KeyDown(VK_ESCAPE) && m_NowStatus != Status::Pause && m_NowStatus != Status::GameOver)
 		OnPause();		// Pause 활성화
 
@@ -367,16 +383,28 @@ void cIngameScene::Update()
 	if (!b_Pause && m_NowStatus == Status::Pause)
 	{
 		m_NowStatus = m_PauseStatus;	// Pause상태가 되기 전의 상태로 복구
-		m_PlayTime += timeGetTime() - m_PauseTime;
+		// 타이머 재개
+		m_PlayTime.Resume();
+		m_MobSpawn.Resume();
+		m_GPTime.Resume();
 	}
 
-	if (m_NowStatus == Status::Pause || m_NowStatus == Status::GameOver)
+	if (m_NowStatus == Status::Pause || m_NowStatus == Status::GameOver || b_ChangeCard)
 	{
-		m_PlayTime += DXUTGetElapsedTime();
-		b_Time = false;	// Pause상태나 Gameover상태인 경우 씬의 시간을 정지시키고,
+		b_Time = false;	// Pause상태나 Gameover상태인 경우, 플레이어가 카드를 바꾸는 경우엔 씬의 시간을 정지시키고,
+		// 모든 타이머를 정지시킨다.
+		m_PlayTime.Pause();
+		m_MobSpawn.Pause();
+		m_GPTime.Pause();
 	}
 	else
-		b_Time = true;	// 아니라면 활성화 시킨다.
+	{
+		b_Time = true;	// 그 외에는 시간을 활성화 시킨다.
+		// 타이머도 재개시킨다
+		m_PlayTime.Resume();
+		m_MobSpawn.Resume();
+		m_GPTime.Resume();
+	}
 
 
 	// DEBUG Mode
@@ -420,6 +448,10 @@ void cIngameScene::Update()
 		{
 			m_Player->SetPower(m_Player->GetPower() + 100);
 		}
+		if (INPUTMANAGER->KeyDown(VK_F9))
+		{
+			m_DelayBoss = 0;
+		}
 		if (INPUTMANAGER->KeyDown(VK_F10))
 		{
 			SCENEMANAGER->ChangeScene("Title");
@@ -438,7 +470,6 @@ void cIngameScene::Release()
 	RemoveAllObject();
 	SOUNDMANAGER->StopAll();
 	m_Player = nullptr;
-	m_GPTime = 0;
 	m_Score = 0;
 }
 
@@ -480,6 +511,7 @@ void cIngameScene::OnPause()
 	m_NowStatus = Status::Pause;
 	b_Pause = true;
 
+	// Pause상태의 UI 생성
 	Temp = new cUI_Pause_Background(POINT{ 0, 0 }, UI, &b_Pause);
 	AddObject(Temp);
 	Temp = new cUI_Button_Pause_Resume(POINT{ WinSizeX / 2, 350 }, UI, &b_Pause);
@@ -502,6 +534,7 @@ void cIngameScene::OnGameover()
 	// 현재 씬의 상태를 GameOver로 전환
 	m_NowStatus = Status::GameOver;
 
+	// GameOver상태의 UI 생성
 	Temp = new cUI_Gameover_Background(POINT{ 0, 0 }, UI, m_Score);
 	AddObject(Temp);
 	Temp = new cUI_Button_Ingame_Restart(POINT{ WinSizeX / 2, 600 }, UI);
@@ -519,13 +552,19 @@ void cIngameScene::OnChangeCard()
 {
 	cGameObject* Temp;
 
+	// 모든 타이머 중단
+	m_PlayTime.Pause();
+	m_MobSpawn.Pause();
+	m_GPTime.Pause();
+
+	// 카드 교체 상태의 UI를 생성
 	Temp = new cUI_ChangeCard(POINT{ 0, 0 }, UI, m_Player);
 	AddObject(Temp);
-	Temp = new cUI_Button_SeleteCard1(POINT{ WinSizeX / 2 - 300, WinSizeY / 2 }, UI, m_Player, &b_Time);
+	Temp = new cUI_Button_SeleteCard1(POINT{ WinSizeX / 2 - 300, WinSizeY / 2 }, UI, m_Player, &b_ChangeCard);
 	AddObject(Temp);
-	Temp = new cUI_Button_SeleteCard2(POINT{ WinSizeX / 2 , WinSizeY / 2 }, UI, m_Player, &b_Time);
+	Temp = new cUI_Button_SeleteCard2(POINT{ WinSizeX / 2 , WinSizeY / 2 }, UI, m_Player, &b_ChangeCard);
 	AddObject(Temp);
-	Temp = new cUI_Button_SeleteCard3(POINT{ WinSizeX / 2 + 300, WinSizeY / 2 }, UI, m_Player, &b_Time);
+	Temp = new cUI_Button_SeleteCard3(POINT{ WinSizeX / 2 + 300, WinSizeY / 2 }, UI, m_Player, &b_ChangeCard);
 	AddObject(Temp);
 }
 

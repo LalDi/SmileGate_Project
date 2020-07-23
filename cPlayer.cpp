@@ -27,7 +27,7 @@ cPlayer::cPlayer(POINT Pos, int tag)
 
 	m_FireTime = timeGetTime();
 
-	//m_Scale = 0.7f;
+	b_GracePeriod = false;
 }
 
 cPlayer::~cPlayer()
@@ -37,6 +37,12 @@ cPlayer::~cPlayer()
 void cPlayer::Update()
 {
 	SetRect();	// Rect값 설정
+
+	// 플레이어 충돌 판정 완화
+	m_Rect.left + 5;
+	m_Rect.right - 5;
+	m_Rect.top + 20;
+	m_Rect.bottom - 10;
 
 	// 플레이어 조작
 	if (b_PlayerControl)

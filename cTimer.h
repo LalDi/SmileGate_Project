@@ -20,7 +20,10 @@ public:
 	void Resume();
 	void Reset();
 
+	bool GetPause() { return b_IsPause; }
+
 	DWORD Time() { return m_NowTime; }
-	bool Time(float Time) { return m_NowTime >= Time * 1000; }
+	bool Time(float Time) { return m_NowTime >= (Time * 1000.f); }
+	bool Time(int Time) { return m_NowTime >= (Time * 1000); }
 };
 
