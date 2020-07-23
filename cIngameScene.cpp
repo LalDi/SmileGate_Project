@@ -351,11 +351,6 @@ void cIngameScene::Update()
 				if (((cEnemy*)(*iter))->GetIsFire())
 					((cEnemy*)(*iter))->Attack(&m_Objects);	// 총알의 오브젝트를 에너미에 추가한다.
 			}
-
-			if ((*iter)->m_Tag == BOSS)
-			{
-
-			}
 		}
 	}
 
@@ -524,8 +519,8 @@ void cIngameScene::OnChangeCard()
 {
 	cGameObject* Temp;
 
-	//Temp = new cUI_ChangeCard(POINT{ 0, 0 }, UI);
-	//AddObject(Temp);
+	Temp = new cUI_ChangeCard(POINT{ 0, 0 }, UI, m_Player);
+	AddObject(Temp);
 	Temp = new cUI_Button_SeleteCard1(POINT{ WinSizeX / 2 - 300, WinSizeY / 2 }, UI, m_Player, &b_Time);
 	AddObject(Temp);
 	Temp = new cUI_Button_SeleteCard2(POINT{ WinSizeX / 2 , WinSizeY / 2 }, UI, m_Player, &b_Time);

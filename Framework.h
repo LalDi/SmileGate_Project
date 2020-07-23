@@ -20,6 +20,7 @@
 #pragma comment(lib, "dsound.lib")
 
 #include "cUtility.h"
+#include "cTimer.h"
 
 // 네임스페이스 생략
 using namespace std;
