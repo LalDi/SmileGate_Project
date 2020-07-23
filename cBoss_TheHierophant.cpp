@@ -68,14 +68,14 @@ void cBoss_TheHierophant::Attack1(list<cGameObject*> *Objects)
 
 	for (int i = 0; i < Temp; i++)
 	{
-		Temp = Random(1, 4);
+		int Temp2 = Random(1, 4);
 		Pos.x = m_Pos.x + Random(-300, 300);
 		Pos.y = m_Pos.y + Random(-400, 400);
 
 		Vec = { m_Player->GetPos().x - Pos.x, m_Player->GetPos().y - Pos.y };
 		Angle = D3DXToDegree(atan2(Vec.y, Vec.x));
 
-		switch (Temp)
+		switch (Temp2)
 		{
 		case 1: (*Objects).push_back(new cEnemy1(Pos, ENEMY, Angle,		EnemyState::The_Hierophant));	break;
 		case 2:	(*Objects).push_back(new cEnemy2(Pos, ENEMY, m_Player,	EnemyState::The_Hierophant));	break;
