@@ -28,7 +28,7 @@ protected:
 	int m_GiveScore;
 	EnemyState m_EnemyState;
 
-	time_t m_FireTime;
+	cTimer m_FireTime;
 	bool b_Fire = false;
 
 public:
@@ -41,6 +41,7 @@ public:
 	cGameObject* Fire(int Angle = 0, float Speed = 1500);	// 에너미가 발사하는 총알의 데이터를 반환하는 함수
 
 	bool CheckOutMap();
+	void Pause(bool Pause);
 
 	/**
 		@fn			Attack(list<cGameObject*>*)

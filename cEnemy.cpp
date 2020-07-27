@@ -11,6 +11,8 @@
 cEnemy::cEnemy(POINT Pos, int tag)
 	:cGameObject(Pos, tag)
 {
+	m_FireTime.Init();
+	b_Fire = true;
 }
 
 cEnemy::~cEnemy()
@@ -20,11 +22,12 @@ cEnemy::~cEnemy()
 void cEnemy::Update()
 {
 	SetRect();
+	m_FireTime.Update();
 
-	if (timeGetTime() - m_FireTime > 1000 / m_AttackSpeed)
+	if (m_FireTime.Time(1.f / m_AttackSpeed))
 	{
 		b_Fire = true;
-		m_FireTime = timeGetTime();
+		m_FireTime.Reset();
 	}
 	if (CheckOutMap())
 	{
@@ -60,4 +63,12 @@ bool cEnemy::CheckOutMap()
 	y = m_Sprite->info.Height;
 	temp = m_Pos.x < -x || m_Pos.x > WinSizeX + x || m_Pos.y < -y || m_Pos.y > WinSizeY + y;
 	return temp;
+}
+
+void cEnemy::Pause(bool Pause)
+{
+	if (Pause)
+		m_FireTime.Pause();
+	else
+		m_FireTime.Resume();
 }

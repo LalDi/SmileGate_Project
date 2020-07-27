@@ -22,8 +22,8 @@ cEnemy5::cEnemy5(POINT Pos, int tag, int Angle, EnemyState EnemyState)
 
 	m_MaxHp = 10;
 	m_Hp = m_MaxHp;
-	m_Speed = 1450;
-	m_AttackSpeed = 0.5f;
+	m_Speed = 1550;
+	m_AttackSpeed = 1;
 	m_GiveScore = 500;
 	m_Angle = Angle;
 }

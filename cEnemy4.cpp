@@ -46,4 +46,7 @@ void cEnemy4::Attack(list<cGameObject*>* Objects)
 	{
 		(*Objects).push_back(Fire((360 / m_MaxBullet) * i, 1000));
 	}
+	SOUNDMANAGER->Play("ShootE", 1);
+	SOUNDMANAGER->Play("ShootE", 1);
+	SOUNDMANAGER->Play("ShootE", 1);
 }

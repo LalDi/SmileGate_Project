@@ -11,7 +11,7 @@ cTimer::~cTimer()
 void cTimer::Init()
 {
 	m_StartTime = timeGetTime();
-	m_NowTime = m_StartTime;
+	m_NowTime = timeGetTime() - m_StartTime;
 	m_ResumeTime = 0;
 	m_PauseTime = 0;
 	b_IsPause = false;

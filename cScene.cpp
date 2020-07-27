@@ -35,6 +35,7 @@ void cScene::RemoveObject(cGameObject* p_pObject)
 		if ((*iter) == p_pObject)
 		{
 			m_Objects.erase(iter);
+			delete(&iter);
 			break;
 		}
 	}

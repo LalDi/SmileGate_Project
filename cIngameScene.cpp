@@ -28,13 +28,13 @@ void cIngameScene::Init()
 	m_PlayTime.Init();
 	m_GPTime.Init();
 	m_MobSpawn.Init();
-	m_MobDelay = 0.85f;
+	m_MobDelay = 0.75f;
 	m_DelayBoss = 120;
 	m_Score = 0;
 	b_OnBoss = false;
 
 	// 배경 오브젝트 생성
-	Background = new cIngameBackground(POINT{ 0, 0 }, TEXTURE);
+	Background = new cIngameBackground(POINT{ 0, 0 }, TEXTURE, 1);
 	AddObject(Background);
 
 	// 플레이어 생성
@@ -86,8 +86,21 @@ void cIngameScene::Update()
 				{
 					m_Boss->b_IsLive = false;				// 보스 오브젝트 제거
 					b_OnBoss = false;						// 보스전 종료
-					OnGameClear();
-					b_Time = false;
+					switch (m_NowStage)						// 스테이지 변환
+					{
+					case cIngameScene::Stage::Stage1:
+						ChangeStage(Stage::Stage2);
+						m_NowStatus = Status::Playing;
+						break;
+					case cIngameScene::Stage::Stage2:
+						ChangeStage(Stage::Stage3);
+						m_NowStatus = Status::Playing;
+						break;
+					case cIngameScene::Stage::Stage3:		// 3스테이지(마지막 스테이지)일 경우
+						OnGameClear();						// 게임 클리어
+						b_Time = false;
+						break;
+					}
 				}
 			}
 		}
@@ -158,7 +171,19 @@ void cIngameScene::Update()
 			m_NowStatus = Status::Event;	// 이벤트 활성화
 
 			// 보스 생성
-			m_Boss = new cBoss_TheHierophant(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
+			switch (m_NowStage)
+			{
+			case cIngameScene::Stage::Stage1:
+				m_Boss = new cBoss_TheHierophant(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
+				break;
+			case cIngameScene::Stage::Stage2:
+				m_Boss = new cBoss_TheHermit(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
+				break;
+			case cIngameScene::Stage::Stage3:
+				m_Boss = new cBoss_TheMagician(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
+				break;
+			default:	break;
+			}
 			AddObject(m_Boss);
 			AddObject(new cUI_Gauge_BossHp(POINT{ WinSizeX / 2, 100 }, UI, m_Boss));
 			AddObject(new cUI_Warning(POINT{ 0, 0 }, UI));
@@ -387,6 +412,11 @@ void cIngameScene::Update()
 		m_PlayTime.Resume();
 		m_MobSpawn.Resume();
 		m_GPTime.Resume();
+		if (m_Boss)
+			m_Boss->Pause(false);
+		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+			if ((*iter)->m_Tag == ENEMY)
+				((cEnemy*)(*iter))->Pause(false);
 	}
 
 	if (m_NowStatus == Status::Pause || m_NowStatus == Status::GameOver || b_ChangeCard)
@@ -396,6 +426,11 @@ void cIngameScene::Update()
 		m_PlayTime.Pause();
 		m_MobSpawn.Pause();
 		m_GPTime.Pause();
+		if (m_Boss)
+			m_Boss->Pause(true);
+		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+			if ((*iter)->m_Tag == ENEMY)
+				((cEnemy*)(*iter))->Pause(true);
 	}
 	else
 	{
@@ -404,6 +439,11 @@ void cIngameScene::Update()
 		m_PlayTime.Resume();
 		m_MobSpawn.Resume();
 		m_GPTime.Resume();
+		if (m_Boss)
+			m_Boss->Pause(false);
+		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+			if ((*iter)->m_Tag == ENEMY)
+				((cEnemy*)(*iter))->Pause(false);
 	}
 
 
@@ -506,7 +546,7 @@ void cIngameScene::OnPause()
 
 	// 현재 씬의 상태를 임시로 저장
 	m_PauseStatus = m_NowStatus;
-	m_PauseTime = timeGetTime();
+	//m_PauseTime = timeGetTime();
 	// 현재 씬의 상태를 Pause로 전환
 	m_NowStatus = Status::Pause;
 	b_Pause = true;
@@ -556,6 +596,12 @@ void cIngameScene::OnChangeCard()
 	m_PlayTime.Pause();
 	m_MobSpawn.Pause();
 	m_GPTime.Pause();
+	if (m_Boss)
+		m_Boss->Pause(true);
+	for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+		if ((*iter)->m_Tag == ENEMY)
+			((cEnemy*)(*iter))->Pause(true);
+
 
 	// 카드 교체 상태의 UI를 생성
 	Temp = new cUI_ChangeCard(POINT{ 0, 0 }, UI, m_Player);
@@ -586,4 +632,58 @@ void cIngameScene::OnGameClear()
 	AddObject(Temp);
 	Temp = new cUI_Button_Ingame_Title(POINT{ WinSizeX / 2, 700 }, UI);
 	AddObject(Temp);
+}
+
+/**
+	@fn		ChangeStage(Stage)
+
+	@brief	현재 스테이지에서 다음 스테이지로 넘어가는 함수
+
+	@param	NextStage	- 전환할 스테이지
+*/
+void cIngameScene::ChangeStage(Stage NextStage)
+{
+	cPlayer Temp = *m_Player; // 플레이어의 데이터를 임시로 저장
+	cGameObject* UI_Temp;
+
+	// 바꾸고자 하는 스테이지가 현재 스테이지일 경우
+	if (m_NowStage == NextStage)
+		return;	// 변환 없이 함수 종료
+
+	// 다음 스테이지에 따라 배경과 BGM이 달라짐
+	switch (NextStage)
+	{
+	case cIngameScene::Stage::Stage1:
+		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+			if ((*iter)->m_Tag == TEXTURE)
+				((cIngameBackground*)(*iter))->ChangeBG(1);
+		m_DelayBoss = 120;
+		SOUNDMANAGER->StopAll();
+		SOUNDMANAGER->Play("Stage1", 1, true);
+		break;
+	case cIngameScene::Stage::Stage2:
+		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+			if ((*iter)->m_Tag == TEXTURE)
+				((cIngameBackground*)(*iter))->ChangeBG(2);
+		m_DelayBoss = 140;
+		SOUNDMANAGER->StopAll();
+		SOUNDMANAGER->Play("Stage2", 1, true);
+		break;
+	case cIngameScene::Stage::Stage3:
+		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
+			if ((*iter)->m_Tag == TEXTURE)
+				((cIngameBackground*)(*iter))->ChangeBG(3);
+		m_DelayBoss = 160;
+		SOUNDMANAGER->StopAll();
+		SOUNDMANAGER->Play("Stage3", 1, true);
+		break;
+	default:
+		break;
+	}
+
+	// 플레이 타이머 리셋
+	m_PlayTime.Reset();
+
+	// 스테이지 변경
+	m_NowStage = NextStage;
 }

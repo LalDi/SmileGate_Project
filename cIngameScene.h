@@ -5,11 +5,11 @@ private:
 	cPlayer* m_Player;		//	게임의 플레이어는 게임 내에 여러 방면으로 간섭하므로 변수화하여 저장한다.
 	cBoss* m_Boss;			//	게임의 보스는 게임 내에 여러 방면으로 간섭하므로 변수화하여 저장한다.
 
-	float m_MobDelay;		//	에너미가 스폰되는 주기 (1000당 1초)
+	float m_MobDelay;		//	에너미가 스폰되는 주기
 	cTimer m_MobSpawn;		//	에너미가 스폰되는 시간 타이머
 
 	cTimer m_GPTime;		//	GP = Grace Period 무적 시간
-	cTimer m_PlayTime;		//	timeGetTime() - m_PlayTime = 게임을 플레이 한 시간. (1000당 1초)
+	cTimer m_PlayTime;		//	게임을 플레이 한 시간.
 	time_t m_PauseTime;
 
 	enum class Status
@@ -52,5 +52,7 @@ public:
 	void OnGameover();
 	void OnChangeCard();
 	void OnGameClear();
+
+	void ChangeStage(Stage NextStage);
 };
 

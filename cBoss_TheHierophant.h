@@ -4,7 +4,6 @@ class cBoss_TheHierophant : public cBoss
 private:
 	POINT m_Vec;
 	int m_Angle;
-	time_t m_AttackTime;
 
 public:
 	cBoss_TheHierophant(POINT Pos, int tag, cPlayer* Player);
@@ -21,5 +20,4 @@ public:
 	void Attack5(list<cGameObject*> *Objects);
 	void Attack6(list<cGameObject*> *Objects);
 	void Attack7(list<cGameObject*> *Objects);
-
 };

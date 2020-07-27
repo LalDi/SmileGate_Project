@@ -113,6 +113,7 @@ cGameObject* cPlayer::Fire()
 	POINT Pos = { m_Pos.x + 80, m_Pos.y };
 	Temp = new cBullet(Pos, BULLETP, m_Damage + m_Power / 100);
 	b_Fire = false;
+	SOUNDMANAGER->Play("ShootP", 1);
 	return Temp;
 }
 

@@ -7,6 +7,8 @@ cBoss::cBoss(POINT Pos, int tag, cPlayer* Player)
 	b_Attack = false;
 	b_Attacking = false;
 	m_Angle = 0;
+
+	m_AttackTime.Init();
 }
 
 cBoss::~cBoss()
@@ -46,4 +48,12 @@ bool cBoss::DisAppear()
 		return false;
 	}
 	return true;
+}
+
+void cBoss::Pause(bool Pause)
+{
+	if (Pause)
+		m_AttackTime.Pause();
+	else
+		m_AttackTime.Resume();
 }

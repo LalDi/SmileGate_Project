@@ -23,7 +23,7 @@ cEnemy2::cEnemy2(POINT Pos, int tag, cPlayer* Player, EnemyState EnemyState)
 	m_MaxHp = 12;
 	m_Hp = m_MaxHp;
 	m_Speed = 200;
-	m_AttackSpeed = 0.3f;
+	m_AttackSpeed = 0.75f;
 	m_GiveScore = 400;
 	m_Player = Player;
 }
@@ -45,5 +45,6 @@ void cEnemy2::Update()
 
 void cEnemy2::Attack(list<cGameObject*>* Objects)
 {
-	(*Objects).push_back(Fire(m_Angle, 1000));
+	(*Objects).push_back(Fire(m_Angle, 950));
+	SOUNDMANAGER->Play("ShootE", 1);
 }

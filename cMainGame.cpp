@@ -42,6 +42,8 @@ void cMainGame::Init()
 	SOUNDMANAGER->AddSound("Stage3", L"./Sounds/BGM/Stage3.wav");
 
 	SOUNDMANAGER->AddSound("Warning", L"./Sounds/SE/Warning.wav");
+	SOUNDMANAGER->AddSound("ShootP", L"./Sounds/SE/PlayerShoot.wav");
+	SOUNDMANAGER->AddSound("ShootE", L"./Sounds/SE/EnemyShoot.wav");
 
 	SCENEMANAGER->ChangeScene("Title");
 }

@@ -22,11 +22,11 @@ cEnemy3::cEnemy3(POINT Pos, int tag, int Angle, EnemyState EnemyState)
 
 	m_MaxHp = 5;
 	m_Hp = m_MaxHp;
-	m_Speed = 400;
-	m_AttackSpeed = 0.65f;
+	m_Speed = 450;
+	m_AttackSpeed = 0.75f;
 	m_GiveScore = 650;
 	m_Angle = Angle;
-	m_Rotate = Angle;
+	m_Rotate = Angle + 180;
 }
 
 cEnemy3::~cEnemy3()
@@ -38,7 +38,7 @@ void cEnemy3::Update()
 	cEnemy::Update();
 	m_Pos.x += m_Speed * cos(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
 	m_Pos.y += m_Speed * sin(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
-	m_Rotate += 2;
+	m_Rotate += 3;
 }
 
 void cEnemy3::Render()
@@ -51,4 +51,6 @@ void cEnemy3::Attack(list<cGameObject*>* Objects)
 	(*Objects).push_back(Fire(m_Rotate - 15));
 	(*Objects).push_back(Fire(m_Rotate));
 	(*Objects).push_back(Fire(m_Rotate + 15));
+	SOUNDMANAGER->Play("ShootE", 1);
+	SOUNDMANAGER->Play("ShootE", 1);
 }
