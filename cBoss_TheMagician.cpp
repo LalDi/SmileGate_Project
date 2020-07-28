@@ -4,7 +4,7 @@ cBoss_TheMagician::cBoss_TheMagician(POINT Pos, int tag, cPlayer* Player)
 	:cBoss(Pos, tag, Player)
 {
 	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheMagician", "./Images/Ingame/Enemy/Boss/Ingame_Boss_3.png");
-	m_MaxHp = 7500;
+	m_MaxHp = 4500;
 	m_Hp = m_MaxHp;
 	m_EnemyState = EnemyState::The_Magician;
 	m_GiveScore = 8000;

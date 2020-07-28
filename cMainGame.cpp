@@ -44,6 +44,7 @@ void cMainGame::Init()
 	SOUNDMANAGER->AddSound("Warning", L"./Sounds/SE/Warning.wav");
 	SOUNDMANAGER->AddSound("ShootP", L"./Sounds/SE/PlayerShoot.wav");
 	SOUNDMANAGER->AddSound("ShootE", L"./Sounds/SE/EnemyShoot.wav");
+	SOUNDMANAGER->AddSound("Broken", L"./Sounds/SE/Broken.wav");
 
 	SCENEMANAGER->ChangeScene("Title");
 }

@@ -3,7 +3,6 @@ class cBoss_TheMagician : public cBoss
 {
 private:
 	POINT m_Vec;
-	int m_Angle;
 
 public:
 	cBoss_TheMagician(POINT Pos, int tag, cPlayer* Player);

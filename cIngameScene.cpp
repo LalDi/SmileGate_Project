@@ -28,7 +28,7 @@ void cIngameScene::Init()
 	m_PlayTime.Init();
 	m_GPTime.Init();
 	m_MobSpawn.Init();
-	m_MobDelay = 0.75f;
+	m_MobDelay = 0.8f;
 	m_DelayBoss = 120;
 	m_Score = 0;
 	b_OnBoss = false;

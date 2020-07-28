@@ -3,7 +3,6 @@ class cBoss_TheHierophant : public cBoss
 {
 private:
 	POINT m_Vec;
-	int m_Angle;
 
 public:
 	cBoss_TheHierophant(POINT Pos, int tag, cPlayer* Player);

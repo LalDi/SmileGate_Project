@@ -23,10 +23,10 @@ public:
 	virtual ~cBoss();
 
 	virtual void Update() PURE;
-	virtual void Render();
+	virtual void Render() override;
 
 	cGameObject* Fire(int x, int y, int Angle = 0, float Speed = 1500);	// 에너미가 발사하는 총알의 데이터를 반환하는 함수
-	bool Appear(POINT Pos);
+	virtual bool Appear(POINT Pos);
 	bool DisAppear();
 	void Pause(bool Pause);
 

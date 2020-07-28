@@ -34,6 +34,10 @@ void cBullet::Update()
 	if (CheckOutMap())
 		b_IsLive = false;
 
+	//if (m_Tag == BULLETP)
+	//	m_Pos.x += m_Speed * cos(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
+	//if (m_Tag == BULLETE)
+	//	m_Pos.x -= m_Speed * cos(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
 	m_Pos.x += m_Speed * cos(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
 	m_Pos.y += m_Speed * sin(D3DXToRadian(m_Angle)) * DXUTGetElapsedTime();
 }
