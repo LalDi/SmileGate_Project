@@ -273,7 +273,7 @@ void cIngameScene::Update()
 					if ((*iter2)->m_Tag == ENEMY || (*iter2)->m_Tag == BOSS)
 					{
 						// 총알과 에너미의 충돌 시
-						if (RectCrashCheck((*iter)->GetRect(), (*iter2)->GetRect()))
+						if (RectCircleCrashCheck((*iter)->GetPos(), (*iter)->GetRadius(), (*iter2)->GetRect()))
 						{
 							// 에너미의 속성별 상성데미지
 							switch (((cEnemy*)(*iter2))->GetEnemyState())
@@ -342,7 +342,7 @@ void cIngameScene::Update()
 			if ((*iter)->m_Tag == BULLETE)
 			{
 				// 플레이어와 총알의 충돌 시
-				if (RectCrashCheck(m_Player->GetRect(), (*iter)->GetRect()))
+				if (RectCircleCrashCheck((*iter)->GetPos(), (*iter)->GetRadius(), m_Player->GetRect()))
 				{
 					// 무적시간이 아니라면
 					if (!m_Player->GetGracePeriod())

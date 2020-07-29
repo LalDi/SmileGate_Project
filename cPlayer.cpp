@@ -137,20 +137,20 @@ void cPlayer::SetPlayerState()
 	case PlayerState::Wheel_of_Fortune:
 		m_Sprite = IMAGEMANAGER->AddImage("Player_1", "./Images/Ingame/Ingame_Character_Player-1.png");
 		m_MaxHp = 5;
-		m_Damage = 2;
-		m_BombDamage = 10;
+		m_Damage = 3;
+		m_BombDamage = 15;
 		break;
 	case PlayerState::Judgement:
 		m_Sprite = IMAGEMANAGER->AddImage("Player_2", "./Images/Ingame/Ingame_Character_Player-2.png");
 		m_MaxHp = 7;
-		m_Damage = 1;
-		m_BombDamage = 8;
+		m_Damage = 2;
+		m_BombDamage = 10;
 		break;
 	case PlayerState::The_Sun:
 		m_Sprite = IMAGEMANAGER->AddImage("Player_3", "./Images/Ingame/Ingame_Character_Player-3.png");
 		m_MaxHp = 3;
-		m_Damage = 4;
-		m_BombDamage = 15;
+		m_Damage = 5;
+		m_BombDamage = 20;
 		break;
 	default:
 		break;

@@ -142,12 +142,12 @@ void cBoss_TheHermit::Attack1(list<cGameObject*>* Objects)
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
-	POINT Vec = { m_Player->GetPos().x - (m_Pos.x - 100), m_Player->GetPos().y - (m_Pos.y + 120) };
+	POINT Vec = { (m_Pos.x - 100) - m_Player->GetPos().x, (m_Pos.y + 120) - m_Player->GetPos().y };
 	int Angle = D3DXToDegree(atan2(Vec.y, Vec.x));
 
 	if (timeGetTime() - AttackTime >= 80)
 	{
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, Angle + 180));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, Angle));
 		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;

@@ -21,6 +21,8 @@ cBullet::cBullet(POINT Pos, int tag, int Damage, int Angle, float Speed)
 	m_Damage = Damage;
 	m_Angle = Angle;
 	m_Speed = Speed;
+
+	m_Radius = m_Sprite->info.Height / 2;
 }
 
 cBullet::~cBullet()

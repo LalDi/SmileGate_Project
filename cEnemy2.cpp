@@ -20,7 +20,7 @@ cEnemy2::cEnemy2(POINT Pos, int tag, cPlayer* Player, EnemyState EnemyState)
 		m_Sprite = IMAGEMANAGER->AddImage("Enemy2_TypeD", "./Images/Ingame/Enemy/TypeD/Ingame_Enemy_2.png");
 	}
 
-	m_MaxHp = 12;
+	m_MaxHp = 14;
 	m_Hp = m_MaxHp;
 	m_Speed = 200;
 	m_AttackSpeed = 0.75f;

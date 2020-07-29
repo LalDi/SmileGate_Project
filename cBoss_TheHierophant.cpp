@@ -145,14 +145,14 @@ void cBoss_TheHierophant::Attack4(list<cGameObject*>* Objects)
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
-	POINT Vec = { m_Player->GetPos().x - (m_Pos.x - 50), m_Player->GetPos().y - (m_Pos.y - 120) };
+	POINT Vec = { (m_Pos.x - 50) - m_Player->GetPos().x, (m_Pos.y - 120) - m_Player->GetPos().y };
 	int Angle = D3DXToDegree(atan2(Vec.y, Vec.x));
 
 	if (timeGetTime() - AttackTime >= 100)
 	{
-		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + 160, 1250));
-		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + 180, 1250));
-		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + 200, 1250));
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + -20, 1250));
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle,       1250));
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle + +20, 1250));
 		SOUNDMANAGER->Play("ShootE", SE);
 		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();

@@ -20,9 +20,9 @@ cEnemy5::cEnemy5(POINT Pos, int tag, int Angle, EnemyState EnemyState)
 		m_Sprite = IMAGEMANAGER->AddImage("Enemy5_TypeD", "./Images/Ingame/Enemy/TypeD/Ingame_Enemy_5.png");
 	}
 
-	m_MaxHp = 10;
+	m_MaxHp = 20;
 	m_Hp = m_MaxHp;
-	m_Speed = 1550;
+	m_Speed = 1450;
 	m_AttackSpeed = 1;
 	m_GiveScore = 500;
 	m_Angle = Angle;
