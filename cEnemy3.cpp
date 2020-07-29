@@ -51,6 +51,6 @@ void cEnemy3::Attack(list<cGameObject*>* Objects)
 	(*Objects).push_back(Fire(m_Rotate - 15));
 	(*Objects).push_back(Fire(m_Rotate));
 	(*Objects).push_back(Fire(m_Rotate + 15));
-	SOUNDMANAGER->Play("ShootE", 1);
-	SOUNDMANAGER->Play("ShootE", 1);
+	SOUNDMANAGER->Play("ShootE", SE);
+	SOUNDMANAGER->Play("ShootE", SE);
 }

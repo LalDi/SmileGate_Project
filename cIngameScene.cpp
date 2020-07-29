@@ -58,7 +58,7 @@ void cIngameScene::Init()
 	AddObject(UI_Temp);
 
 	// 배경음악 재생
-	SOUNDMANAGER->Play("Stage1", 1, true);
+	SOUNDMANAGER->Play("Stage1", BGM, true);
 }
 
 void cIngameScene::Update()
@@ -659,7 +659,7 @@ void cIngameScene::ChangeStage(Stage NextStage)
 				((cIngameBackground*)(*iter))->ChangeBG(1);
 		m_DelayBoss = 120;
 		SOUNDMANAGER->StopAll();
-		SOUNDMANAGER->Play("Stage1", 1, true);
+		SOUNDMANAGER->Play("Stage1", BGM, true);
 		break;
 	case cIngameScene::Stage::Stage2:
 		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
@@ -667,7 +667,7 @@ void cIngameScene::ChangeStage(Stage NextStage)
 				((cIngameBackground*)(*iter))->ChangeBG(2);
 		m_DelayBoss = 140;
 		SOUNDMANAGER->StopAll();
-		SOUNDMANAGER->Play("Stage2", 1, true);
+		SOUNDMANAGER->Play("Stage2", BGM, true);
 		break;
 	case cIngameScene::Stage::Stage3:
 		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
@@ -675,7 +675,7 @@ void cIngameScene::ChangeStage(Stage NextStage)
 				((cIngameBackground*)(*iter))->ChangeBG(3);
 		m_DelayBoss = 160;
 		SOUNDMANAGER->StopAll();
-		SOUNDMANAGER->Play("Stage3", 1, true);
+		SOUNDMANAGER->Play("Stage3", BGM, true);
 		break;
 	default:
 		break;

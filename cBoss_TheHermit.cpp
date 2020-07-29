@@ -74,7 +74,7 @@ void cBoss_TheHermit::Update()
 	{
 		b_IsShield = false;
 		m_Scale = 0;
-		SOUNDMANAGER->Play("Broken", 1);
+		SOUNDMANAGER->Play("Broken", SE);
 	}
 }
 
@@ -148,7 +148,7 @@ void cBoss_TheHermit::Attack1(list<cGameObject*>* Objects)
 	if (timeGetTime() - AttackTime >= 80)
 	{
 		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, Angle + 180));
-		SOUNDMANAGER->Play("ShootE", 1);
+		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
 	}
@@ -177,8 +177,8 @@ void cBoss_TheHermit::Attack2(list<cGameObject*>* Objects)
 			for (int i = 0; i < BulletNum; i++)
 				(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i + (360 / BulletNum) / 2, 2000));
 
-		SOUNDMANAGER->Play("ShootE", 1);
-		SOUNDMANAGER->Play("ShootE", 1);
+		SOUNDMANAGER->Play("ShootE", SE);
+		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
 	}
@@ -213,9 +213,9 @@ void cBoss_TheHermit::Attack3(list<cGameObject*>* Objects)
 		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120));
 		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 10));
 		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 20));
-		SOUNDMANAGER->Play("ShootE", 1);							
-		SOUNDMANAGER->Play("ShootE", 1);							
-		SOUNDMANAGER->Play("ShootE", 1);							
+		SOUNDMANAGER->Play("ShootE", SE);							
+		SOUNDMANAGER->Play("ShootE", SE);							
+		SOUNDMANAGER->Play("ShootE", SE);							
 		AttackTime = timeGetTime();									
 		AttackCount++;
 	}
@@ -242,7 +242,7 @@ void cBoss_TheHermit::Attack4(list<cGameObject*>* Objects)
 	if (timeGetTime() - AttackTime >= 50)
 	{
 		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -10 + AttackCount));
-		SOUNDMANAGER->Play("ShootE", 1);
+		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
 	}
@@ -271,8 +271,8 @@ void cBoss_TheHermit::PowerAttack1(list<cGameObject*>* Objects)
 		{
 			(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, Angle + 170 + i));
 		}
-		SOUNDMANAGER->Play("ShootE", 1);
-		SOUNDMANAGER->Play("ShootE", 1);
+		SOUNDMANAGER->Play("ShootE", SE);
+		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
 	}
@@ -307,8 +307,8 @@ void cBoss_TheHermit::PowerAttack2(list<cGameObject*>* Objects)
 			for (int i = 0; i < BulletNum; i++)
 				(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i + (360 / BulletNum) / 2));
 
-		SOUNDMANAGER->Play("ShootE", 1);
-		SOUNDMANAGER->Play("ShootE", 1);
+		SOUNDMANAGER->Play("ShootE", SE);
+		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
 	}
@@ -347,8 +347,8 @@ void cBoss_TheHermit::PowerAttack3(list<cGameObject*>* Objects)
 	{
 		for (int i = 0; i < BulletNum; i++)
 			(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i));
-		SOUNDMANAGER->Play("ShootE", 1);
-		SOUNDMANAGER->Play("ShootE", 1);
+		SOUNDMANAGER->Play("ShootE", SE);
+		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
 	}
@@ -387,7 +387,7 @@ void cBoss_TheHermit::PowerAttack4(list<cGameObject*>* Objects)
 			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 180));
 			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 270));
 			if (AttackCount % 5 == 0)
-				SOUNDMANAGER->Play("ShootE", 1);
+				SOUNDMANAGER->Play("ShootE", SE);
 			AttackTime = timeGetTime();
 			AttackCount++;
 		}

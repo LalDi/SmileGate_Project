@@ -7,7 +7,7 @@ cUI_Warning::cUI_Warning(POINT Pos, int tag)
 	m_Timer = 0;
 	m_Alpha = 0;
 	b_IsFull = false;
-	SOUNDMANAGER->Play("Warning", 1, false);
+	SOUNDMANAGER->Play("Warning", SE, false);
 }
 
 cUI_Warning::~cUI_Warning()
@@ -26,7 +26,7 @@ void cUI_Warning::Update()
 		if (m_Alpha <= 0)
 		{
 			b_IsFull = false;
-			SOUNDMANAGER->Play("Warning", 1, false);
+			SOUNDMANAGER->Play("Warning", SE, false);
 		}
 	}
 	if (!b_IsFull)
@@ -35,7 +35,7 @@ void cUI_Warning::Update()
 		if (m_Alpha >= 255)
 		{
 			b_IsFull = true;
-			SOUNDMANAGER->Play("Warning", 1, false);
+			SOUNDMANAGER->Play("Warning", SE, false);
 		}
 	}
 	m_Alpha = Clamp(m_Alpha, 0, 255);

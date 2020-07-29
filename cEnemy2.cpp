@@ -46,5 +46,5 @@ void cEnemy2::Update()
 void cEnemy2::Attack(list<cGameObject*>* Objects)
 {
 	(*Objects).push_back(Fire(m_Angle, 950));
-	SOUNDMANAGER->Play("ShootE", 1);
+	SOUNDMANAGER->Play("ShootE", SE);
 }
