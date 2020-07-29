@@ -20,7 +20,7 @@ cEnemy4::cEnemy4(POINT Pos, int tag, int Angle, EnemyState EnemyState)
 		m_Sprite = IMAGEMANAGER->AddImage("Enemy4_TypeD", "./Images/Ingame/Enemy/TypeD/Ingame_Enemy_4.png");
 	}
 
-	m_MaxHp = 5;
+	m_MaxHp = 7;
 	m_Hp = m_MaxHp;
 	m_MaxBullet = 10;
 	m_Speed = 350;
