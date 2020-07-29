@@ -50,7 +50,7 @@ void cBoss_TheMagician::Attack(list<cGameObject*>* Objects)
 	//case 7:	b_Attacking = true;	Attack7(Objects);	break;
 	//}
 
-	b_Attacking = true;	Attack1(Objects);
+	b_Attacking = true;	Attack3(Objects);
 }
 
 void cBoss_TheMagician::Attack1(list<cGameObject*>* Objects)
@@ -121,9 +121,28 @@ void cBoss_TheMagician::Attack2(list<cGameObject*>* Objects)
 
 void cBoss_TheMagician::Attack3(list<cGameObject*>* Objects)
 {
-	b_Attack = false;
-	b_Attacking = false;
-	m_AttackTime.Reset();
+	int BulletNum = 15;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	if (timeGetTime() - AttackTime >= 500)
+	{
+		for (int i = 0; i < BulletNum; i++)
+			(*Objects).push_back(Fire(m_Pos.x, m_Pos.y, Random(-90, 90)));
+
+		SOUNDMANAGER->Play("ShootE", SE);
+		SOUNDMANAGER->Play("ShootE", SE);
+		AttackTime = timeGetTime();
+		AttackCount++;
+	}
+
+	if (AttackCount == 4)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime.Reset();
+	}
 }
 
 void cBoss_TheMagician::Attack4(list<cGameObject*>* Objects)

@@ -241,6 +241,8 @@ void cIngameScene::Update()
 				// 무적시간이 아니라면
 				if (!m_Player->GetGracePeriod())
 				{
+					cGameObject* UI_Temp = new cUI_Hit(POINT{ 0,0 }, UI);
+					AddObject(UI_Temp);
 					m_Player->MinusHp(1);					// 체력 감소
 					m_Player->SetGracePeriod(true);			// 무적 활성화
 					m_GPTime.Reset();						// 무적 타이머 초기화
@@ -347,6 +349,8 @@ void cIngameScene::Update()
 					// 무적시간이 아니라면
 					if (!m_Player->GetGracePeriod())
 					{
+						cGameObject* UI_Temp = new cUI_Hit(POINT{ 0,0 }, UI);
+						AddObject(UI_Temp);
 						m_Player->MinusHp(1);			// 체력 감소
 						m_Player->SetGracePeriod(true);	// 무적 활성화
 						m_GPTime.Reset();				// 무적 타이머 초기화
@@ -364,6 +368,8 @@ void cIngameScene::Update()
 					// 무적시간이 아니라면
 					if (!m_Player->GetGracePeriod())
 					{
+						cGameObject* UI_Temp = new cUI_Hit(POINT{ 0,0 }, UI);
+						AddObject(UI_Temp);
 						m_Player->MinusHp(1);			// 체력 감소
 						m_Player->SetGracePeriod(true);	// 무적 활성화
 						m_GPTime.Reset();				// 무적 타이머 초기화

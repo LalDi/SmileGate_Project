@@ -18,9 +18,17 @@ void cOptionScene::Init()
 
 	UI_Temp = new cUI_Button_OptionBack(POINT{ 70, 70 }, UI);
 	AddObject(UI_Temp);
-	UI_Temp = new cUI_Slider_Volume(POINT{ 825, 375 }, UI, BGM);
+	UI_Temp = new cUI_Slider_Volume(POINT{ 875, 370 }, UI, BGM);
 	AddObject(UI_Temp);
-	UI_Temp = new cUI_Slider_Volume(POINT{ 825, 450 }, UI, SE);
+	UI_Temp = new cUI_Slider_Volume(POINT{ 875, 470 }, UI, SE);
+	AddObject(UI_Temp);
+	UI_Temp = new cUI_Text_BGM(POINT{ 400, 370 }, UI);
+	AddObject(UI_Temp);
+	UI_Temp = new cUI_Text_SE(POINT{ 400, 470 }, UI);
+	AddObject(UI_Temp);
+	UI_Temp = new cUI_Icon_Speaker(POINT{ 600, 370 }, UI);
+	AddObject(UI_Temp);
+	UI_Temp = new cUI_Icon_Speaker(POINT{ 600, 470 }, UI);
 	AddObject(UI_Temp);
 }
 

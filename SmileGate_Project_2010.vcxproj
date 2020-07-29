@@ -452,6 +452,8 @@
     <ClInclude Include="cUI_Gauge.h" />
     <ClInclude Include="cUI_Gauge_BossHp.h" />
     <ClInclude Include="cUI_Gauge_Power.h" />
+    <ClInclude Include="cUI_Hit.h" />
+    <ClInclude Include="cUI_Icon_Speaker.h" />
     <ClInclude Include="cUI_Slider_Volume.h" />
     <ClInclude Include="cUI_Logo.h" />
     <ClInclude Include="cUI_Pause_Background.h" />
@@ -459,6 +461,8 @@
     <ClInclude Include="cUI_Score.h" />
     <ClInclude Include="cUI_Slider.h" />
     <ClInclude Include="cUI_Taro.h" />
+    <ClInclude Include="cUI_Text_BGM.h" />
+    <ClInclude Include="cUI_Text_SE.h" />
     <ClInclude Include="cUI_Warning.h" />
     <ClInclude Include="cUtility.h" />
     <ClInclude Include="DXUT\Core\DXUT.h" />
@@ -530,6 +534,8 @@
     <ClCompile Include="cUI_Gauge.cpp" />
     <ClCompile Include="cUI_Gauge_BossHp.cpp" />
     <ClCompile Include="cUI_Gauge_Power.cpp" />
+    <ClCompile Include="cUI_Hit.cpp" />
+    <ClCompile Include="cUI_Icon_Speaker.cpp" />
     <ClCompile Include="cUI_Slider_Volume.cpp" />
     <ClCompile Include="cUI_Logo.cpp" />
     <ClCompile Include="cUI_Pause_Background.cpp" />
@@ -537,6 +543,8 @@
     <ClCompile Include="cUI_Score.cpp" />
     <ClCompile Include="cUI_Slider.cpp" />
     <ClCompile Include="cUI_Taro.cpp" />
+    <ClCompile Include="cUI_Text_BGM.cpp" />
+    <ClCompile Include="cUI_Text_SE.cpp" />
     <ClCompile Include="cUI_Warning.cpp" />
     <ClCompile Include="cUtility.cpp" />
     <ClCompile Include="DXUT\Core\DXUT.cpp">

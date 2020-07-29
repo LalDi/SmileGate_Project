@@ -50,7 +50,9 @@ using namespace Math;
 #include "cOptionBackground.h"
 #include "cUI_Slider_Volume.h"
 #include "cUI_Button_OptionBack.h"
-
+#include "cUI_Icon_Speaker.h"
+#include "cUI_Text_BGM.h"
+#include "cUI_Text_SE.h"
 
 // 게임방법씬 오브젝트
 #include "cHTPBackground.h"
@@ -96,6 +98,7 @@ using namespace Math;
 #include "cUI_Score.h"
 #include "cUI_Gauge_BossHp.h"
 #include "cUI_Warning.h"
+#include "cUI_Hit.h"
 #include "cUI_ChangeCard.h"
 #include "cUI_Button_SeleteCard1.h"
 #include "cUI_Button_SeleteCard2.h"

@@ -473,6 +473,18 @@
     <ClCompile Include="cUI_Slider_Volume.cpp">
       <Filter>Object\Option\UI</Filter>
     </ClCompile>
+    <ClCompile Include="cUI_Hit.cpp">
+      <Filter>Object\Ingame\UI\Image\Warning</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Icon_Speaker.cpp">
+      <Filter>Object\Option\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Text_BGM.cpp">
+      <Filter>Object\Option\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Text_SE.cpp">
+      <Filter>Object\Option\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -711,6 +723,18 @@
       <Filter>Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="cUI_Slider_Volume.h">
+      <Filter>Object\Option\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Hit.h">
+      <Filter>Object\Ingame\UI\Image\Warning</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Icon_Speaker.h">
+      <Filter>Object\Option\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Text_BGM.h">
+      <Filter>Object\Option\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Text_SE.h">
       <Filter>Object\Option\UI</Filter>
     </ClInclude>
   </ItemGroup>
