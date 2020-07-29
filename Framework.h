@@ -14,6 +14,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <wchar.h>
+#include <string>
+#include <fstream>
 
 // 라이브러리 파일
 #pragma comment (lib, "legacy_stdio_definitions.lib")
@@ -33,6 +35,7 @@ using namespace Math;
 #include "cGameObject.h"
 #include "cUI_Button.h"
 #include "cUI_Gauge.h"
+#include "cUI_Slider.h"
 
 // 타이틀씬 오브젝트
 #include "cTitleBackground.h"
@@ -42,6 +45,12 @@ using namespace Math;
 #include "cUI_Button_Option.h"
 #include "cUI_Button_Credit.h"
 #include "cUI_Button_Quit.h"
+
+// 옵션씬 오브젝트
+#include "cOptionBackground.h"
+#include "cUI_Slider_Volume.h"
+#include "cUI_Button_OptionBack.h"
+
 
 // 게임방법씬 오브젝트
 #include "cHTPBackground.h"
@@ -109,6 +118,7 @@ using namespace Math;
 #include "cScene.h"
 #include "cTitleScene.h"
 #include "cHowToPlayScene.h"
+#include "cOptionScene.h"
 #include "cCreditScene.h"
 #include "cIngameScene.h"
 
@@ -119,6 +129,7 @@ using namespace Math;
 #include "cInputManager.h"
 #include "cSoundManager.h"
 #include "cGameManager.h"
+
 
 // 게임 메인
 #include "cMainGame.h"
@@ -162,6 +173,12 @@ enum TAGS
 	BULLETE,
 	ITEM,
 	UI
+};
+
+enum SOUNDTAG
+{
+	BGM,
+	SE
 };
 
 const int WinSizeX = 1600;

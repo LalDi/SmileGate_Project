@@ -24,19 +24,16 @@ void cTitleScene::Init()
 	AddObject(UI_Temp);
 	UI_Temp = new cUI_Button_HowToPlay(POINT{ 865, 820 }, UI);
 	AddObject(UI_Temp);
-	UI_Temp = new cUI_Button_Option(POINT{ 1130 , 820 }, UI);
+	UI_Temp = new cUI_Button_Option(POINT{ 1130 , 820 }, UI, &b_IsPlayBgm);
 	AddObject(UI_Temp);
 	UI_Temp = new cUI_Button_Credit(POINT{ 1345 , 820 }, UI);
 	AddObject(UI_Temp);
 	UI_Temp = new cUI_Button_Quit(POINT{ 1525 , 820 }, UI);
 	AddObject(UI_Temp);
 
-	SCENEMANAGER->AddScene("HowToPlay", new cHowToPlayScene());
-	SCENEMANAGER->AddScene("Credit", new cCreditScene());
-
 	if (!b_IsPlayBgm)
 	{
-		SOUNDMANAGER->Play("Title", 1, true);
+		SOUNDMANAGER->Play("Title", BGM, true);
 		b_IsPlayBgm = true;
 	}
 }

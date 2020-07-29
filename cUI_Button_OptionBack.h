@@ -1,12 +1,11 @@
 #pragma once
-class cUI_Button_Option : public cUI_Button
+class cUI_Button_OptionBack : public cUI_Button
 {
 private:
-	bool* b_PlayBgm;
 
 public:
-	cUI_Button_Option(POINT Pos, int tag, bool* BGM);
-	~cUI_Button_Option();
+	cUI_Button_OptionBack(POINT Pos, int tag);
+	~cUI_Button_OptionBack();
 
 	virtual void ClickButton() override;
 	virtual void Update() override;

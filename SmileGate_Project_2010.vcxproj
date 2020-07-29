@@ -414,6 +414,8 @@
     <ClInclude Include="cItem_Hp.h" />
     <ClInclude Include="cItem_Power.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cOptionBackground.h" />
+    <ClInclude Include="cOptionScene.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cScene.h" />
     <ClInclude Include="cSceneManager.h" />
@@ -434,6 +436,7 @@
     <ClInclude Include="cUI_Button_HTP_Next.h" />
     <ClInclude Include="cUI_Button_HTP_Prev.h" />
     <ClInclude Include="cUI_Button_Option.h" />
+    <ClInclude Include="cUI_Button_OptionBack.h" />
     <ClInclude Include="cUI_Button_Pause_Reset.h" />
     <ClInclude Include="cUI_Button_Pause_Resume.h" />
     <ClInclude Include="cUI_Button_Pause_Title.h" />
@@ -449,10 +452,12 @@
     <ClInclude Include="cUI_Gauge.h" />
     <ClInclude Include="cUI_Gauge_BossHp.h" />
     <ClInclude Include="cUI_Gauge_Power.h" />
+    <ClInclude Include="cUI_Slider_Volume.h" />
     <ClInclude Include="cUI_Logo.h" />
     <ClInclude Include="cUI_Pause_Background.h" />
     <ClInclude Include="cUI_PlayerHp.h" />
     <ClInclude Include="cUI_Score.h" />
+    <ClInclude Include="cUI_Slider.h" />
     <ClInclude Include="cUI_Taro.h" />
     <ClInclude Include="cUI_Warning.h" />
     <ClInclude Include="cUtility.h" />
@@ -487,6 +492,8 @@
     <ClCompile Include="cItem_Hp.cpp" />
     <ClCompile Include="cItem_Power.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cOptionBackground.cpp" />
+    <ClCompile Include="cOptionScene.cpp" />
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cScene.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
@@ -507,6 +514,7 @@
     <ClCompile Include="cUI_Button_HTP_Next.cpp" />
     <ClCompile Include="cUI_Button_HTP_Prev.cpp" />
     <ClCompile Include="cUI_Button_Option.cpp" />
+    <ClCompile Include="cUI_Button_OptionBack.cpp" />
     <ClCompile Include="cUI_Button_Pause_Reset.cpp" />
     <ClCompile Include="cUI_Button_Pause_Resume.cpp" />
     <ClCompile Include="cUI_Button_Pause_Title.cpp" />
@@ -522,10 +530,12 @@
     <ClCompile Include="cUI_Gauge.cpp" />
     <ClCompile Include="cUI_Gauge_BossHp.cpp" />
     <ClCompile Include="cUI_Gauge_Power.cpp" />
+    <ClCompile Include="cUI_Slider_Volume.cpp" />
     <ClCompile Include="cUI_Logo.cpp" />
     <ClCompile Include="cUI_Pause_Background.cpp" />
     <ClCompile Include="cUI_PlayerHp.cpp" />
     <ClCompile Include="cUI_Score.cpp" />
+    <ClCompile Include="cUI_Slider.cpp" />
     <ClCompile Include="cUI_Taro.cpp" />
     <ClCompile Include="cUI_Warning.cpp" />
     <ClCompile Include="cUtility.cpp" />

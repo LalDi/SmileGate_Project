@@ -159,9 +159,6 @@
     <Filter Include="Object\HowToPlay\Button">
       <UniqueIdentifier>{c77ebabd-6b3c-4963-a392-4b3ab6b24456}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Clear">
-      <UniqueIdentifier>{5a16ead3-c482-4eaf-8a57-437bb78d7187}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Ingame\UI\Image\Clear">
       <UniqueIdentifier>{adb7ed67-bba4-41ed-b5cc-379465f5fac9}</UniqueIdentifier>
     </Filter>
@@ -170,6 +167,18 @@
     </Filter>
     <Filter Include="Object\Ingame\UI\Button\ChangeCard">
       <UniqueIdentifier>{c2a371e8-e6ad-474b-81d3-696dd56d8caf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Option">
+      <UniqueIdentifier>{197f1645-8753-4295-bc9c-ffc717ad3bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Option\Background">
+      <UniqueIdentifier>{6463cd46-d24f-4502-96cf-0a53bcf4bfc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Option\UI">
+      <UniqueIdentifier>{b48b6ea5-f214-4f62-b957-4051f215fe4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Title\Option">
+      <UniqueIdentifier>{88e09330-c360-4ea8-a5ec-2b57ddd2d3cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +458,21 @@
     <ClCompile Include="cTimer.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="cOptionBackground.cpp">
+      <Filter>Object\Option\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Button_OptionBack.cpp">
+      <Filter>Object\Option\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cOptionScene.cpp">
+      <Filter>Scene\Title\Option</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Slider.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUI_Slider_Volume.cpp">
+      <Filter>Object\Option\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -673,6 +697,21 @@
     </ClInclude>
     <ClInclude Include="cTimer.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="cOptionBackground.h">
+      <Filter>Object\Option\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Button_OptionBack.h">
+      <Filter>Object\Option\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cOptionScene.h">
+      <Filter>Scene\Title\Option</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Slider.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Slider_Volume.h">
+      <Filter>Object\Option\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

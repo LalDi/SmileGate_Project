@@ -34,6 +34,9 @@ void cMainGame::Init()
 	// 게임 내에 사용될 씬을 미리 추가
 	SCENEMANAGER->AddScene("Title", new cTitleScene());
 	SCENEMANAGER->AddScene("Ingame", new cIngameScene());
+	SCENEMANAGER->AddScene("Option", new cOptionScene());
+	SCENEMANAGER->AddScene("HowToPlay", new cHowToPlayScene());
+	SCENEMANAGER->AddScene("Credit", new cCreditScene());
 
 	// 게임 내에 사용될 사운드를 미리 추가
 	SOUNDMANAGER->AddSound("Title", L"./Sounds/BGM/Title.wav");
