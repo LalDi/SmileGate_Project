@@ -180,6 +180,9 @@
     <Filter Include="Scene\Title\Option">
       <UniqueIdentifier>{88e09330-c360-4ea8-a5ec-2b57ddd2d3cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Ingame\UI\Image\Stage">
+      <UniqueIdentifier>{b2c01275-9c2d-4adb-9240-13304968aec9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -489,7 +492,7 @@
       <Filter>Object\Ingame\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="cUI_Stage.cpp">
-      <Filter>Object\Ingame\UI\Image</Filter>
+      <Filter>Object\Ingame\UI\Image\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -747,9 +750,12 @@
       <Filter>Object\Ingame\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="cUI_Stage.h">
-      <Filter>Object\Ingame\UI\Image</Filter>
+      <Filter>Object\Ingame\UI\Image\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="GameIcon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -575,6 +575,7 @@
     <ClCompile Include="SmileGate_Project.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="GameIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h" />
