@@ -23,6 +23,7 @@ void cIngameScene::Init()
 	// 변수 초기화
 	m_Player = nullptr;
 	m_Boss = nullptr;
+	m_BlackScreen = nullptr;
 	m_NowStatus = Status::Playing;
 	m_NowStage = Stage::Stage1;
 	m_PlayTime.Init();
@@ -82,24 +83,55 @@ void cIngameScene::Update()
 			}
 			else if (m_Boss->GetHp() <= 0)
 			{
-				if (m_Boss->DisAppear())
+				if (m_Boss->DisAppear())	// 보스가 사라졌을 때
 				{
-					m_Boss->b_IsLive = false;				// 보스 오브젝트 제거
-					b_OnBoss = false;						// 보스전 종료
-					switch (m_NowStage)						// 스테이지 변환
+					if (!m_BlackScreen)		// 검은화면이 없다면 검은 화면 생성
 					{
-					case cIngameScene::Stage::Stage1:
-						ChangeStage(Stage::Stage2);
-						m_NowStatus = Status::Playing;
-						break;
-					case cIngameScene::Stage::Stage2:
-						ChangeStage(Stage::Stage3);
-						m_NowStatus = Status::Playing;
-						break;
-					case cIngameScene::Stage::Stage3:		// 3스테이지(마지막 스테이지)일 경우
-						OnGameClear();						// 게임 클리어
-						b_Time = false;
-						break;
+						m_BlackScreen = new cIngameBlackScene(POINT{ WinSizeX, 0 }, UI);
+						AddObject(m_BlackScreen);
+					}
+					if (m_BlackScreen)		// 검은화면이 있다면
+					{
+						if (m_BlackScreen->GetScreenBlack())	// 검은화면이 화면을 가득 채웠을 때
+						{
+							cGameObject* UI_Temp; 
+							switch (m_NowStage)	// 다음 스테이지를 알리는 UI를 생성
+							{
+							case cIngameScene::Stage::Stage1:
+								UI_Temp = new cUI_Stage(POINT{ WinSizeX / 2, WinSizeY / 2 }, UI, 2);
+								AddObject(UI_Temp);
+								break;
+							case cIngameScene::Stage::Stage2:
+								UI_Temp = new cUI_Stage(POINT{ WinSizeX / 2, WinSizeY / 2 }, UI, 3);
+								AddObject(UI_Temp);
+								break;
+							case cIngameScene::Stage::Stage3:	// 현재 스테이지가 3스테이지라면 다음 스테이지가 없으므로
+								m_Boss->b_IsLive = false;		// 보스 오브젝트 제거
+								b_OnBoss = false;				// 보스전 종료
+								OnGameClear();					// 게임 클리어
+								b_Time = false;
+								break;
+							}
+
+							m_Boss->b_IsLive = false;				// 보스 오브젝트 제거
+							b_OnBoss = false;						// 보스전 종료
+							switch (m_NowStage)						// 스테이지 변환
+							{
+							case cIngameScene::Stage::Stage1:
+								ChangeStage(Stage::Stage2);
+								m_NowStatus = Status::Playing;
+								break;
+							case cIngameScene::Stage::Stage2:
+								ChangeStage(Stage::Stage3);
+								m_NowStatus = Status::Playing;
+								break;
+							//case cIngameScene::Stage::Stage3:		// 3스테이지(마지막 스테이지)일 경우
+							//	OnGameClear();						// 게임 클리어
+							//	b_Time = false;
+							//	break;
+							}
+							m_BlackScreen->SetDisappear(true);		// 검은화면이 사라지게 만든다
+						}
 					}
 				}
 			}

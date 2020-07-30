@@ -5,6 +5,8 @@ private:
 	cPlayer* m_Player;		//	게임의 플레이어는 게임 내에 여러 방면으로 간섭하므로 변수화하여 저장한다.
 	cBoss* m_Boss;			//	게임의 보스는 게임 내에 여러 방면으로 간섭하므로 변수화하여 저장한다.
 
+	cIngameBlackScene* m_BlackScreen;
+
 	float m_MobDelay;		//	에너미가 스폰되는 주기
 	cTimer m_MobSpawn;		//	에너미가 스폰되는 시간 타이머
 

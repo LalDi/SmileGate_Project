@@ -488,6 +488,9 @@
     <ClCompile Include="cMeteo.cpp">
       <Filter>Object\Ingame\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="cUI_Stage.cpp">
+      <Filter>Object\Ingame\UI\Image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -742,6 +745,9 @@
     </ClInclude>
     <ClInclude Include="cMeteo.h">
       <Filter>Object\Ingame\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="cUI_Stage.h">
+      <Filter>Object\Ingame\UI\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

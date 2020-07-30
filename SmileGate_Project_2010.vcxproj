@@ -461,6 +461,7 @@
     <ClInclude Include="cUI_PlayerHp.h" />
     <ClInclude Include="cUI_Score.h" />
     <ClInclude Include="cUI_Slider.h" />
+    <ClInclude Include="cUI_Stage.h" />
     <ClInclude Include="cUI_Taro.h" />
     <ClInclude Include="cUI_Text_BGM.h" />
     <ClInclude Include="cUI_Text_SE.h" />
@@ -544,6 +545,7 @@
     <ClCompile Include="cUI_PlayerHp.cpp" />
     <ClCompile Include="cUI_Score.cpp" />
     <ClCompile Include="cUI_Slider.cpp" />
+    <ClCompile Include="cUI_Stage.cpp" />
     <ClCompile Include="cUI_Taro.cpp" />
     <ClCompile Include="cUI_Text_BGM.cpp" />
     <ClCompile Include="cUI_Text_SE.cpp" />

@@ -101,6 +101,7 @@ using namespace Math;
 #include "cUI_Warning.h"
 #include "cUI_Hit.h"
 #include "cUI_ChangeCard.h"
+#include "cUI_Stage.h"
 #include "cUI_Button_SeleteCard1.h"
 #include "cUI_Button_SeleteCard2.h"
 #include "cUI_Button_SeleteCard3.h"
