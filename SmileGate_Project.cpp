@@ -141,7 +141,7 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
     DXUTInit( true, true ); // Parse the command line and show msgboxes
     DXUTSetHotkeyHandling( true, false, true );  // handle the default hotkeys
     DXUTSetCursorSettings( true, true ); // Show the cursor and clip it when in full screen
-    DXUTCreateWindow( L"SmileGate_Project" );
+    DXUTCreateWindow( L"ROTA" );
     DXUTCreateDevice( true, WinSizeX, WinSizeY );
 
     // Start the render loop

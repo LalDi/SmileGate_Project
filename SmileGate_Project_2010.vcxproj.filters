@@ -185,9 +185,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DXUT\Optional\directx.ico">
-      <Filter>Resource Files</Filter>
-    </None>
     <ClInclude Include="DXUT\Core\DXUT.h">
       <Filter>DXUT</Filter>
     </ClInclude>

@@ -385,7 +385,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="cBomb.h" />
     <ClInclude Include="cBoss.h" />
     <ClInclude Include="cBoss_TheHermit.h" />
