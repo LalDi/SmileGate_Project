@@ -82,6 +82,7 @@ using namespace Math;
 #include "cBoss_TheMagician.h"
 
 #include "cBullet.h"
+#include "cMeteo.h"
 #include "cBomb.h"
 
 #include "cItem.h"

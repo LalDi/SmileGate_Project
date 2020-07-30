@@ -3,11 +3,11 @@
 cBoss_TheHierophant::cBoss_TheHierophant(POINT Pos, int tag, cPlayer* Player)
 	:cBoss(Pos, tag, Player)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheHierophant", "./Images/Ingame/Enemy/Boss/Ingame_Boss_1.png");
-	m_MaxHp = 5000;
+	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheHierophant", "./Images/Ingame/Enemy/Boss/Ingame_Boss_3.png");
+	m_MaxHp = 5500;
 	m_Hp = m_MaxHp;
 	m_EnemyState = EnemyState::The_Hierophant;
-	m_GiveScore = 2000;
+	m_GiveScore = 10000;
 
 	m_AttackTime.Init();
 }
@@ -55,12 +55,12 @@ void cBoss_TheHierophant::Attack(list<cGameObject*> *Objects)
 	case 7:	b_Attacking = true;	Attack7(Objects);	break;
 	}
 
-	//b_Attacking = true;	Attack7(Objects);
+	//b_Attacking = true;	Attack8(Objects);
 }
 
 void cBoss_TheHierophant::Attack1(list<cGameObject*> *Objects)
 {
-	int Temp = Random(3, 5);
+	int Temp = Random(3, 7);
 	POINT Pos;
 	POINT Vec;
 	int Angle;
@@ -91,11 +91,11 @@ void cBoss_TheHierophant::Attack2(list<cGameObject*> *Objects)
 {
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
-	int BulletNum = 40;
+	int BulletNum = 80;
 
-	if (timeGetTime() - AttackTime >= 50)
+	if (timeGetTime() - AttackTime >= 25)
 	{
-		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, AttackCount++ * (360 / BulletNum) * 2));
+		(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, AttackCount++ * 11));
 		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 	}
@@ -111,18 +111,18 @@ void cBoss_TheHierophant::Attack2(list<cGameObject*> *Objects)
 
 void cBoss_TheHierophant::Attack3(list<cGameObject*> *Objects)
 {
-	int BulletNum = 15;
+	int BulletNum = 25;
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
-	if (timeGetTime() - AttackTime >= 500)
+	if (timeGetTime() - AttackTime >= 350)
 	{
 		if (AttackCount % 2 == 0)
 			for (int i = 0; i < BulletNum; i++)
-				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, (360 / BulletNum) * i, 700));
+				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, (360 / BulletNum) * i, 1000));
 		else
 			for (int i = 0; i < BulletNum; i++)
-				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, (360 / BulletNum) * i + (360 / BulletNum) / 2, 700));
+				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, (360 / BulletNum) * i + (360 / BulletNum) / 2, 1000));
 
 		SOUNDMANAGER->Play("ShootE", SE);
 		SOUNDMANAGER->Play("ShootE", SE);
@@ -130,7 +130,7 @@ void cBoss_TheHierophant::Attack3(list<cGameObject*> *Objects)
 		AttackCount++;
 	}
 
-	if (AttackCount == 4)
+	if (AttackCount == 6)
 	{
 		AttackCount = 0;
 		b_Attack = false;
@@ -141,7 +141,7 @@ void cBoss_TheHierophant::Attack3(list<cGameObject*> *Objects)
 
 void cBoss_TheHierophant::Attack4(list<cGameObject*>* Objects)
 {
-	int BulletNum = 20;
+	int BulletNum = 25;
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
@@ -196,109 +196,32 @@ void cBoss_TheHierophant::Attack5(list<cGameObject*>* Objects)
 
 void cBoss_TheHierophant::Attack6(list<cGameObject*>* Objects)
 {
+	int BulletNum = 15;
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
 	if (timeGetTime() - AttackTime >= 100)
 	{
-		switch (AttackCount)
+		if (AttackCount == 0)
 		{
-		case 0:
 			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, 0, 800));
 			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 1:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1000));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1000));
+		}
+		else
+		{
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 6, 1000 + (AttackCount - 1) * 300));
+			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 6, 1000 + (AttackCount - 1) * 300));
 			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 2:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1300));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1300));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 3:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1600));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1600));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 4:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 1900));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 1900));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 5:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 2100));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 2100));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 6:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 2400));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 2400));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 7:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 2700));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 2700));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 8:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3000));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3000));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 9:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3300));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3300));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 10:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3600));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3600));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 11:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 3900));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 3900));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		case 12:
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, -AttackCount * 8, 4200));
-			(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, +AttackCount * 8, 4200));
-			SOUNDMANAGER->Play("ShootE", SE);
-			AttackTime = timeGetTime();
-			AttackCount++;
-			break;
-		default:
+		}
+		AttackTime = timeGetTime();
+		AttackCount++;
+
+		if (AttackCount == BulletNum)
+		{
 			AttackCount = 0;
 			b_Attack = false;
 			b_Attacking = false;
 			m_AttackTime.Reset();
-			break;
 		}
 	}
 }
@@ -310,30 +233,14 @@ void cBoss_TheHierophant::Attack7(list<cGameObject*>* Objects)
 
 	if (timeGetTime() - AttackTime >= 1000)
 	{
-		for (int i = 0; i < 360; i++)
+		int Direction = Random(-25, 25);
+		int Angle = Random(5, 20);
+
+		for (int i = -180; i <= 180; i++)
 		{
-			switch (AttackCount)
+			if (!(i >= Direction - Angle && i <= Direction + Angle))
 			{
-			case 0:
-				if (!(i >= 0 && i < 35))
-					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
-				break;
-			case 1:
-				if (!(i >= 340 || i <= 5))
-					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
-				break;
-			case 2:
-				if (!(i >= 0 && i <= 30))
-					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
-				break;
-			case 3:
-				if (!(i >= 320 && i <= 350))
-					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
-				break;
-			case 4:
-				if (!(i >= 345 || i <= 15))
-					(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
-				break;
+				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, i, 1000));
 			}
 		}
 		SOUNDMANAGER->Play("ShootE", SE);
@@ -343,6 +250,66 @@ void cBoss_TheHierophant::Attack7(list<cGameObject*>* Objects)
 	}
 
 	if (AttackCount == 5)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime.Reset();
+	}
+}
+
+void cBoss_TheHierophant::Attack8(list<cGameObject*>* Objects)
+{
+	int BulletNum = 8;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+	static time_t AttackTime2 = timeGetTime();
+	int Angle;
+	
+	if (AttackCount % 2 == 0)
+	{
+		if (timeGetTime() - AttackTime >= 1000)
+		{
+			for (int i = 0; i < BulletNum; i++)
+			{
+				Angle = Random(-55, 55);
+				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle));
+			}
+			SOUNDMANAGER->Play("ShootE", SE);
+			AttackTime = timeGetTime();
+			AttackCount++;
+		}
+	}
+	else
+	{
+		if (timeGetTime() - AttackTime >= 500)
+		{
+			for (int i = 0; i < BulletNum; i++)
+			{
+				Angle = Random(-55, 55);
+				(*Objects).push_back(Fire(m_Pos.x - 50, m_Pos.y - 120, Angle));
+			}
+			SOUNDMANAGER->Play("ShootE", SE);
+			AttackTime = timeGetTime();
+			AttackCount++;
+		}
+	}
+
+	if (timeGetTime() - AttackTime2 >= 50)
+	{
+		(*Objects).push_back(Fire(50, 0, -90));
+		(*Objects).push_back(Fire(350, WinSizeY, 90));
+		(*Objects).push_back(Fire(650, 0, -90));
+		(*Objects).push_back(Fire(950, WinSizeY, 90));
+		(*Objects).push_back(Fire(1250, 0, -90));
+		(*Objects).push_back(Fire(1550, WinSizeY, 90));
+
+		SOUNDMANAGER->Play("ShootE", SE);
+		SOUNDMANAGER->Play("ShootE", SE);
+		AttackTime2 = timeGetTime();
+	}
+
+	if (AttackCount == 6)
 	{
 		AttackCount = 0;
 		b_Attack = false;

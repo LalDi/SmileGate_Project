@@ -414,6 +414,7 @@
     <ClInclude Include="cItem_Hp.h" />
     <ClInclude Include="cItem_Power.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cMeteo.h" />
     <ClInclude Include="cOptionBackground.h" />
     <ClInclude Include="cOptionScene.h" />
     <ClInclude Include="cPlayer.h" />
@@ -496,6 +497,7 @@
     <ClCompile Include="cItem_Hp.cpp" />
     <ClCompile Include="cItem_Power.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cMeteo.cpp" />
     <ClCompile Include="cOptionBackground.cpp" />
     <ClCompile Include="cOptionScene.cpp" />
     <ClCompile Include="cPlayer.cpp" />

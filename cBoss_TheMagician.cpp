@@ -3,11 +3,12 @@
 cBoss_TheMagician::cBoss_TheMagician(POINT Pos, int tag, cPlayer* Player)
 	:cBoss(Pos, tag, Player)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheMagician", "./Images/Ingame/Enemy/Boss/Ingame_Boss_3.png");
-	m_MaxHp = 4500;
+	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheMagician", "./Images/Ingame/Enemy/Boss/Ingame_Boss_2.png");
+	m_MaxHp = 4000;
 	m_Hp = m_MaxHp;
 	m_EnemyState = EnemyState::The_Magician;
 	m_GiveScore = 8000;
+	b_Control = false;
 
 	m_AttackTime.Init();
 }
@@ -26,11 +27,27 @@ void cBoss_TheMagician::Update()
 	if (b_Control)
 	{
 		// 보스 공격 설정
-		if (m_AttackTime.Time(1.2f))
+		if (m_AttackTime.Time(1.5f))
 		{
 			b_Attack = true;	// 공격 함수 실행
 		}
+
+		m_Pos.y += 5 * m_Direction;
+
+		if (m_Pos.y <= 300)
+			m_Direction = 1;
+		else if (m_Pos.y >= WinSizeY - 300)
+			m_Direction = -1;
+
 	}
+}
+
+cGameObject* cBoss_TheMagician::Meteo(int x, int y, int Angle, float Speed)
+{
+	cGameObject* Temp;
+	POINT Pos = { x, y };
+	Temp = new cMeteo(Pos, BULLETE, Angle + 90, Speed);
+	return Temp;
 }
 
 void cBoss_TheMagician::Attack(list<cGameObject*>* Objects)
@@ -39,18 +56,18 @@ void cBoss_TheMagician::Attack(list<cGameObject*>* Objects)
 	if (!b_Attacking)	// 공격중이 이니라면,
 		Temp = Random(1, 7);	// static 변수에 랜덤한 값을 넣는다.
 
-	//switch (Temp)
-	//{
-	//case 1:	b_Attacking = true;	Attack1(Objects);	break;
-	//case 2:	b_Attacking = true;	Attack2(Objects);	break;
-	//case 3:	b_Attacking = true;	Attack3(Objects);	break;
-	//case 4:	b_Attacking = true;	Attack4(Objects);	break;
-	//case 5:	b_Attacking = true;	Attack5(Objects);	break;
-	//case 6:	b_Attacking = true;	Attack6(Objects);	break;
-	//case 7:	b_Attacking = true;	Attack7(Objects);	break;
-	//}
+	switch (Temp)
+	{
+	case 1:	b_Attacking = true;	Attack1(Objects);	break;
+	case 2:	b_Attacking = true;	Attack2(Objects);	break;
+	case 3:	b_Attacking = true;	Attack3(Objects);	break;
+	case 4:	b_Attacking = true;	Attack4(Objects);	break;
+	case 5:	b_Attacking = true;	Attack5(Objects);	break;
+	case 6:	b_Attacking = true;	Attack6(Objects);	break;
+	case 7:	b_Attacking = true;	Attack7(Objects);	break;
+	}
 
-	b_Attacking = true;	Attack3(Objects);
+	//b_Attacking = true;	Attack7(Objects);
 }
 
 void cBoss_TheMagician::Attack1(list<cGameObject*>* Objects)
@@ -83,7 +100,7 @@ void cBoss_TheMagician::Attack1(list<cGameObject*>* Objects)
 
 void cBoss_TheMagician::Attack2(list<cGameObject*>* Objects)
 {
-	int BulletNum = 30;
+	int BulletNum = 10;
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
@@ -91,7 +108,7 @@ void cBoss_TheMagician::Attack2(list<cGameObject*>* Objects)
 	POINT Vec;
 	int Angle;
 
-	if (timeGetTime() - AttackTime >= 100)
+	if (timeGetTime() - AttackTime >= 300)
 	{
 		switch (Random(1, 4))
 		{
@@ -147,28 +164,106 @@ void cBoss_TheMagician::Attack3(list<cGameObject*>* Objects)
 
 void cBoss_TheMagician::Attack4(list<cGameObject*>* Objects)
 {
-	b_Attack = false;
-	b_Attacking = false;
-	m_AttackTime.Reset();
+	int BulletNum = 10;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	if (timeGetTime() - AttackTime >= 500)
+	{
+		(*Objects).push_back(Meteo(Random(0, WinSizeX), 0, Random(-45, 45)));
+
+		AttackTime = timeGetTime();
+		AttackCount++;
+	}
+
+	if (AttackCount == BulletNum)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime.Reset();
+	}
 }
 
 void cBoss_TheMagician::Attack5(list<cGameObject*>* Objects)
 {
-	b_Attack = false;
-	b_Attacking = false;
-	m_AttackTime.Reset();
+	int BulletNum = 7;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	if (timeGetTime() - AttackTime >= 500)
+	{
+		(*Objects).push_back(Meteo(WinSizeX, Random(0, WinSizeY), 90));
+
+		AttackTime = timeGetTime();
+		AttackCount++;
+	}
+
+	if (AttackCount == BulletNum)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime.Reset();
+	}
 }
 
 void cBoss_TheMagician::Attack6(list<cGameObject*>* Objects)
 {
-	b_Attack = false;
-	b_Attacking = false;
-	m_AttackTime.Reset();
+	int BulletNum = 5;
+	static time_t AttackTime = timeGetTime();
+	static bool Attack = true;
+	POINT Vec;
+	int Angle;
+
+	if (Attack)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			Vec = { ((WinSizeX / 5) * i) - m_Player->GetPos().x, 0 - m_Player->GetPos().y };
+			Angle = D3DXToDegree(atan2(Vec.y, Vec.x));
+			(*Objects).push_back(Meteo((WinSizeX / 5) * i, 0, Angle + 90));
+
+			Vec = { ((WinSizeX / 5) * i) - m_Player->GetPos().x, WinSizeY - m_Player->GetPos().y };
+			Angle = D3DXToDegree(atan2(Vec.y, Vec.x));
+			(*Objects).push_back(Meteo((WinSizeX / 5) * i, WinSizeY, Angle + 90));
+		}
+		Attack = false;
+	}
+
+	if (timeGetTime() - AttackTime >= 2500)
+	{
+		Attack = true;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime.Reset();
+	}
 }
 
 void cBoss_TheMagician::Attack7(list<cGameObject*>* Objects)
 {
-	b_Attack = false;
-	b_Attacking = false;
-	m_AttackTime.Reset();
+	int BulletNum = 40;
+	static int AttackCount = 0;
+	static time_t AttackTime = timeGetTime();
+
+	POINT Pos;
+	POINT Vec;
+	int Angle;
+
+	if (timeGetTime() - AttackTime >= 80)
+	{
+		(*Objects).push_back(Fire(Random(0, WinSizeX), Random(0, WinSizeY), Random(0, 360), Random(500, 1500)));
+		SOUNDMANAGER->Play("ShootE", SE);
+
+		AttackTime = timeGetTime();
+		AttackCount++;
+	}
+
+	if (AttackCount == BulletNum)
+	{
+		AttackCount = 0;
+		b_Attack = false;
+		b_Attacking = false;
+		m_AttackTime.Reset();
+	}
 }

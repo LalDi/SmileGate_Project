@@ -48,6 +48,8 @@ void cMainGame::Init()
 	SOUNDMANAGER->AddSound("ShootP", L"./Sounds/SE/PlayerShoot.wav");
 	SOUNDMANAGER->AddSound("ShootE", L"./Sounds/SE/EnemyShoot.wav");
 	SOUNDMANAGER->AddSound("Broken", L"./Sounds/SE/Broken.wav");
+	SOUNDMANAGER->AddSound("Meteo", L"./Sounds/SE/Meteo.wav");
+	SOUNDMANAGER->AddSound("PlayerHit", L"./Sounds/SE/PlayerHit.wav");
 
 	SCENEMANAGER->ChangeScene("Title");
 }

@@ -485,6 +485,9 @@
     <ClCompile Include="cUI_Text_SE.cpp">
       <Filter>Object\Option\UI</Filter>
     </ClCompile>
+    <ClCompile Include="cMeteo.cpp">
+      <Filter>Object\Ingame\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -736,6 +739,9 @@
     </ClInclude>
     <ClInclude Include="cUI_Text_SE.h">
       <Filter>Object\Option\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cMeteo.h">
+      <Filter>Object\Ingame\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

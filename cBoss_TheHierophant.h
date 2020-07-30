@@ -19,4 +19,5 @@ public:
 	void Attack5(list<cGameObject*> *Objects);
 	void Attack6(list<cGameObject*> *Objects);
 	void Attack7(list<cGameObject*> *Objects);
+	void Attack8(list<cGameObject*>* Objects);
 };

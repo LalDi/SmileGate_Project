@@ -3,9 +3,9 @@
 cBoss_TheHermit::cBoss_TheHermit(POINT Pos, int tag, cPlayer* Player)
 	:cBoss(Pos, tag, Player)
 {
-	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheHermit", "./Images/Ingame/Enemy/Boss/Ingame_Boss_2.png");
-	m_Shield = IMAGEMANAGER->AddImage("Boss_TheHermit_Shield", "./Images/Ingame/Enemy/Boss/Ingame_Boss_2_Shield.png");
-	m_MaxHp = 6500;
+	m_Sprite = IMAGEMANAGER->AddImage("Boss_TheHermit", "./Images/Ingame/Enemy/Boss/Ingame_Boss_1.png");
+	m_Shield = IMAGEMANAGER->AddImage("Boss_TheHermit_Shield", "./Images/Ingame/Enemy/Boss/Ingame_Boss_1_Shield.png");
+	m_MaxHp = 6000;
 	m_Hp = m_MaxHp;
 	m_EnemyState = EnemyState::The_Hermit;
 	m_GiveScore = 4500;
@@ -133,7 +133,7 @@ void cBoss_TheHermit::Attack(list<cGameObject*>* Objects)
 		}
 	}
 
-	//b_Attacking = true;	PowerAttack3(Objects);
+	//b_Attacking = true;	Attack4(Objects);
 }
 
 void cBoss_TheHermit::Attack1(list<cGameObject*>* Objects)
@@ -147,7 +147,7 @@ void cBoss_TheHermit::Attack1(list<cGameObject*>* Objects)
 
 	if (timeGetTime() - AttackTime >= 80)
 	{
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, Angle));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, Angle, 1200));
 		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
@@ -168,14 +168,14 @@ void cBoss_TheHermit::Attack2(list<cGameObject*>* Objects)
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
-	if (timeGetTime() - AttackTime >= 500)
+	if (timeGetTime() - AttackTime >= 600)
 	{
 		if (AttackCount == 0)
 			for (int i = 0; i < BulletNum; i++)
-				(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i, 1000));
+				(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i, 800));
 		if (AttackCount == 1)
 			for (int i = 0; i < BulletNum; i++)
-				(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i + (360 / BulletNum) / 2, 2000));
+				(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, (360 / BulletNum) * i + (360 / BulletNum) / 2, 1600));
 
 		SOUNDMANAGER->Play("ShootE", SE);
 		SOUNDMANAGER->Play("ShootE", SE);
@@ -208,11 +208,12 @@ void cBoss_TheHermit::Attack3(list<cGameObject*>* Objects)
 
 	if (timeGetTime() - AttackTime >= 350 && AttackCount < BulletNum)
 	{
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -20));
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -10));
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120));
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 10));
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 20));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -20, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -15, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -10, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 10, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 15, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 20, 1200));
 		SOUNDMANAGER->Play("ShootE", SE);							
 		SOUNDMANAGER->Play("ShootE", SE);							
 		SOUNDMANAGER->Play("ShootE", SE);							
@@ -235,13 +236,15 @@ void cBoss_TheHermit::Attack3(list<cGameObject*>* Objects)
 
 void cBoss_TheHermit::Attack4(list<cGameObject*>* Objects)
 {
-	int BulletNum = 40;
+	int BulletNum = 50;
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
 	if (timeGetTime() - AttackTime >= 50)
 	{
-		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -10 + AttackCount));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, -20 + AttackCount, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 0 + AttackCount, 1200));
+		(*Objects).push_back(Fire(m_Pos.x - 100, m_Pos.y + 120, 20 + AttackCount, 1200));
 		SOUNDMANAGER->Play("ShootE", SE);
 		AttackTime = timeGetTime();
 		AttackCount++;
@@ -368,7 +371,7 @@ void cBoss_TheHermit::PowerAttack3(list<cGameObject*>* Objects)
 
 void cBoss_TheHermit::PowerAttack4(list<cGameObject*>* Objects)
 {
-	int BulletNum = 360 * 2;
+	int BulletNum = 360 * 1.5;
 	static int AttackCount = 0;
 	static time_t AttackTime = timeGetTime();
 
@@ -383,9 +386,8 @@ void cBoss_TheHermit::PowerAttack4(list<cGameObject*>* Objects)
 		if (timeGetTime() - AttackTime >= 10)
 		{
 			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount));
-			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 90));
-			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 180));
-			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 270));
+			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 120));
+			(*Objects).push_back(Fire(m_Pos.x - 130, m_Pos.y + 120, + AttackCount + 240));
 			if (AttackCount % 5 == 0)
 				SOUNDMANAGER->Play("ShootE", SE);
 			AttackTime = timeGetTime();

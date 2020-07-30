@@ -3,12 +3,15 @@ class cBoss_TheMagician : public cBoss
 {
 private:
 	POINT m_Vec;
+	int m_Direction = 1;
 
 public:
 	cBoss_TheMagician(POINT Pos, int tag, cPlayer* Player);
 	~cBoss_TheMagician();
 
 	virtual void Update() override;
+
+	cGameObject* Meteo(int x, int y, int Angle = 0, float Speed = 1500);
 
 	virtual void Attack(list<cGameObject*>* Objects) override;
 

@@ -296,12 +296,28 @@ void cImageManager::Render(cTexture* texturePtr, float x, float y, float rot)
 */
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, float size, float rot, D3DCOLOR color)
 {
-	Render(texturePtr, x - texturePtr->info.Width * size / 2, y - texturePtr->info.Height * size / 2, size, rot, color);
+	//Render(texturePtr, x - texturePtr->info.Width * size / 2, y - texturePtr->info.Height * size / 2, size, rot, color);
+
+	D3DXVECTOR2 m_Pos = D3DXVECTOR2(x, y);
+	D3DXVECTOR2 m_Center = D3DXVECTOR2(texturePtr->info.Width * 0.5f, texturePtr->info.Height * 0.5f);
+	D3DXVECTOR2 m_Scale = D3DXVECTOR2(size, size);
+	D3DXMatrixTransformation2D(&m_Mat, &m_Center, 0, &m_Scale, &m_Center, D3DXToRadian(rot), &(m_Pos - m_Center));
+	m_sprite->SetTransform(&m_Mat);
+	m_sprite->Draw(texturePtr->texturePtr, nullptr, nullptr, nullptr, color);
+
 }
 
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, POINT size, float rot, D3DCOLOR color)
 {
-	Render(texturePtr, x - texturePtr->info.Width * size.x / 2, y - texturePtr->info.Height * size.y / 2, size, rot, color);
+	//Render(texturePtr, x - texturePtr->info.Width * size.x / 2, y - texturePtr->info.Height * size.y / 2, size, rot, color);
+
+	D3DXVECTOR2 m_Pos = D3DXVECTOR2(x, y);
+	D3DXVECTOR2 m_Center = D3DXVECTOR2(texturePtr->info.Width * 0.5f, texturePtr->info.Height * 0.5f);
+	D3DXVECTOR2 m_Scale = D3DXVECTOR2(size.x, size.y);
+	D3DXMatrixTransformation2D(&m_Mat, &m_Center, 0, &m_Scale, &m_Center, D3DXToRadian(rot), &(m_Pos - m_Center));
+	m_sprite->SetTransform(&m_Mat);
+	m_sprite->Draw(texturePtr->texturePtr, nullptr, nullptr, nullptr, color);
+
 }
 
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, RECT rect, POINT size, float rot, D3DCOLOR color)
@@ -311,7 +327,15 @@ void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, RECT re
 
 void cImageManager::CenterRender(cTexture* texturePtr, float x, float y, float rot)
 {
-	Render(texturePtr, x - texturePtr->info.Width / 2, y - texturePtr->info.Height / 2, rot);
+	//Render(texturePtr, x - texturePtr->info.Width / 2, y - texturePtr->info.Height / 2, rot);
+
+	D3DXVECTOR2 m_Pos = D3DXVECTOR2(x, y);
+	D3DXVECTOR2 m_Center = D3DXVECTOR2(texturePtr->info.Width * 0.5f, texturePtr->info.Height * 0.5f);
+	D3DXVECTOR2 m_Scale = D3DXVECTOR2(1, 1);
+	D3DXMatrixTransformation2D(&m_Mat, &m_Center, 0, &m_Scale, &m_Center, D3DXToRadian(rot), &(m_Pos - m_Center));
+	m_sprite->SetTransform(&m_Mat);
+	m_sprite->Draw(texturePtr->texturePtr, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+
 }
 
 /**

@@ -35,6 +35,7 @@ bool cBoss::Appear(POINT Pos)
 		m_Pos.x -= 2;
 		return false;
 	}
+	b_Control = true;
 	return true;
 }
 

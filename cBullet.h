@@ -1,7 +1,7 @@
 #pragma once
 class cBullet : public cGameObject
 {
-private:
+protected:
 	float m_Speed;
 	int m_Damage;
 	int m_Angle;

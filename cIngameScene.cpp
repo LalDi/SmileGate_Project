@@ -28,8 +28,8 @@ void cIngameScene::Init()
 	m_PlayTime.Init();
 	m_GPTime.Init();
 	m_MobSpawn.Init();
-	m_MobDelay = 0.8f;
-	m_DelayBoss = 120;
+	m_MobDelay = 0.9f;
+	m_DelayBoss = 100;
 	m_Score = 0;
 	b_OnBoss = false;
 
@@ -120,17 +120,7 @@ void cIngameScene::Update()
 			// 스테이지별로 주로 나타나는 에너미가 다름
 			switch (m_NowStage)
 			{
-			case Stage::Stage1:	// 교황속성 주류 스테이지
-				if (Temp <= 700)
-					AddEnemy(Pos, Angle, EnemyState::The_Hierophant);	// 교황 속성 확률 70%
-				else if (Temp <= 825)
-					AddEnemy(Pos, Angle, EnemyState::The_Hermit);		// 은둔자 속성 확률 12.5%
-				else if (Temp <= 950)
-					AddEnemy(Pos, Angle, EnemyState::The_Magician);		// 마법사 속성 확률 12.5%
-				else
-					AddEnemy(Pos, Angle, EnemyState::The_Fool);			// 광대 속성 확률 5%
-				break;
-			case Stage::Stage2:	// 은둔자속성 주류 스테이지
+			case Stage::Stage1:	// 은둔자속성 주류 스테이지
 				if (Temp <= 700)
 					AddEnemy(Pos, Angle, EnemyState::The_Hermit);		// 은둔자 속성 확률 70%
 				else if (Temp <= 825)
@@ -140,13 +130,23 @@ void cIngameScene::Update()
 				else
 					AddEnemy(Pos, Angle, EnemyState::The_Fool);			// 광대 속성 확률 5%
 				break;
-			case Stage::Stage3: // 마법사속성 주류 스테이지
+			case Stage::Stage2: // 마법사속성 주류 스테이지
 				if (Temp <= 700)
 					AddEnemy(Pos, Angle, EnemyState::The_Magician);		// 마법사 속성 확률 70%
 				else if (Temp <= 825)
 					AddEnemy(Pos, Angle, EnemyState::The_Hermit);		// 은둔자 속성 확률 12.5%
 				else if (Temp <= 950)
 					AddEnemy(Pos, Angle, EnemyState::The_Hierophant);	// 교황 속성 확률 12.5%
+				else
+					AddEnemy(Pos, Angle, EnemyState::The_Fool);			// 광대 속성 확률 5%
+				break;
+			case Stage::Stage3:	// 교황속성 주류 스테이지
+				if (Temp <= 700)
+					AddEnemy(Pos, Angle, EnemyState::The_Hierophant);	// 교황 속성 확률 70%
+				else if (Temp <= 825)
+					AddEnemy(Pos, Angle, EnemyState::The_Hermit);		// 은둔자 속성 확률 12.5%
+				else if (Temp <= 950)
+					AddEnemy(Pos, Angle, EnemyState::The_Magician);		// 마법사 속성 확률 12.5%
 				else
 					AddEnemy(Pos, Angle, EnemyState::The_Fool);			// 광대 속성 확률 5%
 				break;
@@ -174,13 +174,13 @@ void cIngameScene::Update()
 			switch (m_NowStage)
 			{
 			case cIngameScene::Stage::Stage1:
-				m_Boss = new cBoss_TheHierophant(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
-				break;
-			case cIngameScene::Stage::Stage2:
 				m_Boss = new cBoss_TheHermit(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
 				break;
-			case cIngameScene::Stage::Stage3:
+			case cIngameScene::Stage::Stage2:
 				m_Boss = new cBoss_TheMagician(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
+				break;
+			case cIngameScene::Stage::Stage3:
+				m_Boss = new cBoss_TheHierophant(POINT{ WinSizeX + 430, WinSizeY / 2 }, BOSS, m_Player);
 				break;
 			default:	break;
 			}
@@ -663,7 +663,6 @@ void cIngameScene::ChangeStage(Stage NextStage)
 		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
 			if ((*iter)->m_Tag == TEXTURE)
 				((cIngameBackground*)(*iter))->ChangeBG(1);
-		m_DelayBoss = 120;
 		SOUNDMANAGER->StopAll();
 		SOUNDMANAGER->Play("Stage1", BGM, true);
 		break;
@@ -671,7 +670,6 @@ void cIngameScene::ChangeStage(Stage NextStage)
 		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
 			if ((*iter)->m_Tag == TEXTURE)
 				((cIngameBackground*)(*iter))->ChangeBG(2);
-		m_DelayBoss = 140;
 		SOUNDMANAGER->StopAll();
 		SOUNDMANAGER->Play("Stage2", BGM, true);
 		break;
@@ -679,7 +677,6 @@ void cIngameScene::ChangeStage(Stage NextStage)
 		for (auto iter = m_Objects.begin(); iter != m_Objects.end(); iter++)
 			if ((*iter)->m_Tag == TEXTURE)
 				((cIngameBackground*)(*iter))->ChangeBG(3);
-		m_DelayBoss = 160;
 		SOUNDMANAGER->StopAll();
 		SOUNDMANAGER->Play("Stage3", BGM, true);
 		break;
